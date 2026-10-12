@@ -1,0 +1,64 @@
+# The native system: the host's own clang and llvm binutils.
+#
+# Values are shell text. A single-line value becomes a quoted assignment, so
+# `$(...)` runs when the generated script sets it, and a value that reads
+# `$CPPFLAGS` appends to what the emitter already put there. A value with
+# newlines is emitted verbatim and exports what it needs itself.
+#
+# Search paths are not defined here: the emitter builds them from the
+# package's dependency closure ($CPPFLAGS, $LDFLAGS, $PKG_CONFIG_PATH,
+# $PKG_CONFIG_LIBDIR, $CMAKE_PREFIX_PATH, and $PATH/$LD_LIBRARY_PATH from the
+# native dependencies) because in v2 every dependency has its own directory.
+# This file adds only what is true of the toolchain.
+
+[system]
+# Where host helper programs come from: a native system is its own host.
+host = "clang-native"
+
+# Changes to any of these make every package of this system stale.
+probe = [
+    "${system.CC} --version",
+    "cmake --version",
+    "meson --version",
+    "ninja --version",
+]
+
+# The toolchain is verified before a build starts rather than half way
+# through one. Verbatim shell: it exports what it defines.
+script = """
+_cc="$(command -v clang)"
+if [ -z "$_cc" ]; then
+  echo "clang-native: clang is not installed" >&2
+  exit 1
+fi
+_ar="$(command -v llvm-ar)"
+if [ -z "$_ar" ]; then
+  echo "clang-native: llvm-ar is not installed" >&2
+  exit 1
+fi
+"""
+
+# --- toolchain ---
+CC = "$_cc"
+CXX = "$(command -v clang++)"
+AR = "$_ar"
+RANLIB = "$(command -v llvm-ranlib)"
+LD = "$(command -v ld.lld)"
+AS = "$CC"
+STRIP = "$(command -v llvm-strip)"
+OBJCOPY = "$(command -v llvm-objcopy)"
+READELF = "$(command -v llvm-readelf)"
+OBJDUMP = "$(command -v llvm-objdump)"
+NM = "$(command -v llvm-nm)"
+
+# --- flags ---
+CFLAGS = "-O2 -fPIC"
+CXXFLAGS = "-O2 -fPIC"
+
+# --- machine identities: build, host, target ---
+# Nothing here builds a compiler for a further machine, so target == host.
+BUILD_TRIPLET = "x86_64-pc-linux-gnu"
+HOST_TRIPLET = "x86_64-pc-linux-gnu"
+TARGET_TRIPLET = "x86_64-pc-linux-gnu"
+HOST_ARCH = "x86_64"
+HOST_OS = "linux"

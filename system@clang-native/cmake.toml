@@ -1,0 +1,12 @@
+# cmake.
+#
+# CMAKE_PREFIX_PATH is already in the environment, built from the dependency
+# closure by the emitter, so a find_package() looking for a dependency finds
+# that dependency's own directory.
+#
+# -DCMAKE_POLICY_VERSION_MINIMUM=3.5 gives old projects a policy floor: cmake
+# 4.x refuses anything whose minimum is below 3.5, and most of these projects
+# predate cmake's own default.
+
+[buildsystem.cmake]
+CMAKE_FLAGS = "-DCMAKE_INSTALL_PREFIX=$OUTPKG -DCMAKE_POLICY_VERSION_MINIMUM=3.5"

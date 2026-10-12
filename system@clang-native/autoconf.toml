@@ -1,0 +1,12 @@
+# autotools: ./configure.
+#
+# $OUTPKG is the package's final directory, which is what has to end up inside
+# the generated config files. The build writes into $DESTDIR (the emitter
+# exports it), so `make install` — the plain command a recipe writes — lands in
+# the staging tree and is moved into $OUTPKG on success.
+
+[buildsystem.autoconf]
+AUTOCONF_CONFIGURE_FLAGS = "--prefix=$OUTPKG"
+
+# Autoconf probes link a test program and then run it. On a native build that
+# is fine; a cross system overrides these with cache answers.

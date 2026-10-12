@@ -1,0 +1,11 @@
+# meson.
+#
+# --prefix only. meson takes the toolchain from the environment ($CC, $CXX,
+# $AR are exported by the system) and has no policy floor to set. The job count
+# comes from the recipe's own `meson compile --jobs "$CORES"`.
+#
+# No cross-file: a native build needs none, and a cross system passes its own
+# with --cross-file $SYSDIR/<file>.ini.
+
+[buildsystem.meson]
+MESON_FLAGS = "--prefix=$OUTPKG"
