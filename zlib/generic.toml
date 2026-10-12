@@ -9,3 +9,4 @@ cmake -S . -B build $CMAKE_FLAGS -DZLIB_BUILD_EXAMPLES=OFF
 cmake --build build --parallel "$CORES"
 cmake --install build
 """
+

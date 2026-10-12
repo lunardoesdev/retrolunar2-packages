@@ -10,3 +10,5 @@
 
 [buildsystem.cmake]
 CMAKE_FLAGS = "-DCMAKE_INSTALL_PREFIX=$OUTPKG -DCMAKE_POLICY_VERSION_MINIMUM=3.5"
+
+# touched for the invalidation test
