@@ -67,6 +67,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
+## system@aarch64-android21/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
+
 ## aarch64-android21/aarch64-linux-android21-toolchain.cmake
 
 - **copied unchanged**: `aarch64-linux-android21-toolchain.cmake`
@@ -142,6 +146,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 ## system@aarch64-android23/meson.toml
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
+
+## system@aarch64-android23/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
 
 ## aarch64-android23/aarch64-linux-android23-toolchain.cmake
 
@@ -221,6 +229,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
+## system@aarch64-android24/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
+
 ## aarch64-android24/aarch64-linux-android24-toolchain.cmake
 
 - **copied unchanged**: `aarch64-linux-android24-toolchain.cmake`
@@ -296,6 +308,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 ## system@aarch64-android25/meson.toml
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
+
+## system@aarch64-android25/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
 
 ## aarch64-android25/aarch64-linux-android25-toolchain.cmake
 
@@ -373,6 +389,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
+## system@aarch64-android26/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
+
 ## aarch64-android26/aarch64-linux-android26-toolchain.cmake
 
 - **copied unchanged**: `aarch64-linux-android26-toolchain.cmake`
@@ -448,6 +468,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 ## system@aarch64-android27/meson.toml
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
+
+## system@aarch64-android27/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
 
 ## aarch64-android27/aarch64-linux-android27-toolchain.cmake
 
@@ -525,6 +549,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
+## system@aarch64-android28/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
+
 ## aarch64-android28/aarch64-linux-android28-toolchain.cmake
 
 - **copied unchanged**: `aarch64-linux-android28-toolchain.cmake`
@@ -600,6 +628,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 ## system@aarch64-android29/meson.toml
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
+
+## system@aarch64-android29/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
 
 ## aarch64-android29/aarch64-linux-android29-toolchain.cmake
 
@@ -677,6 +709,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
+## system@aarch64-android30/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
+
 ## aarch64-android30/aarch64-linux-android30-toolchain.cmake
 
 - **copied unchanged**: `aarch64-linux-android30-toolchain.cmake`
@@ -752,6 +788,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 ## system@aarch64-android31/meson.toml
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
+
+## system@aarch64-android31/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
 
 ## aarch64-android31/aarch64-linux-android31-toolchain.cmake
 
@@ -829,6 +869,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
+## system@aarch64-android32/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
+
 ## aarch64-android32/aarch64-linux-android32-toolchain.cmake
 
 - **copied unchanged**: `aarch64-linux-android32-toolchain.cmake`
@@ -904,6 +948,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 ## system@aarch64-android33/meson.toml
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
+
+## system@aarch64-android33/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
 
 ## aarch64-android33/aarch64-linux-android33-toolchain.cmake
 
@@ -981,6 +1029,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
+## system@aarch64-android34/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
+
 ## aarch64-android34/aarch64-linux-android34-toolchain.cmake
 
 - **copied unchanged**: `aarch64-linux-android34-toolchain.cmake`
@@ -1056,6 +1108,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 ## system@aarch64-android35/meson.toml
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
+
+## system@aarch64-android35/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
 
 ## aarch64-android35/aarch64-linux-android35-toolchain.cmake
 
@@ -1134,6 +1190,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
+## system@armv7a-android21/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
+
 ## armv7a-android21/armv7a-linux-androideabi21-toolchain.cmake
 
 - **copied unchanged**: `armv7a-linux-androideabi21-toolchain.cmake`
@@ -1210,6 +1270,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 ## system@armv7a-android23/meson.toml
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
+
+## system@armv7a-android23/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
 
 ## armv7a-android23/armv7a-linux-androideabi23-toolchain.cmake
 
@@ -1288,6 +1352,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
+## system@armv7a-android24/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
+
 ## armv7a-android24/armv7a-linux-androideabi24-toolchain.cmake
 
 - **copied unchanged**: `armv7a-linux-androideabi24-toolchain.cmake`
@@ -1364,6 +1432,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 ## system@armv7a-android25/meson.toml
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
+
+## system@armv7a-android25/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
 
 ## armv7a-android25/armv7a-linux-androideabi25-toolchain.cmake
 
@@ -1442,6 +1514,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
+## system@armv7a-android26/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
+
 ## armv7a-android26/armv7a-linux-androideabi26-toolchain.cmake
 
 - **copied unchanged**: `armv7a-linux-androideabi26-toolchain.cmake`
@@ -1518,6 +1594,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 ## system@armv7a-android27/meson.toml
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
+
+## system@armv7a-android27/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
 
 ## armv7a-android27/armv7a-linux-androideabi27-toolchain.cmake
 
@@ -1596,6 +1676,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
+## system@armv7a-android28/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
+
 ## armv7a-android28/armv7a-linux-androideabi28-toolchain.cmake
 
 - **copied unchanged**: `armv7a-linux-androideabi28-toolchain.cmake`
@@ -1672,6 +1756,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 ## system@armv7a-android29/meson.toml
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
+
+## system@armv7a-android29/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
 
 ## armv7a-android29/armv7a-linux-androideabi29-toolchain.cmake
 
@@ -1750,6 +1838,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
+## system@armv7a-android30/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
+
 ## armv7a-android30/armv7a-linux-androideabi30-toolchain.cmake
 
 - **copied unchanged**: `armv7a-linux-androideabi30-toolchain.cmake`
@@ -1826,6 +1918,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 ## system@armv7a-android31/meson.toml
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
+
+## system@armv7a-android31/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
 
 ## armv7a-android31/armv7a-linux-androideabi31-toolchain.cmake
 
@@ -1904,6 +2000,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
+## system@armv7a-android32/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
+
 ## armv7a-android32/armv7a-linux-androideabi32-toolchain.cmake
 
 - **copied unchanged**: `armv7a-linux-androideabi32-toolchain.cmake`
@@ -1980,6 +2080,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 ## system@armv7a-android33/meson.toml
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
+
+## system@armv7a-android33/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
 
 ## armv7a-android33/armv7a-linux-androideabi33-toolchain.cmake
 
@@ -2058,6 +2162,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
+## system@armv7a-android34/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
+
 ## armv7a-android34/armv7a-linux-androideabi34-toolchain.cmake
 
 - **copied unchanged**: `armv7a-linux-androideabi34-toolchain.cmake`
@@ -2135,6 +2243,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
+## system@armv7a-android35/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
+
 ## armv7a-android35/armv7a-linux-androideabi35-toolchain.cmake
 
 - **copied unchanged**: `armv7a-linux-androideabi35-toolchain.cmake`
@@ -2191,6 +2303,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 ## system@clang-native/meson.toml
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
+
+## system@clang-native/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
 
 ## clang-native/generic.lua
 
@@ -2260,6 +2376,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 ## system@i686-android21/meson.toml
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
+
+## system@i686-android21/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
 
 ## i686-android21/crossfile-i686-android21.ini
 
@@ -2338,6 +2458,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
+## system@i686-android23/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
+
 ## i686-android23/crossfile-i686-android23.ini
 
 - **copied unchanged**: `crossfile-i686-android23.ini`
@@ -2414,6 +2538,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 ## system@i686-android24/meson.toml
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
+
+## system@i686-android24/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
 
 ## i686-android24/crossfile-i686-android24.ini
 
@@ -2492,6 +2620,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
+## system@i686-android25/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
+
 ## i686-android25/crossfile-i686-android25.ini
 
 - **copied unchanged**: `crossfile-i686-android25.ini`
@@ -2568,6 +2700,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 ## system@i686-android26/meson.toml
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
+
+## system@i686-android26/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
 
 ## i686-android26/crossfile-i686-android26.ini
 
@@ -2646,6 +2782,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
+## system@i686-android27/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
+
 ## i686-android27/crossfile-i686-android27.ini
 
 - **copied unchanged**: `crossfile-i686-android27.ini`
@@ -2722,6 +2862,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 ## system@i686-android28/meson.toml
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
+
+## system@i686-android28/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
 
 ## i686-android28/crossfile-i686-android28.ini
 
@@ -2800,6 +2944,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
+## system@i686-android29/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
+
 ## i686-android29/crossfile-i686-android29.ini
 
 - **copied unchanged**: `crossfile-i686-android29.ini`
@@ -2876,6 +3024,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 ## system@i686-android30/meson.toml
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
+
+## system@i686-android30/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
 
 ## i686-android30/crossfile-i686-android30.ini
 
@@ -2954,6 +3106,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
+## system@i686-android31/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
+
 ## i686-android31/crossfile-i686-android31.ini
 
 - **copied unchanged**: `crossfile-i686-android31.ini`
@@ -3030,6 +3186,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 ## system@i686-android32/meson.toml
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
+
+## system@i686-android32/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
 
 ## i686-android32/crossfile-i686-android32.ini
 
@@ -3108,6 +3268,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
+## system@i686-android33/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
+
 ## i686-android33/crossfile-i686-android33.ini
 
 - **copied unchanged**: `crossfile-i686-android33.ini`
@@ -3184,6 +3348,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 ## system@i686-android34/meson.toml
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
+
+## system@i686-android34/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
 
 ## i686-android34/crossfile-i686-android34.ini
 
@@ -3262,6 +3430,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
+## system@i686-android35/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
+
 ## i686-android35/crossfile-i686-android35.ini
 
 - **copied unchanged**: `crossfile-i686-android35.ini`
@@ -3303,11 +3475,19 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## mingw32/cmake.toml
 
+- **fixed by hand (the cmake driver passes the system's own CMAKE_TOOLCHAIN_FILE)**: `-DCMAKE_TOOLCHAIN_FILE=\$CMAKE_TOOLCHAIN_FILE ?`
 - **fixed by hand (CMAKE_PREFIX_PATH from the closure points at the dependency directories already)**: `-DZLIB_ROOT=\$\{RETROLUNAR_PORT_SYSTEM_PREFIX\}`
 
 ## mingw32/generic.lua
 
 - **merged repeated assignments**: `CMAKE_FLAGS`
+
+## mingw32/meson.toml
+
+- **fixed by hand (the meson driver passes the system's own MESON_CROSS_FILE)**: `--cross-file \$MESON_CROSS_FILE ?`
+
+## mingw32/generic.lua
+
 - **merged repeated assignments**: `MESON_FLAGS`
 
 ## system@mingw32/autoconf.toml
@@ -3329,6 +3509,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 ## system@mingw32/meson.toml
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
+
+## system@mingw32/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
 
 ## mingw32/crossfile-i686-w64-mingw32.ini
 
@@ -3407,6 +3591,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
+## system@x86_64-android21/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
+
 ## x86_64-android21/crossfile-x86_64-android21.ini
 
 - **copied unchanged**: `crossfile-x86_64-android21.ini`
@@ -3483,6 +3671,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 ## system@x86_64-android23/meson.toml
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
+
+## system@x86_64-android23/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
 
 ## x86_64-android23/crossfile-x86_64-android23.ini
 
@@ -3561,6 +3753,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
+## system@x86_64-android24/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
+
 ## x86_64-android24/crossfile-x86_64-android24.ini
 
 - **copied unchanged**: `crossfile-x86_64-android24.ini`
@@ -3637,6 +3833,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 ## system@x86_64-android25/meson.toml
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
+
+## system@x86_64-android25/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
 
 ## x86_64-android25/crossfile-x86_64-android25.ini
 
@@ -3715,6 +3915,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
+## system@x86_64-android26/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
+
 ## x86_64-android26/crossfile-x86_64-android26.ini
 
 - **copied unchanged**: `crossfile-x86_64-android26.ini`
@@ -3791,6 +3995,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 ## system@x86_64-android27/meson.toml
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
+
+## system@x86_64-android27/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
 
 ## x86_64-android27/crossfile-x86_64-android27.ini
 
@@ -3869,6 +4077,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
+## system@x86_64-android28/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
+
 ## x86_64-android28/crossfile-x86_64-android28.ini
 
 - **copied unchanged**: `crossfile-x86_64-android28.ini`
@@ -3945,6 +4157,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 ## system@x86_64-android29/meson.toml
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
+
+## system@x86_64-android29/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
 
 ## x86_64-android29/crossfile-x86_64-android29.ini
 
@@ -4023,6 +4239,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
+## system@x86_64-android30/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
+
 ## x86_64-android30/crossfile-x86_64-android30.ini
 
 - **copied unchanged**: `crossfile-x86_64-android30.ini`
@@ -4099,6 +4319,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 ## system@x86_64-android31/meson.toml
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
+
+## system@x86_64-android31/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
 
 ## x86_64-android31/crossfile-x86_64-android31.ini
 
@@ -4177,6 +4401,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
+## system@x86_64-android32/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
+
 ## x86_64-android32/crossfile-x86_64-android32.ini
 
 - **copied unchanged**: `crossfile-x86_64-android32.ini`
@@ -4253,6 +4481,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 ## system@x86_64-android33/meson.toml
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
+
+## system@x86_64-android33/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
 
 ## x86_64-android33/crossfile-x86_64-android33.ini
 
@@ -4331,6 +4563,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
+## system@x86_64-android34/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
+
 ## x86_64-android34/crossfile-x86_64-android34.ini
 
 - **copied unchanged**: `crossfile-x86_64-android34.ini`
@@ -4408,6 +4644,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
+## system@x86_64-android35/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
+
 ## x86_64-android35/crossfile-x86_64-android35.ini
 
 - **copied unchanged**: `crossfile-x86_64-android35.ini`
@@ -4456,11 +4696,19 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## mingw64/cmake.toml
 
+- **fixed by hand (the cmake driver passes the system's own CMAKE_TOOLCHAIN_FILE)**: `-DCMAKE_TOOLCHAIN_FILE=\$CMAKE_TOOLCHAIN_FILE ?`
 - **fixed by hand (CMAKE_PREFIX_PATH from the closure points at the dependency directories already)**: `-DZLIB_ROOT=\$\{RETROLUNAR_PORT_SYSTEM_PREFIX\}`
 
 ## mingw64/generic.lua
 
 - **merged repeated assignments**: `CMAKE_FLAGS`
+
+## mingw64/meson.toml
+
+- **fixed by hand (the meson driver passes the system's own MESON_CROSS_FILE)**: `--cross-file \$MESON_CROSS_FILE ?`
+
+## mingw64/generic.lua
+
 - **merged repeated assignments**: `MESON_FLAGS`
 
 ## system@mingw64/autoconf.toml
@@ -4482,6 +4730,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 ## system@mingw64/meson.toml
 
 - **carries the meson driver**: `script + defaults, overridable by this system`
+
+## system@mingw64/python.toml
+
+- **carries the python driver**: `script + defaults, overridable by this system`
 
 ## mingw64/crossfile-x86_64-mingw.ini
 
