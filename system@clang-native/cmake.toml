@@ -5,6 +5,7 @@
 CMAKE_TOOLCHAIN_FILE = ""
 CMAKE_FLAGS = "-DCMAKE_INSTALL_PREFIX=$PREFIX -DCMAKE_POLICY_VERSION_MINIMUM=3.5"
 script = """
+LDFLAGS=\"$LDFLAGS -Wl,-rpath,\\$ORIGIN\"
 cmake -S \"${BS_source_dir:-.}\" -B build ${CMAKE_GENERATOR:+-G \"$CMAKE_GENERATOR\"} ${CMAKE_TOOLCHAIN_FILE:+-DCMAKE_TOOLCHAIN_FILE=\"$CMAKE_TOOLCHAIN_FILE\"} $CMAKE_FLAGS $BS_args
 cmake --build build --parallel \"$CORES\"
 cmake --install build

@@ -10,6 +10,7 @@
 [buildsystem.autoconf]
 AUTOCONF_CONFIGURE_FLAGS = "--build=$BUILD_TRIPLET --prefix=$PREFIX"
 script = """
+LDFLAGS=\"$LDFLAGS -Wl,-rpath,'\\$\\$ORIGIN'\"
 cd \"${BS_source_dir:-.}\"
 ./configure $AUTOCONF_CONFIGURE_FLAGS $BS_configure_args
 for _f in aclocal.m4 configure config.h.in; do
