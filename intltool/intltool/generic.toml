@@ -1,9 +1,0 @@
-deps = ["perl@native", "intltool@source"]
-buildsystem = "autoconf"
-# intltool ships perl scripts, and its configure probes for perl, so the
-# generator side runs under the native perl from $NATIVE_PREFIX/bin
-# (already on PATH via the loader). Its compiled-in @INC names the build
-# staging dir, so PERL5LIB points it at the installed module tree.
-pre = """
-        export PERL5LIB=\"$NATIVE_PREFIX/lib/perl5/5.44/core_perl\"
-"""

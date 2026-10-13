@@ -1,7 +1,0 @@
-deps = ["draco@source"]
-buildsystem = "cmake"
-# Static encoder and decoder, C++ headers and the generated
-# draco_features.h. The tag archive has CMake, not a Makefile, and
-# upstream keeps its build options sparse: tests off is the only thing
-# worth switching off here, the tests are a large gtest suite.
-args = ["-DBUILD_SHARED_LIBS=OFF", "-DDRACO_TESTS=OFF"]

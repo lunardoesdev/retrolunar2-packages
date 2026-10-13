@@ -1,5 +1,8 @@
 deps = ["libcap@source"]
 buildsystem = "make"
+make = false
+install = false
+post = """
 # libcap has no configure at all and no autotools: it is a hand-written
 # make build driven by Make.Rules, and there is no config.h.in,
 # config.hin, configh.in or any other template to guard, because
@@ -27,7 +30,7 @@ buildsystem = "make"
 #
 # lib=lib: Make.Rules:20-22 otherwise derives the libdir by running
 # `ldd /usr/bin/ld` on the BUILD MACHINE and cutting the result, which
-# answers "lib64" on this host and would install to $OUT/lib64. Every
+# answers \"lib64\" on this host and would install to $OUT/lib64. Every
 # other package here installs to lib, and $PREFIX/lib is what the
 # systems' PKG_CONFIG_LIBDIR and LDFLAGS search. Spelling it out is
 # what keeps the .pc findable.
@@ -46,7 +49,6 @@ buildsystem = "make"
 # portable path (libcap/Makefile:141 falls back cleanly).
 # PAM_CAP=no and GOLANG=no keep the top-level Makefile from recursing
 # into pam_cap and the Go bindings.
-make = false
-install = false
-targets = ["libcap"]
-make_args = ["-C", "BUILD_CC=cc", "lib=lib", "prefix=$OUTPKG", "SHARED=no", "PTHREADS=yes", "USE_GPERF=no", "PAM_CAP=no", "GOLANG=no"]
+make -j\"$CORES\" -C libcap CC=\"$CC\" AR=\"$AR\" RANLIB=\"$RANLIB\" BUILD_CC=\"cc\"    lib=lib prefix=\"$OUTPKG\" SHARED=no PTHREADS=yes USE_GPERF=no    PAM_CAP=no GOLANG=no
+make -j\"$CORES\" -C libcap install CC=\"$CC\" AR=\"$AR\" RANLIB=\"$RANLIB\" BUILD_CC=\"cc\"    lib=lib prefix=\"$OUTPKG\" SHARED=no PTHREADS=yes USE_GPERF=no    PAM_CAP=no GOLANG=no
+"""

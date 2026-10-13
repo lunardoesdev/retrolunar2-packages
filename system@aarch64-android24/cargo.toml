@@ -9,12 +9,7 @@
 [buildsystem.cargo]
 # cc-crate Vars mirror $CC/$CFLAGS for build scripts.
 CARGO_BUILD_TARGET = "aarch64-linux-android"
-CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER = "$CC"
-CARGO_TARGET_AARCH64_LINUX_ANDROID_AR = "$AR"
 PKG_CONFIG_ALLOW_CROSS = "1"
-CC_aarch64_linux_android = "$CC"
-CFLAGS_aarch64_linux_android = "$CFLAGS"
-CXX_aarch64_linux_android = "$CXX"
 CXXFLAGS_aarch64_linux_android = "$CXXFLAGS"
 script = """
 ${BS_env:+env $BS_env }cargo build --release --target \"$CARGO_BUILD_TARGET\" -j \"$CORES\" ${BS_no_default_features:+--no-default-features} ${BS_features:+--features \"$BS_features\"}

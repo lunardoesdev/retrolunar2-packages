@@ -1,11 +1,13 @@
 deps = ["zlib", "giflib@source"]
 buildsystem = "make"
+make = false
+install = false
+post = """
 # giflib ships a plain makefile, not an Autotools one, so there is no
 # configure to run: the variables it reads (PREFIX, CC, CFLAGS,
 # LDFLAGS) are the ones the system already exports. IGRAPHICS and
 # the man pages stay off by default; only the archive and the header
 # are wanted.
-make = false
-install = false
-make_args = ["PREFIX=$PREFIX"]
-targets = ["install-lib", "install-include"]
+make -j\"$CORES\" CC=\"$CC\" CFLAGS=\"$CFLAGS\" LDFLAGS=\"$LDFLAGS\" PREFIX=\"$PREFIX\"
+make install-lib install-include PREFIX=\"$PREFIX\"
+"""

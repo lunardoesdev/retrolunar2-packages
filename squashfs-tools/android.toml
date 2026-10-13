@@ -1,5 +1,9 @@
 deps = ["squashfs-tools@source"]
 buildsystem = "make"
+make = false
+install = false
+post = """
+cd squashfs-tools
 # LIBS is restated here, minus -lpthread. A command-line variable
 # overrides the Makefile's own `LIBS = -lpthread -lm` (Makefile:271),
 # so nothing upstream is edited; the list below is exactly what
@@ -13,9 +17,6 @@ buildsystem = "make"
 # gone. The system's LDFLAGS already carry -lm.
 # USE_PREBUILT_MANPAGES=y for the reason given in generic.lua: the
 # alternative renders the manuals by RUNNING the freshly built tools.
-make = false
-install = false
-make_args = ["LZO_SUPPORT=0", "USE_PREBUILT_MANPAGES=y", "INSTALL_PREFIX=$OUTPKG", "LIBS=-lm -lz -llz4 -llzma -lzstd"]
-pre = """
-cd squashfs-tools
+make -j\"$CORES\" LZO_SUPPORT=0 USE_PREBUILT_MANPAGES=y INSTALL_PREFIX=\"$OUTPKG\"      LIBS=\"-lm -lz -llz4 -llzma -lzstd\"
+make -j\"$CORES\" LZO_SUPPORT=0 USE_PREBUILT_MANPAGES=y INSTALL_PREFIX=\"$OUTPKG\"      LIBS=\"-lm -lz -llz4 -llzma -lzstd\" install
 """

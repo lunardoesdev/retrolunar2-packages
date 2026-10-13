@@ -1,6 +1,0 @@
-deps = ["libogg@source"]
-buildsystem = "autoconf"
-# libogg is the container every other Xiph codec sits on, so it is
-# built static, with the programs off: a target prefix wants the
-# archive, headers and pkg-config files.
-configure_args = ["--enable-static", "--disable-shared", "--with-pic", "--disable-oggtest", "--disable-vorbistest"]

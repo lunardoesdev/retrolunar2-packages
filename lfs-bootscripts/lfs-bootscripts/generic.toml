@@ -1,8 +1,0 @@
-deps = ["lfs-bootscripts@source"]
-
-build = """
-# Pure data: the tarball holds the LFS init scripts and the rc
-# symlink table, staged verbatim under $OUT.
-mkdir -p $PREFIX/etc
-cp -r $NESTDIR/lfs-bootscripts@source/* $PREFIX/etc/
-"""

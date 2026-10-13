@@ -1,6 +1,0 @@
-deps = ["pcre2@source"]
-buildsystem = "autoconf"
-# The 8, 16 and 32 bit libraries, statically. C++ is off: pcre2grep
-# is the only C++ part, and this prefix is for libraries, not for a
-# grep replacement. The grep/pcre2grep programs are still built.
-configure_args = ["--enable-static", "--disable-shared", "--with-pic", "--enable-pcre2-8", "--enable-pcre2-16", "--enable-pcre2-32", "--disable-cpp"]

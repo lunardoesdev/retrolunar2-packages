@@ -1,3 +1,0 @@
-deps = ["libiconv@source"]
-buildsystem = "autoconf"
-configure_args = ["--disable-shared", "--enable-static", "--disable-nls"]

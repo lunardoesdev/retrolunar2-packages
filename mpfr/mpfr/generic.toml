@@ -1,6 +1,0 @@
-deps = ["gmp", "mpfr@source"]
-buildsystem = "autoconf"
-configure_args = ["--disable-static", "--enable-thread-safe", "--docdir=$OUTPKG/share/doc/mpfr-4.2.2"]
-post = """
-        make -j\"$CORES\" install-html
-"""

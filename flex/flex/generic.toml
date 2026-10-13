@@ -1,7 +1,0 @@
-deps = ["m4", "flex@source"]
-buildsystem = "autoconf"
-# The bootstrap needs a runnable flex; the release ships the
-# generated parser, so skip it. Static with PIC, like the rest of
-# the prefix: flex's libfl is incidental to the tool, and a shared
-# libfl would need a loader path a target has no use for.
-configure_args = ["--enable-static", "--disable-shared", "--with-pic", "--disable-bootstrap"]

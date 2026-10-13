@@ -1,6 +1,0 @@
-deps = ["zlib", "zziplib@source"]
-buildsystem = "cmake"
-# Everything outside the zzip/ library is host-side tooling or a
-# GUI/SDL wrapper. ZZIPDOCS find_package(PythonInterp 3.5 REQUIRED)
-# (docs/CMakeLists.txt:23), so it has to go regardless.
-args = ["-DBUILD_SHARED_LIBS=OFF", "-DZZIPFSEEKO=OFF", "-DZZIP_COMPAT=OFF", "-DZZIPSDL=OFF", "-DZZIPWRAP=OFF", "-DZZIPBINS=OFF", "-DZZIPTEST=OFF", "-DZZIPDOCS=OFF"]

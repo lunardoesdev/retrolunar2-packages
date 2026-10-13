@@ -1,6 +1,0 @@
-deps = ["tinyxml2@source"]
-buildsystem = "cmake"
-# Static library, header and pkg-config file. Tools and tests stay off:
-# xmltest and tinystr are host programs, and a prefix is for the
-# library.
-args = ["-DBUILD_SHARED_LIBS=OFF", "-Dtinyxml2_BUILD_TOOLS=OFF", "-Dtinyxml2_BUILD_TESTING=OFF", "-Dtinyxml2_INSTALL=ON"]

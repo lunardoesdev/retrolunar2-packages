@@ -1,5 +1,0 @@
-deps = ["libogg", "libvorbis@source"]
-buildsystem = "autoconf"
-# Static libraries against the libogg in our prefix, and documentation
-# off: this is a library package, not a manual to read on a phone.
-configure_args = ["--enable-static", "--disable-shared", "--with-pic", "--disable-docs", "--disable-examples"]

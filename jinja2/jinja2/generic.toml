@@ -1,7 +1,0 @@
-deps = ["jinja2@source"]
-buildsystem = "python"
-# Pure Python: copy the package into site-packages. LFS builds a
-# wheel with pip3, which would also add dist-info metadata; we skip
-# that because it needs a host Python, and only the module is used.
-modules = ["src/jinja2"]
-licenses = ["LICENSE.txt"]

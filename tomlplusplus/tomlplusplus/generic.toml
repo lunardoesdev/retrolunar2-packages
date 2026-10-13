@@ -1,6 +1,0 @@
-deps = ["tomlplusplus@source"]
-buildsystem = "cmake"
-# Header-only: the install target copies toml.hpp, toml_forward.hpp
-# and toml.h and generates the CMake package config. Tests off; they
-# are a host C++ suite.
-args = ["-DTOMLPLUSPLUS_BUILD_TESTS=OFF"]

@@ -1,6 +1,0 @@
-deps = ["snappy@source"]
-buildsystem = "cmake"
-# Static library, library and headers only: the tests and the
-# benchmarks are host programs that would just be dead weight in a
-# target prefix.
-args = ["-DBUILD_SHARED_LIBS=OFF", "-DSNAPPY_BUILD_TESTS=OFF", "-DSNAPPY_BUILD_BENCHMARKS=OFF"]

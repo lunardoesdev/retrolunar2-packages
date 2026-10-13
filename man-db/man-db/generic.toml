@@ -1,6 +1,0 @@
-deps = ["man-db@source"]
-buildsystem = "autoconf"
-# The viewer, valgrind and grap helpers are not part of this prefix, so
-# their --with-* hooks are left empty the way LFS does. The system
-# unit dirs are left unset for the same reason.
-configure_args = ["--disable-setuid", "--enable-cache-owner=bin", "--with-browser=", "--with-vgrind=", "--with-grap=", "--with-systemdtmpfilesdir=", "--with-systemdsystemunitdir="]

@@ -1,3 +1,0 @@
-deps = ["opus@source"]
-buildsystem = "autoconf"
-configure_args = ["--disable-shared", "--enable-static", "--disable-doc", "--disable-extra-programs"]

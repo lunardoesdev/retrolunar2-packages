@@ -1,3 +1,0 @@
-deps = ["libjpeg-turbo@source"]
-buildsystem = "cmake"
-args = ["-DENABLE_SHARED=OFF", "-DENABLE_STATIC=ON", "-DWITH_JPEG8=ON"]

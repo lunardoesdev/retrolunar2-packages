@@ -1,2 +1,0 @@
-deps = ["libtool@source"]
-buildsystem = "autoconf"

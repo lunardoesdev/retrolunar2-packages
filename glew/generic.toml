@@ -1,5 +1,8 @@
 deps = ["glew@source"]
 buildsystem = "make"
+make = false
+install = false
+post = """
 # GLEW 2.3.1 does ship a CMake build, at build/cmake/CMakeLists.txt,
 # but it cannot configure here and the hand-written makefile is used
 # instead. That CMakeLists.txt:39 is `find_package(OpenGL REQUIRED)`
@@ -15,7 +18,7 @@ buildsystem = "make"
 #
 # The makefile picks a config/Makefile.<SYSTEM> by running
 # config.guess on the *build* host (Makefile:34-38); on this host
-# that always resolves to "linux", so config/Makefile.linux is what
+# that always resolves to \"linux\", so config/Makefile.linux is what
 # every target uses. Those config files assign the compiler with a
 # plain `CC = cc` (config/Makefile.linux:2-3), and a makefile
 # assignment overrides the environment, so $CC would be ignored. A
@@ -37,18 +40,14 @@ buildsystem = "make"
 # a consumer running `pkg-config --libs glew` must not be handed
 # either. GLEW_NO_GLU=-DGLEW_NO_GLU is the exact value Makefile:50
 # compares against, and it leaves @requireslib@ empty instead of
-# "glu" - there is no glu.pc in this prefix.
+# \"glu\" - there is no glu.pc in this prefix.
 #
 # STRIP= is upstream's own documented way to disable the archive strip
 # (Makefile:61-66); the default `strip` is the host strip, which must
 # never touch a cross archive. LIBDIR= is passed because
 # config/Makefile.linux:16-21 picks lib64 from `uname -m` of the
 # BUILD host, which would put a 32-bit target's archive under lib64.
-make = false
-install = false
-targets = ["glew.lib.static"]
-make_args = ["STRIP=", "GLEW_DEST=$PREFIX", "GLEW_PREFIX=$PREFIX", "LIBDIR=$PREFIX/lib", "LDFLAGS.GL=", "GLEW_NO_GLU=-DGLEW_NO_GLU"]
-post = """
+make -j\"$CORES\" glew.lib.static CC=\"$CC\" AR=\"$AR\" RANLIB=\"$RANLIB\" STRIP= GLEW_DEST=\"$PREFIX\" GLEW_PREFIX=\"$PREFIX\" LIBDIR=\"$PREFIX/lib\" LDFLAGS.GL= GLEW_NO_GLU=-DGLEW_NO_GLU
 mkdir -p $PREFIX/include/GL $PREFIX/lib/pkgconfig
 cp include/GL/glew.h include/GL/glxew.h include/GL/wglew.h include/GL/eglew.h $PREFIX/include/GL/
 cp lib/libGLEW.a $PREFIX/lib/

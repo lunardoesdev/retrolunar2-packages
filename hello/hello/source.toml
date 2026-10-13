@@ -1,5 +1,0 @@
-
-build = """
-mkdir -p $PREFIX
-cp -rf $RECIPEDIR/main.c $PREFIX
-"""

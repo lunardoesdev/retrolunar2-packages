@@ -1,8 +1,0 @@
-deps = ["markupsafe@source"]
-buildsystem = "python"
-# Pure Python: copy the package into site-packages. The optional
-# _speedups C accelerator is not built (LFS uses pip3 to compile
-# it); the module falls back to its _native.py implementation.
-# No dist-info either, for the same reason as flit-core.
-modules = ["src/markupsafe"]
-licenses = ["LICENSE.txt"]

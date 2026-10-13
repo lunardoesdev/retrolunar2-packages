@@ -2,7 +2,6 @@
 #   args        extra arguments, after the system's flags
 #   source_dir  where CMakeLists.txt lives, when not the top of the work dir
 [buildsystem.cmake]
-CMAKE_GENERATOR = "Ninja"
 CMAKE_TOOLCHAIN_FILE = "$SYSDIR/aarch64-linux-android32-toolchain.cmake"
 CMAKE_FLAGS = "-DCMAKE_TOOLCHAIN_FILE=$CMAKE_TOOLCHAIN_FILE -DCMAKE_INSTALL_PREFIX=$OUTPKG -DCMAKE_TRY_COMPILE_TARGET_TYPE=STATIC_LIBRARY -DTHREADS_PREFER_PTHREAD_FLAG=ON -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_MAKE_PROGRAM=$CMAKE_MAKE_PROGRAM"
 # cmake's compiler check links a test program and then runs it. A
@@ -20,7 +19,7 @@ CMAKE_FLAGS = "-DCMAKE_TOOLCHAIN_FILE=$CMAKE_TOOLCHAIN_FILE -DCMAKE_INSTALL_PREF
 # emulator. Pin the host make.
 CMAKE_MAKE_PROGRAM = "$(command -v make || true)"
 script = """
-cmake -S \"${BS_source_dir:-.}\" -B build -G \"$CMAKE_GENERATOR\" ${CMAKE_TOOLCHAIN_FILE:+-DCMAKE_TOOLCHAIN_FILE=\"$CMAKE_TOOLCHAIN_FILE\"} $CMAKE_FLAGS $BS_args
+cmake -S \"${BS_source_dir:-.}\" -B build ${CMAKE_GENERATOR:+-G \"$CMAKE_GENERATOR\"} ${CMAKE_TOOLCHAIN_FILE:+-DCMAKE_TOOLCHAIN_FILE=\"$CMAKE_TOOLCHAIN_FILE\"} $CMAKE_FLAGS $BS_args
 cmake --build build --parallel \"$CORES\"
 cmake --install build
 """

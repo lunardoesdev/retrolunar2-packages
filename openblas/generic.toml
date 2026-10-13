@@ -1,5 +1,8 @@
 deps = ["openblas@source"]
 buildsystem = "make"
+make = false
+install = false
+post = """
 # OpenBLAS has no configure and no build-system option that covers the
 # cross case that matters here. Makefile.system:320 shells out to
 # Makefile.prebuild at parse time, and Makefile.prebuild:86-100 runs
@@ -21,29 +24,14 @@ buildsystem = "make"
 # the build CPU (Makefile.system:102-106 adds -DFORCE_$(TARGET)
 # -DUSER_TARGET). Without it an x86_64 build machine reports x86_64
 # and the build compiles x86_64 hand-written assembly with the target
-# compiler; Makefile:194-195 turns that into an explicit "Detecting
-# CPU failed. Please set TARGET explicitly".
+# compiler; Makefile:194-195 turns that into an explicit \"Detecting
+# CPU failed. Please set TARGET explicitly\".
 #
 # Only a cross build needs TARGET. On clang-native, build == host, so
 # getarch measures the machine it is really going to run on and
 # forcing a TARGET there would just bake this build machine's CPU
 # floor into the library. TARGET is also not the same as TARGET=,
 # which Makefile.system:100 would still read as defined.
-# NOFORTRAN=1: no system in this prefix exports a Fortran compiler and
-# there is none on this build host either. f_check.pl:54 already
-# reaches the same answer on its own when it finds no Fortran, so this
-# states the result instead of depending on the probe; what is built
-# is BLAS plus the f2c-converted LAPACK, both C.
-# NO_SHARED=1: a static libopenblas.a, like the rest of this prefix.
-#
-# The same variables must be given to the install line: Makefile:132
-# says so, because install re-runs Makefile.install against the same
-# configuration.
-make = false
-install = false
-targets = ["$OB_TARGET_ARGS"]
-make_args = ["HOSTCC=cc", "NOFORTRAN=1", "NO_SHARED=1", "PREFIX=$PREFIX"]
-pre = """
 if [ \"$HOST_TRIPLET\" = \"$BUILD_TRIPLET\" ]; then
   OB_TARGET_ARGS=
 else
@@ -54,4 +42,16 @@ else
     *) echo \"openblas: no OpenBLAS TARGET for HOST_ARCH=$HOST_ARCH\" >&2; exit 1 ;;
   esac
 fi
+# NOFORTRAN=1: no system in this prefix exports a Fortran compiler and
+# there is none on this build host either. f_check.pl:54 already
+# reaches the same answer on its own when it finds no Fortran, so this
+# states the result instead of depending on the probe; what is built
+# is BLAS plus the f2c-converted LAPACK, both C.
+# NO_SHARED=1: a static libopenblas.a, like the rest of this prefix.
+#
+# The same variables must be given to the install line: Makefile:132
+# says so, because install re-runs Makefile.install against the same
+# configuration.
+make -j\"$CORES\" HOSTCC=cc $OB_TARGET_ARGS NOFORTRAN=1 NO_SHARED=1       CC=\"$CC\" AR=\"$AR\" RANLIB=\"$RANLIB\" PREFIX=$PREFIX
+make -j\"$CORES\" HOSTCC=cc $OB_TARGET_ARGS NOFORTRAN=1 NO_SHARED=1       CC=\"$CC\" AR=\"$AR\" RANLIB=\"$RANLIB\" PREFIX=$PREFIX install
 """

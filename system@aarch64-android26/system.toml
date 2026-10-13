@@ -13,38 +13,32 @@ if [ -z \"$_ndk_ver\" ]; then
   unset _ndk_ver _ndk_cand
   exit 1
 fi
+NDK=\"$ANDROID_HOME/ndk/$_ndk_ver\"
 unset _ndk_ver _ndk_cand
-# The NDK wrapper names carry the API level; this is the same
-# fact as a number, for anything that needs it as one
-# (__ANDROID_API__, OpenSSL's target configs, tooling).
-ANDROID_API=26
-# Autoconf probes link a test program and run it, which cannot work
-# while cross compiling. Bionic defines these as inline functions.
-ac_cv_func_ffsl=yes
-gl_cv_func_strcasecmp_works=yes
-"""
-
-NDK = "$ANDROID_HOME/ndk/$_ndk_ver"
-TOOLCHAIN = "$NDK/toolchains/llvm/prebuilt/linux-x86_64"
-TOOLBIN = "$TOOLCHAIN/bin"
+TOOLCHAIN=\"$NDK/toolchains/llvm/prebuilt/linux-x86_64\"
+TOOLBIN=\"$TOOLCHAIN/bin\"
 # $TOOLBIN is deliberately NOT prepended to PATH: a cross toolchain
 # at the front of PATH makes host tools run cross binaries. Every
 # tool is named by full path instead, which is also what cmake and
 # meson need to resolve a compiler that is not in PATH.
-SYSROOT = "$TOOLCHAIN/sysroot"
+SYSROOT=\"$TOOLCHAIN/sysroot\"
+# The NDK wrapper names carry the API level; this is the same
+# fact as a number, for anything that needs it as one
+# (__ANDROID_API__, OpenSSL's target configs, tooling).
+ANDROID_API=26
 # Wrappers already encode the API level (26).
-CC = "$TOOLBIN/aarch64-linux-android26-clang"
-CXX = "$TOOLBIN/aarch64-linux-android26-clang++"
-AR = "$TOOLBIN/llvm-ar"
-RANLIB = "$TOOLBIN/llvm-ranlib"
-LD = "$TOOLBIN/ld.lld"
-AS = "$CC"
-ASM = "$CC"
-STRIP = "$TOOLBIN/llvm-strip"
-OBJCOPY = "$TOOLBIN/llvm-objcopy"
-READELF = "$TOOLBIN/llvm-readelf"
-NM = "$TOOLBIN/llvm-nm"
-OBJDUMP = "$TOOLBIN/llvm-objdump"
+CC=\"$TOOLBIN/aarch64-linux-android26-clang\"
+CXX=\"$TOOLBIN/aarch64-linux-android26-clang++\"
+AR=\"$TOOLBIN/llvm-ar\"
+RANLIB=\"$TOOLBIN/llvm-ranlib\"
+LD=\"$TOOLBIN/ld.lld\"
+AS=\"$CC\"
+ASM=\"$CC\"
+STRIP=\"$TOOLBIN/llvm-strip\"
+OBJCOPY=\"$TOOLBIN/llvm-objcopy\"
+READELF=\"$TOOLBIN/llvm-readelf\"
+NM=\"$TOOLBIN/llvm-nm\"
+OBJDUMP=\"$TOOLBIN/llvm-objdump\"
 # CPPFLAGS covers the autoconf probes (e.g. libpng's zlib check
 # and its pnglibconf.h generation, which call $CC -E without
 # $CFLAGS); without $PREFIX first they find the NDK's own
@@ -52,7 +46,28 @@ OBJDUMP = "$TOOLBIN/llvm-objdump"
 # -isystem $SYSROOT/usr/include must stay C-only: on C++ it
 # reorders libc++ before its own C headers and breaks <cstdint>.
 # libvpx C++ files get the sysroot via --sysroot instead.
-CFLAGS = "-O2 -fPIC -DANDROID -isystem $SYSROOT/usr/include"
+CFLAGS=\"-O2 -fPIC\"
+CFLAGS=\"$CFLAGS -DANDROID -isystem $SYSROOT/usr/include\"
+# abseil's AndroidLogSink and glog's AlsoErrorWrite call
+# __android_log_write, which lives in Bionic's liblog. Both are
+# static archives with no link step, so the reference only surfaces
+# at consumer link time; liblog.so is in every NDK sysroot and the
+# symbol is API 21+, so it costs nothing. See AGENTS.md for why
+# glog's own -llog never fires here.
+# Look up .pc files in our prefix, then the NDK sysroot...
+PKG_CONFIG_LIBDIR=\"$PKG_CONFIG_LIBDIR:$SYSROOT/usr/lib/pkgconfig\"
+PKG_CONFIG_LIBDIR=\"$PKG_CONFIG_LIBDIR:$SYSROOT/usr/share/pkgconfig\"
+# Autoconf probes link a test program and run it, which cannot work
+# while cross compiling. Bionic defines these as inline functions.
+ac_cv_func_ffsl=yes
+gl_cv_func_strcasecmp_works=yes
+CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER=\"$CC\"
+CARGO_TARGET_AARCH64_LINUX_ANDROID_AR=\"$AR\"
+CC_aarch64_linux_android=\"$CC\"
+CFLAGS_aarch64_linux_android=\"$CFLAGS\"
+CXX_aarch64_linux_android=\"$CXX\"
+"""
+
 CXXFLAGS = "-O2 -fPIC -DANDROID"
 # Kept empty on purpose: rust links via RUSTFLAGS below, and a
 # global -L would leak host-style rpath flags into cargo.
@@ -61,14 +76,6 @@ CXXFLAGS = "-O2 -fPIC -DANDROID"
 # fails here. libm is in every Android sysroot, so -lm always costs
 # nothing and saves every package from hitting this.
 LDFLAGS = "$LDFLAGS -lm -llog"
-# abseil's AndroidLogSink and glog's AlsoErrorWrite call
-# __android_log_write, which lives in Bionic's liblog. Both are
-# static archives with no link step, so the reference only surfaces
-# at consumer link time; liblog.so is in every NDK sysroot and the
-# symbol is API 21+, so it costs nothing. See AGENTS.md for why
-# glog's own -llog never fires here.
-# Look up .pc files in our prefix, then the NDK sysroot...
-PKG_CONFIG_LIBDIR = "$PKG_CONFIG_LIBDIR:$SYSROOT/usr/lib/pkgconfig:$SYSROOT/usr/share/pkgconfig"
 # ...and ignore every host .pc file outside those dirs.
 PKG_CONFIG_PATH = "$PKG_CONFIG_PATH"
 # build = the machine that runs the build; host = the machine the

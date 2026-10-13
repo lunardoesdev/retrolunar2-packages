@@ -1,5 +1,0 @@
-deps = ["packaging@source"]
-buildsystem = "python"
-# Packaging is pure Python; install its module for the target Python 3.14.
-modules = ["src/packaging"]
-licenses = ["LICENSE", "LICENSE.APACHE", "LICENSE.BSD"]

@@ -1,7 +1,0 @@
-deps = ["hello@source"]
-
-build = """
-cp -rf $NESTDIR/hello@source/* .
-mkdir -p $PREFIX/bin
-$CC $CFLAGS main.c -o $PREFIX/bin/hello
-"""

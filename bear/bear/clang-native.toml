@@ -1,8 +1,0 @@
-deps = ["bear@source"]
-buildsystem = "cmake"
-# cmake_minimum_required is 3.12 (CMakeLists.txt:1).
-# ENABLE_UNIT_TESTS and ENABLE_FUNC_TESTS both default ON (:15-16)
-# and the superbuild runs them with TEST_BEFORE_INSTALL 1 (:88-92),
-# which executes target binaries. Both are host-program concerns and
-# are off. The grpc clone remains and is the blocker.
-args = ["-DENABLE_UNIT_TESTS=OFF", "-DENABLE_FUNC_TESTS=OFF"]

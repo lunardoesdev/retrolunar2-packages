@@ -9,7 +9,7 @@ make -j\"$CORES\" .version
 make -j\"$CORES\" -C doc version.texi
 # Keep the shipped man page; regenerating it would execute the
 # Android m4 binary on the build host.
-touch doc/m4.1
+touch doc/m4.1 doc/m4.info*
 make -j\"$CORES\"
 make install
 """

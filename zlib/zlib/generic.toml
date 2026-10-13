@@ -1,4 +1,0 @@
-deps = ["zlib@source"]
-buildsystem = "cmake"
-# Only the library is used; examples cannot run on the build host.
-args = ["-DZLIB_BUILD_EXAMPLES=OFF"]

@@ -1,2 +1,0 @@
-deps = ["gzip@source"]
-buildsystem = "autoconf"

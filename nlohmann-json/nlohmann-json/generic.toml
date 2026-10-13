@@ -1,7 +1,0 @@
-deps = ["nlohmann-json@source"]
-buildsystem = "cmake"
-# Header-only library: the install target copies the single-header
-# distribution and generates CMake and pkg-config files from it.
-# Nothing is compiled, so no toolchain, no sysroot, no cross
-# compiler: a header-only package is the same on every system.
-args = ["-DJSON_BuildTests=OFF"]

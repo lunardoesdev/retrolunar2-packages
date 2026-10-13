@@ -1,2 +1,0 @@
-deps = ["lzo", "lzop@source"]
-buildsystem = "autoconf"

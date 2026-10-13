@@ -1,5 +1,8 @@
 deps = ["samurai@native", "samurai@source"]
 buildsystem = "make"
+make = false
+install = false
+post = """
 # A hand-written `.POSIX` makefile: no configure, no autotools, no
 # cmake, no meson. It reads the toolchain from the environment --
 # Makefile:42 compiles with `$(CC) $(ALL_CFLAGS)` and Makefile:45
@@ -18,13 +21,10 @@ buildsystem = "make"
 # does not, which is the one platform wall. See stage1.md.
 #
 # No -j on the line: $MAKEFLAGS from the system already carries
-# -j"$CORES", which reaches this make and its submakes.
+# -j\"$CORES\", which reaches this make and its submakes.
+make
 # Makefile:5-7 derive BINDIR/MANDIR from PREFIX, and Makefile:50-53
 # mkdir -p them under $(DESTDIR). Passing PREFIX=$OUT is therefore
 # enough; DESTDIR stays unset so nothing is nested twice.
-make = false
-install = false
-make_args = ["PREFIX=$PREFIX"]
-pre = """
-make
+make install PREFIX=\"$PREFIX\"
 """

@@ -253,7 +253,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 - **rewrote $OUT to $PREFIX (staging)**: `make -j"$CORES" CC="$CC" AR="$AR" RANLIB="$RANLIB" CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" PREFIX="$OUT" install`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/bzip2@source/* .`
-- **driven by the make build system**: `make=False, install=False, make_args=['PREFIX=$PREFIX']`
+- **driven by the make build system**: `make=False, install=False`
 - **ported**: `generic.toml`
 
 ## bzip2/source.lua
@@ -712,7 +712,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **rewrote $OUT to $PREFIX (staging)**: `make -j"$CORES" CC="$CC" CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" PREFIX="$OUT"`
 - **rewrote $OUT to $PREFIX (staging)**: `make install-lib install-include PREFIX="$OUT"`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/giflib@source/* .`
-- **driven by the make build system**: `make=False, install=False, make_args=['PREFIX=$PREFIX'], targets=['install-lib', 'install-include']`
+- **driven by the make build system**: `make=False, install=False`
 - **ported**: `generic.toml`
 
 ## giflib/source.lua
@@ -765,7 +765,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **rewrote $OUT to $PREFIX (staging)**: `cp lib/libGLEW.a $OUT/lib/`
 - **rewrote $OUT to $PREFIX (staging)**: `cp glew.pc $OUT/lib/pkgconfig/`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/glew@source/* .`
-- **driven by the make build system**: `make=False, install=False, targets=['glew.lib.static'], make_args=['STRIP=', 'GLEW_DEST=$PREFIX', 'GLEW_PREFIX=$PREFIX', 'LIBDIR=$PREFIX/lib', 'LDFLAGS.GL=', 'GLEW_NO_GLU=-DGLEW_NO_GLU']`
+- **driven by the make build system**: `make=False, install=False`
 - **ported**: `generic.toml`
 
 ## glew/source.lua
@@ -1075,7 +1075,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 - **rewrote $OUT to $OUTPKG (install prefix)**: `make -j"$CORES" -f Makefile.unx host_cpu="$HOST_ARCH" prefix="$OUT" install`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/isa-l@source/* .`
-- **driven by the make build system**: `make=False, install=False, targets=['Makefile.unx'], make_args=['-f', 'host_cpu=$HOST_ARCH', 'prefix=$OUTPKG']`
+- **driven by the make build system**: `make=False, install=False`
 - **ported**: `generic.toml`
 
 ## isa-l/source.lua
@@ -1235,7 +1235,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **rewrote $OUT to $OUTPKG (install prefix)**: `lib=lib prefix="$OUT" SHARED=no PTHREADS=yes USE_GPERF=no \`
 - **rewrote $OUT to $OUTPKG (install prefix)**: `lib=lib prefix="$OUT" SHARED=no PTHREADS=yes USE_GPERF=no \`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/libcap@source/* .`
-- **driven by the make build system**: `make=False, install=False, targets=['libcap'], make_args=['-C', 'BUILD_CC=cc', 'lib=lib', 'prefix=$OUTPKG', 'SHARED=no', 'PTHREADS=yes', 'USE_GPERF=no', 'PAM_CAP=no', 'GOLANG=no']`
+- **driven by the make build system**: `make=False, install=False`
 - **ported**: `generic.toml`
 
 ## libcap/source.lua
@@ -1611,7 +1611,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **rewrote $OUT to $PREFIX (staging)**: `make -C programs PREFIX="$OUT"`
 - **rewrote $OUT to $PREFIX (staging)**: `make -C programs PREFIX="$OUT" install`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/lz4@source/* .`
-- **driven by the make build system**: `make=False, install=False, targets=['programs'], make_args=['-C', 'PREFIX=$PREFIX']`
+- **driven by the make build system**: `make=False, install=False`
 - **ported**: `generic.toml`
 
 ## lz4/source.lua
@@ -1631,6 +1631,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 ## m4/generic.lua
 
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/m4@source/* .`
+- **the shipped info pages are touched, not rebuilt**: `no makeinfo on the host, and the tarball ships them`
 - **driven by the autoconf build system**: `make=False, install=False`
 - **ported**: `generic.toml`
 
@@ -1891,7 +1892,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **rewrote $OUT to $PREFIX (staging)**: `CC="$CC" AR="$AR" RANLIB="$RANLIB" PREFIX=$OUT`
 - **rewrote $OUT to $PREFIX (staging)**: `CC="$CC" AR="$AR" RANLIB="$RANLIB" PREFIX=$OUT install`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/openblas@source/* .`
-- **driven by the make build system**: `make=False, install=False, targets=['$OB_TARGET_ARGS'], make_args=['HOSTCC=cc', 'NOFORTRAN=1', 'NO_SHARED=1', 'PREFIX=$PREFIX']`
+- **driven by the make build system**: `make=False, install=False`
 - **ported**: `generic.toml`
 
 ## openblas/source.lua
@@ -1922,14 +1923,14 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 - **rewrote $OUT to $OUTPKG (install prefix)**: `./Configure "$ssl_target" -D__ANDROID_API__="$ANDROID_API" --prefix="$OUT" --libdir=lib no-shared no-tests no-docs no-engine no-dso no-dynamic-engine`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/openssl@source/* .`
-- **driven by the make build system**: `make=False, install=False, targets=['install_sw']`
+- **driven by the make build system**: `make=False, install=False`
 - **ported**: `android.toml`
 
 ## openssl/generic.lua
 
 - **rewrote $OUT to $OUTPKG (install prefix)**: `./Configure "$ssl_target" --prefix="$OUT" --libdir=lib no-shared no-tests no-docs no-engine no-dso no-dynamic-engine`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/openssl@source/* .`
-- **driven by the make build system**: `make=False, install=False, targets=['install_sw']`
+- **driven by the make build system**: `make=False, install=False`
 - **ported**: `generic.toml`
 
 ## openssl/source.lua
@@ -1961,7 +1962,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/bin`
 - **rewrote $OUT to $PREFIX (staging)**: `cp bin/7za $OUT/bin/7za`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/p7zip@source/* .`
-- **driven by the make build system**: `make=False, install=False, targets=['7za'], make_args=['CXX=$CXX']`
+- **driven by the make build system**: `make=False, install=False`
 - **ported**: `generic.toml`
 
 ## p7zip/source.lua
@@ -2242,7 +2243,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 - **rewrote $OUT to $PREFIX (staging)**: `make install PREFIX="$OUT"`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/samurai@source/* .`
-- **driven by the make build system**: `make=False, install=False, make_args=['PREFIX=$PREFIX']`
+- **driven by the make build system**: `make=False, install=False`
 - **ported**: `generic.toml`
 
 ## samurai/source.lua
@@ -2285,7 +2286,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/bin`
 - **rewrote $OUT to $PREFIX (staging)**: `cp CPP/7zip/Bundles/Alone2/_o/7zz $OUT/bin/7zz`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/sevenzip@source/* .`
-- **driven by the make build system**: `make=False, install=False, targets=['CPP/7zip/Bundles/Alone2', 'makefile.gcc'], make_args=['-C', '-f', '-j1', 'CXX=$CXX', 'CFLAGS_BASE2=$CFLAGS', 'CXXFLAGS_BASE2=$CXXFLAGS', 'CFLAGS_WARN_WALL=-Wall -W`
+- **driven by the make build system**: `make=False, install=False`
 - **ported**: `android.toml`
 
 ## sevenzip/generic.lua
@@ -2293,7 +2294,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/bin`
 - **rewrote $OUT to $PREFIX (staging)**: `cp CPP/7zip/Bundles/Alone2/_o/7zz $OUT/bin/7zz`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/sevenzip@source/* .`
-- **driven by the make build system**: `make=False, install=False, targets=['CPP/7zip/Bundles/Alone2', 'makefile.gcc'], make_args=['-C', '-f', 'CXX=$CXX', 'CFLAGS_BASE2=$CFLAGS', 'CXXFLAGS_BASE2=$CXXFLAGS', 'CFLAGS_WARN_WALL=-Wall -Wextra']`
+- **driven by the make build system**: `make=False, install=False`
 - **ported**: `generic.toml`
 
 ## sevenzip/source.lua
@@ -2375,7 +2376,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **rewrote $OUT to $OUTPKG (install prefix)**: `make -j"$CORES" LZO_SUPPORT=0 USE_PREBUILT_MANPAGES=y INSTALL_PREFIX="$OUT" \`
 - **rewrote $OUT to $OUTPKG (install prefix)**: `make -j"$CORES" LZO_SUPPORT=0 USE_PREBUILT_MANPAGES=y INSTALL_PREFIX="$OUT" \`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/squashfs-tools@source/* .`
-- **driven by the make build system**: `make=False, install=False, make_args=['LZO_SUPPORT=0', 'USE_PREBUILT_MANPAGES=y', 'INSTALL_PREFIX=$OUTPKG', 'LIBS=-lm -lz -llz4 -llzma -lzstd']`
+- **driven by the make build system**: `make=False, install=False`
 - **ported**: `android.toml`
 
 ## squashfs-tools/generic.lua
@@ -2383,7 +2384,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **rewrote $OUT to $OUTPKG (install prefix)**: `make -j"$CORES" LZO_SUPPORT=0 USE_PREBUILT_MANPAGES=y INSTALL_PREFIX="$OUT"`
 - **rewrote $OUT to $OUTPKG (install prefix)**: `make -j"$CORES" LZO_SUPPORT=0 USE_PREBUILT_MANPAGES=y INSTALL_PREFIX="$OUT" install`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/squashfs-tools@source/* .`
-- **driven by the make build system**: `make=False, install=False, make_args=['LZO_SUPPORT=0', 'USE_PREBUILT_MANPAGES=y', 'INSTALL_PREFIX=$OUTPKG']`
+- **driven by the make build system**: `make=False, install=False`
 - **ported**: `generic.toml`
 
 ## squashfs-tools/source.lua
@@ -2451,7 +2452,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 - **rewrote $OUT to $PREFIX (staging)**: `make install ROOT="$OUT" usrdir=`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/sysvinit@source/* .`
-- **driven by the make build system**: `make=False, install=False, make_args=['ROOT=$PREFIX', 'usrdir=']`
+- **driven by the make build system**: `make=False, install=False`
 - **ported**: `generic.toml`
 
 ## sysvinit/source.lua
@@ -2591,7 +2592,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 - **rewrote $OUT to $PREFIX (staging)**: `make ZIC=zic TOPDIR="$OUT/usr" install`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/tzdata@source/* .`
-- **driven by the make build system**: `make=False, install=False, make_args=['ZIC=zic', 'TOPDIR=$PREFIX/usr']`
+- **driven by the make build system**: `make=False, install=False`
 - **ported**: `generic.toml`
 
 ## tzdata/source.lua
@@ -2726,7 +2727,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## xml-parser/generic.lua
 
-- **driven by the make build system**: `make=False, install=False, make_args=['LD=$LD', 'OPTIMIZE=$CFLAGS', 'perl_inc=$NATIVE_PREFIX/lib/perl5/5.44/core_perl', 'to_cflags=-D_I_CRYPT_H=0 -DHAS_UNION_SEMUN=1']`
+- **driven by the make build system**: `make=False, install=False`
 - **ported**: `generic.toml`
 
 ## xml-parser/source.lua
@@ -2836,7 +2837,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 ## zstd/generic.lua
 
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/zstd@source/* .`
-- **driven by the make build system**: `make=False, install=False, targets=['programs'], make_args=['-C', 'PREFIX=$OUTPKG', 'HAVE_LZMA=0', 'HAVE_ZLIB=0', 'ZLIB_PREFIX=$OUTPKG']`
+- **driven by the make build system**: `make=False, install=False`
 - **ported**: `generic.toml`
 
 ## zstd/source.lua

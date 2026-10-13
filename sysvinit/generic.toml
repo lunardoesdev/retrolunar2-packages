@@ -2,7 +2,7 @@ deps = ["sysvinit@source"]
 buildsystem = "make"
 make = false
 install = false
-make_args = ["ROOT=$PREFIX", "usrdir="]
-pre = """
+post = """
 make
+make install ROOT=\"$PREFIX\" usrdir=
 """

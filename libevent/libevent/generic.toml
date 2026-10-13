@@ -1,7 +1,0 @@
-deps = ["openssl", "libevent@source"]
-buildsystem = "autoconf"
-# Static libraries, with the OpenSSL backend from this prefix: the
-# pkg-config search path is the prefix, so configure finds it. The
-# sample programs, the regression suite and the benchmark are host
-# programs and stay off.
-configure_args = ["--enable-static", "--disable-shared", "--with-pic", "--enable-openssl", "--disable-samples", "--disable-libevent-regress", "--disable-benchmark"]
