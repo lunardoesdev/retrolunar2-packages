@@ -15,7 +15,7 @@ OBJDUMP = "objdump"
 # zlib check); plain CFLAGS stay clean for direct $CC users.
 CFLAGS = "-O2 -fPIC $CPPFLAGS"
 CXXFLAGS = "-O2 -fPIC $CPPFLAGS"
-LDFLAGS = "$LDFLAGS -Wl,--undefined-version -Wl,-rpath,$ORIGIN"
+LDFLAGS = "$LDFLAGS -Wl,--undefined-version -Wl,-rpath,\\$ORIGIN"
 # Ignore host .pc files: only ours count.
 PKG_CONFIG_PATH = "$PKG_CONFIG_PATH"
 # A native build runs on the same machine it targets, so build, host

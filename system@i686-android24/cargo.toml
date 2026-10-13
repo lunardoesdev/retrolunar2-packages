@@ -11,6 +11,8 @@
 CARGO_BUILD_TARGET = "i686-linux-android"
 PKG_CONFIG_ALLOW_CROSS = "1"
 script = """
+RUSTFLAGS=\"${RUSTFLAGS:-} -C link-arg=-Wl,-rpath,\\$ORIGIN\"
+export RUSTFLAGS
 ${BS_env:+env $BS_env }cargo build --release --target \"$CARGO_BUILD_TARGET\" -j \"$CORES\" ${BS_no_default_features:+--no-default-features} ${BS_features:+--features \"$BS_features\"}
 if [ \"$BS_install\" != \"false\" ]; then
   mkdir -p \"$PREFIX/bin\"

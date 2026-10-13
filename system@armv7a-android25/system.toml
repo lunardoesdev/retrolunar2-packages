@@ -71,7 +71,7 @@ CXXFLAGS_armv7_linux_androideabi=\"$CXXFLAGS\"
 # libc, so a program that calls log2/pow/exp links fine there and
 # fails here. libm is in every Android sysroot, so -lm always costs
 # nothing and saves every package from hitting this.
-LDFLAGS = "$LDFLAGS -lm -llog -Wl,-rpath,$ORIGIN"
+LDFLAGS = "$LDFLAGS -lm -llog -Wl,-rpath,\\$ORIGIN"
 # ...and ignore every host .pc file outside those dirs.
 PKG_CONFIG_PATH = "$PKG_CONFIG_PATH"
 # build = the machine that runs the build; host = the machine the

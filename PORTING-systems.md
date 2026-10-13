@@ -55,6 +55,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@aarch64-android21/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android21/cmake.toml
@@ -137,6 +138,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@aarch64-android23/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android23/cmake.toml
@@ -221,6 +223,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@aarch64-android24/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android24/cmake.toml
@@ -303,6 +306,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@aarch64-android25/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android25/cmake.toml
@@ -385,6 +389,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@aarch64-android26/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android26/cmake.toml
@@ -467,6 +472,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@aarch64-android27/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android27/cmake.toml
@@ -549,6 +555,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@aarch64-android28/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android28/cmake.toml
@@ -631,6 +638,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@aarch64-android29/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android29/cmake.toml
@@ -713,6 +721,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@aarch64-android30/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android30/cmake.toml
@@ -795,6 +804,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@aarch64-android31/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android31/cmake.toml
@@ -877,6 +887,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@aarch64-android32/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android32/cmake.toml
@@ -959,6 +970,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@aarch64-android33/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android33/cmake.toml
@@ -1041,6 +1053,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@aarch64-android34/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android34/cmake.toml
@@ -1123,6 +1136,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@aarch64-android35/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android35/cmake.toml
@@ -1206,6 +1220,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@armv7a-android21/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android21/cmake.toml
@@ -1289,6 +1304,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@armv7a-android23/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android23/cmake.toml
@@ -1372,6 +1388,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@armv7a-android24/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android24/cmake.toml
@@ -1455,6 +1472,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@armv7a-android25/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android25/cmake.toml
@@ -1538,6 +1556,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@armv7a-android26/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android26/cmake.toml
@@ -1621,6 +1640,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@armv7a-android27/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android27/cmake.toml
@@ -1704,6 +1724,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@armv7a-android28/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android28/cmake.toml
@@ -1787,6 +1808,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@armv7a-android29/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android29/cmake.toml
@@ -1870,6 +1892,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@armv7a-android30/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android30/cmake.toml
@@ -1953,6 +1976,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@armv7a-android31/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android31/cmake.toml
@@ -2036,6 +2060,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@armv7a-android32/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android32/cmake.toml
@@ -2119,6 +2144,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@armv7a-android33/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android33/cmake.toml
@@ -2202,6 +2228,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@armv7a-android34/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android34/cmake.toml
@@ -2285,6 +2312,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@armv7a-android35/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android35/cmake.toml
@@ -2353,6 +2381,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@clang-native/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@clang-native/cmake.toml
@@ -2428,6 +2457,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@i686-android21/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android21/cmake.toml
@@ -2511,6 +2541,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@i686-android23/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android23/cmake.toml
@@ -2594,6 +2625,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@i686-android24/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android24/cmake.toml
@@ -2677,6 +2709,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@i686-android25/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android25/cmake.toml
@@ -2760,6 +2793,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@i686-android26/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android26/cmake.toml
@@ -2843,6 +2877,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@i686-android27/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android27/cmake.toml
@@ -2926,6 +2961,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@i686-android28/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android28/cmake.toml
@@ -3009,6 +3045,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@i686-android29/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android29/cmake.toml
@@ -3092,6 +3129,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@i686-android30/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android30/cmake.toml
@@ -3175,6 +3213,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@i686-android31/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android31/cmake.toml
@@ -3258,6 +3297,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@i686-android32/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android32/cmake.toml
@@ -3341,6 +3381,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@i686-android33/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android33/cmake.toml
@@ -3424,6 +3465,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@i686-android34/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android34/cmake.toml
@@ -3507,6 +3549,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@i686-android35/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android35/cmake.toml
@@ -3670,6 +3713,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@x86_64-android21/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android21/cmake.toml
@@ -3753,6 +3797,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@x86_64-android23/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android23/cmake.toml
@@ -3836,6 +3881,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@x86_64-android24/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android24/cmake.toml
@@ -3919,6 +3965,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@x86_64-android25/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android25/cmake.toml
@@ -4002,6 +4049,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@x86_64-android26/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android26/cmake.toml
@@ -4085,6 +4133,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@x86_64-android27/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android27/cmake.toml
@@ -4168,6 +4217,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@x86_64-android28/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android28/cmake.toml
@@ -4251,6 +4301,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@x86_64-android29/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android29/cmake.toml
@@ -4334,6 +4385,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@x86_64-android30/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android30/cmake.toml
@@ -4417,6 +4469,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@x86_64-android31/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android31/cmake.toml
@@ -4500,6 +4553,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@x86_64-android32/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android32/cmake.toml
@@ -4583,6 +4637,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@x86_64-android33/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android33/cmake.toml
@@ -4666,6 +4721,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@x86_64-android34/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android34/cmake.toml
@@ -4749,6 +4805,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@x86_64-android35/cargo.toml
 
+- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android35/cmake.toml
