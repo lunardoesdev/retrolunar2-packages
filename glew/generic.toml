@@ -44,6 +44,8 @@ buildsystem = "make"
 # never touch a cross archive. LIBDIR= is passed because
 # config/Makefile.linux:16-21 picks lib64 from `uname -m` of the
 # BUILD host, which would put a 32-bit target's archive under lib64.
+make = false
+install = false
 targets = ["glew.lib.static"]
 make_args = ["STRIP=", "GLEW_DEST=$PREFIX", "GLEW_PREFIX=$PREFIX", "LIBDIR=$PREFIX/lib", "LDFLAGS.GL=", "GLEW_NO_GLU=-DGLEW_NO_GLU"]
 post = """

@@ -1,19 +1,9 @@
 deps = ["inetutils@source", "ncurses"]
-
-build = """
-cp -r $NESTDIR/inetutils@source/* .
-./configure $AUTOCONF_CONFIGURE_FLAGS \\
-    --bindir=/usr/bin \\
-    --localstatedir=/var \\
-    --disable-logger \\
-    --disable-whois \\
-    --disable-rcp \\
-    --disable-rexec \\
-    --disable-rlogin \\
-    --disable-rsh \\
-    --disable-servers
-touch aclocal.m4 configure config.hin
-find . -name 'Makefile.in' | xargs touch
+buildsystem = "autoconf"
+make = false
+install = false
+configure_args = ["--bindir=/usr/bin", "--localstatedir=/var", "--disable-logger", "--disable-whois", "--disable-rcp", "--disable-rexec", "--disable-rlogin", "--disable-rsh", "--disable-servers"]
+post = """
 # telnet/sys_bsd.c is the only file in the tree that uses struct termios
 # and the tcgetattr/tcsetattr/cfgetospeed/cfgetispeed family without
 # including <termios.h>: glibc pulls that in transitively, Bionic does

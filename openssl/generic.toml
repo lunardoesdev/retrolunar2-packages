@@ -11,6 +11,8 @@ buildsystem = "make"
 # HOST_OS, not HOST_ARCH: x86_64-mingw and clang-native are both
 # x86_64, so the arch cannot tell them apart, while HOST_OS is
 # mingw32 vs linux. The `*)` arm refuses rather than guessing.
+make = false
+install = false
 targets = ["install_sw"]
 pre = """
 case \"$HOST_OS\" in

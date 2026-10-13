@@ -1,12 +1,11 @@
 deps = ["gperf@native", "libseccomp@source"]
-
-build = """
-cp -r $NESTDIR/libseccomp@source/* .
+buildsystem = "autoconf"
 # Static with PIC. The python bindings need cython and only the
 # --enable-python path asks for them, so they stay off by default.
-./configure $AUTOCONF_CONFIGURE_FLAGS --enable-static --disable-shared
-touch aclocal.m4 configure configure.h.in
-find . -name 'Makefile.in' | xargs touch
+make = false
+install = false
+configure_args = ["--enable-static", "--disable-shared"]
+post = """
 # tools/ has one bin_PROGRAM (scmp_sys_resolver) and four noinst
 # programs; they are target binaries nothing in this prefix runs, so
 # build the library and install only what a consumer needs. The

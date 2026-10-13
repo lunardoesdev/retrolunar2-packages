@@ -13,6 +13,8 @@ buildsystem = "make"
 # loudly, because android_ndk() in Configurations/15-android.conf
 # returns early for any target starting with "android", before it
 # ever reads $ENV{ANDROID_NDK_ROOT}.
+make = false
+install = false
 targets = ["install_sw"]
 pre = """
 export ANDROID_NDK_ROOT=\"$NDK\"

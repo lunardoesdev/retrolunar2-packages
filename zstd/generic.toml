@@ -1,7 +1,5 @@
 deps = ["zstd@source"]
-
-build = """
-cp -r $NESTDIR/zstd@source/* .
+buildsystem = "make"
 # zstd's lib Makefile derives every object from source with a %.c -> %.o
 # pattern rule (lib/Makefile:52-53, :221), so the 1.5.7 release tree
 # builds from source: it ships no prebuilt .o files (verified - find
@@ -17,8 +15,7 @@ cp -r $NESTDIR/zstd@source/* .
 # link the optional compressors; that is deliberate, so the two
 # directories stay consistent, and enabling compression later is a
 # two-line change (packages/xz already exists to supply liblzma).
-make -C lib PREFIX=\"$OUTPKG\" LIBDIR=\"$OUTPKG/lib\" HAVE_LZMA=0 HAVE_ZLIB=0 ZLIB_PREFIX=\"$OUTPKG\"
-make -C lib PREFIX=\"$OUTPKG\" LIBDIR=\"$OUTPKG/lib\" HAVE_LZMA=0 HAVE_ZLIB=0 ZLIB_PREFIX=\"$OUTPKG\" install
-make -C programs PREFIX=\"$OUTPKG\" HAVE_LZMA=0 HAVE_ZLIB=0 ZLIB_PREFIX=\"$OUTPKG\"
-make -C programs PREFIX=\"$OUTPKG\" HAVE_LZMA=0 HAVE_ZLIB=0 ZLIB_PREFIX=\"$OUTPKG\" install
-"""
+make = false
+install = false
+targets = ["programs"]
+make_args = ["-C", "PREFIX=$OUTPKG", "HAVE_LZMA=0", "HAVE_ZLIB=0", "ZLIB_PREFIX=$OUTPKG"]

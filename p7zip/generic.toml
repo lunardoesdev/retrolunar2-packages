@@ -5,6 +5,8 @@ buildsystem = "make"
 # makefile.machine:14-15 hardcodes CC=gcc/CXX=g++, so the system's
 # compilers are passed as make variables, which override them. The
 # system's flags reach the build through $(ALLFLAGS).
+make = false
+install = false
 targets = ["7za"]
 make_args = ["CXX=$CXX"]
 post = """

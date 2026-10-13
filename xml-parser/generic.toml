@@ -22,6 +22,8 @@ buildsystem = "make"
 # macros that perl's CORE/config.h carries are turned off for the same
 # reason: Bionic has no crypt.h or shadow.h, and Bionic's <sys/sem.h>
 # already provides union semun, which perl.h would otherwise redefine.
+make = false
+install = false
 make_args = ["LD=$LD", "OPTIMIZE=$CFLAGS", "perl_inc=$NATIVE_PREFIX/lib/perl5/5.44/core_perl", "to_cflags=-D_I_CRYPT_H=0 -DHAS_UNION_SEMUN=1"]
 pre = """
 cp -r $NESTDIR/xml-parser@source/. .

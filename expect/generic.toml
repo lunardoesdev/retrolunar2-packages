@@ -1,28 +1,18 @@
 deps = ["tcl", "tcl@native", "expect@source"]
-
-build = """
-cp -r $NESTDIR/expect@source/* .
+buildsystem = "autoconf"
 # --with-tcl/--with-tclinclude stay on $PREFIX: this is the target Tcl,
 # and it is what supplies the headers exp_*.c is compiled against and
 # the TCL_LIB_SPEC expect is linked with. See the header comment for
-# why it must not point at $NATIVE_PREFIX.
-./configure $AUTOCONF_CONFIGURE_FLAGS \\
-    --with-tcl=\"$tcl_PREFIX/lib\" \\
-    --with-tclinclude=\"$tcl_PREFIX/include\" \\
-    --enable-shared \\
-    --disable-rpath \\
-    --mandir=\"$PREFIX/share/man\"
-# expect has no AC_CONFIG_HEADERS: configure.in:1058 is a bare
-# `touch expect_cf.h`, so no config template is named here. touch on a
-# missing file would succeed silently and leave the autoheader re-run
-# the guard exists to prevent live.
-touch aclocal.m4 configure
-find . -name 'Makefile.in' | xargs touch
+# why it must not point at the host's tcl: $tcl_HOST_PREFIX.
+make = false
+install = false
+configure_args = ["--with-tcl=$tcl_PREFIX/lib", "--with-tclinclude=$tcl_PREFIX/include", "--enable-shared", "--disable-rpath", "--mandir=$PREFIX/share/man"]
+post = """
 make -j\"$CORES\"
 # TCLSH_PROG= on the make line is the whole fix for the interpreter:
 # Makefile.in:172 makes it an ordinary '=' variable, so a command-line
 # assignment overrides the configured value and leaves TCL_LIB_SPEC and
 # TCL_INCLUDES alone. tcl@native installs its interpreter as
 # bin/tclsh8.6 (tcl/unix/Makefile.in:816).
-make -j\"$CORES\" install TCLSH_PROG=\"$NATIVE_PREFIX/bin/tclsh8.6\"
+make -j\"$CORES\" install TCLSH_PROG=\"$tcl_HOST_PREFIX/bin/tclsh8.6\"
 """

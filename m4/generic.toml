@@ -1,10 +1,8 @@
 deps = ["m4@source"]
-
-build = """
-cp -r $NESTDIR/m4@source/* .
-./configure $AUTOCONF_CONFIGURE_FLAGS
-touch aclocal.m4 configure lib/config.hin
-find . -name 'Makefile.in' | xargs touch
+buildsystem = "autoconf"
+make = false
+install = false
+post = """
 make -j\"$CORES\" -C lib
 make -j\"$CORES\" -C src
 make -j\"$CORES\" .version

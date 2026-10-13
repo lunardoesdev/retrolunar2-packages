@@ -7,5 +7,6 @@ buildsystem = "make"
 # exactly the emulated execution this build must never do. Pointing
 # ZIC at plain "zic" resolves the host build tool through PATH and
 # leaves the locally built zic unexecuted.
+make = false
 install = false
 make_args = ["ZIC=zic", "TOPDIR=$PREFIX/usr"]

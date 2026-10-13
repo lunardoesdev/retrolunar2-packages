@@ -22,6 +22,7 @@ buildsystem = "make"
 # Makefile:5-7 derive BINDIR/MANDIR from PREFIX, and Makefile:50-53
 # mkdir -p them under $(DESTDIR). Passing PREFIX=$OUT is therefore
 # enough; DESTDIR stays unset so nothing is nested twice.
+make = false
 install = false
 make_args = ["PREFIX=$PREFIX"]
 pre = """

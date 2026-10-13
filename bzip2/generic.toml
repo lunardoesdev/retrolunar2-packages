@@ -1,5 +1,6 @@
 deps = ["bzip2@source"]
 buildsystem = "make"
 # Build the target utilities directly; the default target runs tests.
+make = false
 install = false
 make_args = ["PREFIX=$PREFIX"]

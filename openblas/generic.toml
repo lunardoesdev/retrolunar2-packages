@@ -39,9 +39,10 @@ buildsystem = "make"
 # The same variables must be given to the install line: Makefile:132
 # says so, because install re-runs Makefile.install against the same
 # configuration.
+make = false
+install = false
 targets = ["$OB_TARGET_ARGS"]
 make_args = ["HOSTCC=cc", "NOFORTRAN=1", "NO_SHARED=1", "PREFIX=$PREFIX"]
-install = false
 pre = """
 if [ \"$HOST_TRIPLET\" = \"$BUILD_TRIPLET\" ]; then
   OB_TARGET_ARGS=

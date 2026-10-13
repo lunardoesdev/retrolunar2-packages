@@ -1,10 +1,9 @@
 deps = ["lame@source"]
-
-build = """
-cp -r $NESTDIR/lame@source/* .
-./configure $AUTOCONF_CONFIGURE_FLAGS --disable-shared --enable-static --disable-frontend --disable-gtktest --disable-nasm
-touch aclocal.m4 configure config.h.in
-find . -name 'Makefile.in' | xargs touch
+buildsystem = "autoconf"
+make = false
+install = false
+configure_args = ["--disable-shared", "--enable-static", "--disable-frontend", "--disable-gtktest", "--disable-nasm"]
+post = """
 make -j\"$CORES\"
 make -C libmp3lame install
 make -C include install

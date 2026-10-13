@@ -1,7 +1,5 @@
 deps = ["capnproto@source", "zlib", "openssl"]
-
-build = """
-cp -r $NESTDIR/capnproto@source/* .
+buildsystem = "autoconf"
 # Cap'n Proto 1.5.0 ships a generated configure (configure.ac is
 # present too, but the release tarball already has it) and its config
 # template is the ordinary config.h.in - AC_CONFIG_HEADERS([config.h])
@@ -12,10 +10,10 @@ cp -r $NESTDIR/capnproto@source/* .
 # which drive libkj-async's stackful coroutines. Bionic has a
 # <ucontext.h> but declares none of those three functions at ANY API
 # level: compiling a getcontext/makecontext call against
-# aarch64-linux-android21/24/35-clang fails with \"call to undeclared
-# library function 'getcontext'\" on all three. Left to itself
+# aarch64-linux-android21/24/35-clang fails with "call to undeclared
+# library function 'getcontext'" on all three. Left to itself
 # configure would fall through to -lucontext, not find it, and only
-# warn (\"won't build with fibers\") - which happens to work, but it is
+# warn ("won't build with fibers") - which happens to work, but it is
 # a silent capability difference and it would try libucontext, which
 # is not in this prefix. Saying --without-fibers makes the result the
 # same on every system and never probes for a library we do not have.
@@ -23,22 +21,22 @@ cp -r $NESTDIR/capnproto@source/* .
 # then sets -DKJ_USE_FIBERS=0 rather than defining KJ_USE_FIBERS.
 #
 # --with-zlib and --with-openssl pin the two optional libraries that
-# DO exist in this prefix. Left at the default \"check\",
+# DO exist in this prefix. Left at the default "check",
 # configure.ac:196-234 does AC_CHECK_LIB/AC_CHECK_HEADER for them and
-# silently downgrades to \"won't build libkj-gzip/libkj-tls\" if a probe
+# silently downgrades to "won't build libkj-gzip/libkj-tls" if a probe
 # comes back empty, so the same tree would produce different libraries
 # on different systems depending on probe luck. Passing them makes
 # libkj-gzip and libkj-tls unconditional.
-./configure $AUTOCONF_CONFIGURE_FLAGS --enable-static --disable-shared --without-fibers --with-zlib --with-openssl
-touch aclocal.m4 configure config.h.in
-find . -name 'Makefile.in' | xargs touch
+make = false
+install = false
+configure_args = ["--enable-static", "--disable-shared", "--without-fibers", "--with-zlib", "--with-openssl"]
+post = """
 # Deliberately NOT `make all` and NOT `make install`. The reason is
 # that both of their rules RUN the freshly built target capnp binary.
 # BUILT_SOURCES (Makefile.am:496) is $(test_capnpc_outputs), which is
 # produced by test_capnpc_middleman, and that rule executes the target
 # program just linked:
-#   ./capnp$(EXEEXT) compile --src-prefix=$(srcdir)/src \\
-#       -o./capnpc-c++$(EXEEXT):src ...
+#   ./capnp$(EXEEXT) compile --src-prefix=$(srcdir)/src  #       -o./capnpc-c++$(EXEEXT):src ...
 # (Makefile.am:487-490). Executing a target binary is something this
 # repo never does, and on a cross build the binary could not run at all
 # without an emulator. BUILT_SOURCES is a prerequisite of `all`

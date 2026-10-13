@@ -46,6 +46,7 @@ buildsystem = "make"
 # portable path (libcap/Makefile:141 falls back cleanly).
 # PAM_CAP=no and GOLANG=no keep the top-level Makefile from recursing
 # into pam_cap and the Go bindings.
+make = false
+install = false
 targets = ["libcap"]
 make_args = ["-C", "BUILD_CC=cc", "lib=lib", "prefix=$OUTPKG", "SHARED=no", "PTHREADS=yes", "USE_GPERF=no", "PAM_CAP=no", "GOLANG=no"]
-install = false

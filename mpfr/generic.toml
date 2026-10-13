@@ -1,14 +1,6 @@
 deps = ["gmp", "mpfr@source"]
-
-build = """
-        cp -r $NESTDIR/mpfr@source/* .
-        ./configure $AUTOCONF_CONFIGURE_FLAGS \\
-            --disable-static \\
-            --enable-thread-safe \\
-            --docdir=\"$OUTPKG/share/doc/mpfr-4.2.2\"
-touch aclocal.m4 configure
-        find . -name 'Makefile.in' | xargs touch
-        make -j\"$CORES\"
-        make -j\"$CORES\" install
+buildsystem = "autoconf"
+configure_args = ["--disable-static", "--enable-thread-safe", "--docdir=$OUTPKG/share/doc/mpfr-4.2.2"]
+post = """
         make -j\"$CORES\" install-html
 """

@@ -1,7 +1,5 @@
 deps = ["bzip2", "xz", "zlib", "elfutils@source"]
-
-build = """
-cp -r $NESTDIR/elfutils@source/* .
+buildsystem = "autoconf"
 # Debuginfod is not reachable from a build machine; libelf is the part
 # of Elfutils that the rest of the system needs.
 #
@@ -40,11 +38,10 @@ cp -r $NESTDIR/elfutils@source/* .
 # glibc has <argp.h>, so configure does get through - that saving is
 # real. clang-native is untested for this package: there is no stamp
 # and no artifact for it in ./nest.
-./configure $AUTOCONF_CONFIGURE_FLAGS \\
-    --disable-debuginfod \\
-    --enable-libdebuginfod=dummy
-touch aclocal.m4 configure config.h.in
-find . -name 'Makefile.in' | xargs touch
+make = false
+install = false
+configure_args = ["--disable-debuginfod", "--enable-libdebuginfod=dummy"]
+post = """
 make -j\"$CORES\" -C libelf
 make -j\"$CORES\" -C libelf install
 mkdir -p $PREFIX/lib/pkgconfig

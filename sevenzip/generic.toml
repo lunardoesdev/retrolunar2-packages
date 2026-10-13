@@ -3,6 +3,8 @@ buildsystem = "make"
 # upstream's documented entry point (readme.txt:138-144), run from the
 # bundle directory that holds makefile.gcc. No -j here: the system's
 # $MAKEFLAGS (-j"$CORES") reaches this make and its submakes.
+make = false
+install = false
 targets = ["CPP/7zip/Bundles/Alone2", "makefile.gcc"]
 make_args = ["-C", "-f", "CXX=$CXX", "CFLAGS_BASE2=$CFLAGS", "CXXFLAGS_BASE2=$CXXFLAGS", "CFLAGS_WARN_WALL=-Wall -Wextra"]
 post = """

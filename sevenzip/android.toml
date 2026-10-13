@@ -2,6 +2,8 @@ deps = ["sevenzip@source"]
 buildsystem = "make"
 # Same command as generic.lua, plus LIB2= to drop -lpthread. See the
 # comment above for the probe output that makes this load-bearing.
+make = false
+install = false
 targets = ["CPP/7zip/Bundles/Alone2", "makefile.gcc"]
 make_args = ["-C", "-f", "-j1", "CXX=$CXX", "CFLAGS_BASE2=$CFLAGS", "CXXFLAGS_BASE2=$CXXFLAGS", "CFLAGS_WARN_WALL=-Wall -Wextra", "LIB2="]
 post = """

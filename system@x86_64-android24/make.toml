@@ -9,7 +9,9 @@
 # with the host's compiler.
 [buildsystem.make]
 script = """
-make -j\"$CORES\" CC=\"$CC\" AR=\"$AR\" RANLIB=\"$RANLIB\" CFLAGS=\"$CFLAGS\" CXXFLAGS=\"$CXXFLAGS\" LDFLAGS=\"$LDFLAGS\" $BS_make_args $BS_targets
+if [ \"$BS_make\" != \"false\" ]; then
+  make -j\"$CORES\" CC=\"$CC\" AR=\"$AR\" RANLIB=\"$RANLIB\" CFLAGS=\"$CFLAGS\" CXXFLAGS=\"$CXXFLAGS\" LDFLAGS=\"$LDFLAGS\" $BS_make_args $BS_targets
+fi
 if [ \"$BS_install\" != \"false\" ]; then
   DESTDIR=\"$DESTDIR\" make CC=\"$CC\" AR=\"$AR\" RANLIB=\"$RANLIB\" $BS_install_args install
 fi
