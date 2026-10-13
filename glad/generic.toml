@@ -77,7 +77,7 @@ cp -r glad-out/include/. $PREFIX/include/
 # generated itself.
 mkdir -p $PREFIX/lib/pkgconfig
 cat > $PREFIX/lib/pkgconfig/glad.pc <<EOF
-prefix=\"$OUTPKG\"
+prefix=\"$PREFIX\"
 exec_prefix=\\${prefix}
 libdir=\\${exec_prefix}/lib
 includedir=\\${prefix}/include

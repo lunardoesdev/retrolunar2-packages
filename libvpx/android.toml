@@ -6,7 +6,7 @@ buildsystem = "autoconf"
 # as the system reports it.
 # The sysroot goes in --extra-cflags on purpose: passed as -isystem
 # it reorders libc++ before its own C headers and breaks <cstdint>.
-configure_args = ["--prefix=$OUTPKG", "--target=$vpx_arch-$HOST_OS-gcc", "--disable-examples", "--disable-docs", "--disable-unit-tests", "--disable-tools", "--enable-pic", "--enable-static", "--disable-shared", "--extra-cflags=--sysroot=$SYSROOT", "--extra-cxxflags=--sysroot=$SYSROOT"]
+configure_args = ["--prefix=$PREFIX", "--target=$vpx_arch-$HOST_OS-gcc", "--disable-examples", "--disable-docs", "--disable-unit-tests", "--disable-tools", "--enable-pic", "--enable-static", "--disable-shared", "--extra-cflags=--sysroot=$SYSROOT", "--extra-cxxflags=--sysroot=$SYSROOT"]
 pre = """
 case \"$HOST_ARCH\" in
     aarch64) vpx_arch=arm64 ;;

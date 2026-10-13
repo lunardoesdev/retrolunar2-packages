@@ -11,5 +11,5 @@ make -j\"$CORES\" .version
 # help2man on the build host.
 touch man/autoconf.1 man/autoheader.1 man/autom4te.1 man/autoreconf.1 man/autoscan.1 man/autoupdate.1 man/ifnames.1
 make -j\"$CORES\"
-make -j\"$CORES\" prefix=\"$OUTPKG\" install
+make -j\"$CORES\" prefix=\"$PREFIX\" install
 """

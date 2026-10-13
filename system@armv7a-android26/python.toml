@@ -12,20 +12,20 @@ script = """
 _site=\"$PREFIX/${PYTHON_SITE:?the system must say where its site-packages is}\"
 mkdir -p \"$_site\"
 if [ \"${BS_whole_tree:-}\" != \"\" ]; then
-  cp -r . \"$_site/\"
+  cp -rf . \"$_site/\"
 else
   for _m in ${BS_modules:?a python recipe must name its modules}; do
-    cp -r \"$_m\" \"$_site/\"
+    cp -rf \"$_m\" \"$_site/\"
   done
 fi
 for _l in ${BS_licenses:-}; do
   for _m in ${BS_modules:-}; do
-    [ -f \"$_l\" ] && cp \"$_l\" \"$_site/${_m##*/}/\" || true
+    [ -f \"$_l\" ] && cp -f \"$_l\" \"$_site/${_m##*/}/\" || true
   done
 done
 for _s in ${BS_scripts:-}; do
   mkdir -p \"$PREFIX/bin\"
-  cp \"${_s%%:*}\" \"$PREFIX/bin/${_s##*:}\"
+  cp -f \"${_s%%:*}\" \"$PREFIX/bin/${_s##*:}\"
   chmod +x \"$PREFIX/bin/${_s##*:}\"
 done
 """

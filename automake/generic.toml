@@ -5,5 +5,5 @@ make = false
 install = false
 post = """
 make -j\"$CORES\"
-make -j\"$CORES\" prefix=\"$OUTPKG\" install
+make -j\"$CORES\" prefix=\"$PREFIX\" install
 """

@@ -1,9 +1,0 @@
-deps = ["qt6", "heaptrack@source"]
-buildsystem = "cmake"
-# Generic cmake invocation only. No project-specific -D option is
-# passed, because none could be verified against the upstream build
-# files -- inventing option names is worse than omitting them, and an
-# unrecognised -D would be silently ignored by cmake.
-#
-# Expect `find_package(Qt6 ... REQUIRED)` to fail here. That is the
-# recorded blocker, not a defect in this recipe.

@@ -36,7 +36,7 @@ cp imgui.h imgui_internal.h imconfig.h imstb_rectpack.h imstb_textedit.h imstb_t
 # Upstream ships no .pc and no CMake package config, so one is written
 # here, as packages/lua/generic.lua does.
 cat > $PREFIX/lib/pkgconfig/imgui.pc <<EOF
-prefix=\"$OUTPKG\"
+prefix=\"$PREFIX\"
 exec_prefix=\\${prefix}
 libdir=\\${exec_prefix}/lib
 includedir=\\${prefix}/include

@@ -8,7 +8,7 @@ buildsystem = "autoconf"
 # --without-normal: build only the wide-character (w) variants, which
 # is half the artifact set; the un-suffixed link names are aliased
 # onto them further down.
-configure_args = ["--with-shared", "--without-debug", "--without-normal", "--with-cxx-shared", "--enable-pc-files", "--with-pkg-config-libdir=$OUTPKG/lib/pkgconfig", "--disable-stripping"]
+configure_args = ["--with-shared", "--without-debug", "--without-normal", "--with-cxx-shared", "--enable-pc-files", "--with-pkg-config-libdir=$PREFIX/lib/pkgconfig", "--disable-stripping"]
 post = """
 # Preserve traditional link names expected by consumers.
 # Consumers in this tree link the un-suffixed names (curses, form,

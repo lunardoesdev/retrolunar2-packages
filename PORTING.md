@@ -3,9 +3,9 @@
 Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 
-## CGAL/source.lua
+## CGAL
 
-- **ported**: `source.toml`
+- **dropped from the port**: `only a source recipe in v1, no build recipe`
 
 ## Eigen/generic.lua
 
@@ -912,15 +912,9 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 - **ported**: `source.toml`
 
-## heaptrack/generic.lua
+## heaptrack
 
-- **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/heaptrack@source/* .`
-- **driven by the cmake build system**: `no arguments`
-- **ported**: `generic.toml`
-
-## heaptrack/source.lua
-
-- **ported**: `source.toml`
+- **dropped from the port**: `needs qt6, which the tree does not have`
 
 ## hello/generic.lua
 
@@ -1550,15 +1544,9 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 - **ported**: `source.toml`
 
-## lrzip/generic.lua
+## lrzip
 
-- **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/lrzip@source/* .`
-- **driven by the autoconf build system**: `no arguments`
-- **ported**: `generic.toml`
-
-## lrzip/source.lua
-
-- **ported**: `source.toml`
+- **dropped from the port**: `needs lzo, which the tree does not have`
 
 ## ltrace/generic.lua
 
@@ -1618,15 +1606,9 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 - **ported**: `source.toml`
 
-## lzop/generic.lua
+## lzop
 
-- **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/lzop@source/* .`
-- **driven by the autoconf build system**: `no arguments`
-- **ported**: `generic.toml`
-
-## lzop/source.lua
-
-- **ported**: `source.toml`
+- **dropped from the port**: `needs lzo, which the tree does not have`
 
 ## m4/generic.lua
 
@@ -1982,15 +1964,9 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 - **ported**: `source.toml`
 
-## pango/generic.lua
+## pango
 
-- **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/pango@source/* .`
-- **driven by the meson build system**: `args=['-Dbuildtype=release', '-Ddefault_library=static', '-Dxft=disabled', '-Dlibthai=disabled', '-Dsysprof=disabled', '-Dintrospection=disabled', '-Ddocumentation=false', '-Dman-pages=false', '-Dbuil`
-- **ported**: `generic.toml`
-
-## pango/source.lua
-
-- **ported**: `source.toml`
+- **dropped from the port**: `needs glib, which the tree does not have`
 
 ## patch/generic.lua
 
@@ -2511,7 +2487,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## termcap/generic.toml
 
-- **fixed by hand (the .pc file has to record the final install path)**: `\$\{RETROLUNAR_PORT_PREFIX\}"`
+- **fixed by hand (the .pc file has to record the final install path)**: `"\$\{RETROLUNAR_PORT_PREFIX\}"`
 
 ## termcap/generic.lua
 
@@ -2734,15 +2710,9 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 - **ported**: `source.toml`
 
-## xtensor/generic.lua
+## xtensor
 
-- **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/xtensor@source/* .`
-- **driven by the cmake build system**: `no arguments`
-- **ported**: `generic.toml`
-
-## xtensor/source.lua
-
-- **ported**: `source.toml`
+- **dropped from the port**: `needs xtl, which the tree does not have`
 
 ## xxhash/generic.lua
 

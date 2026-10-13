@@ -7,7 +7,7 @@
 # directory, which silently resolves target -l flags to host
 # archives.
 MESON_CROSS_FILE = "$SYSDIR/crossfile-i686-w64-mingw32.ini"
-MESON_FLAGS = "--prefix=$OUTPKG "
+MESON_FLAGS = "--prefix=$PREFIX "
 script = """
 meson setup build ${MESON_CROSS_FILE:+--cross-file \"$MESON_CROSS_FILE\"} $MESON_FLAGS $BS_args
 ninja -C build -j \"$CORES\"

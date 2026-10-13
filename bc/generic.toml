@@ -4,7 +4,7 @@ make = false
 install = false
 post = """
 # Bc uses a custom configure script and requires C99.
-CC=\"$CC -std=c99\" ./configure --prefix=\"$OUTPKG\" --enable-readline
+CC=\"$CC -std=c99\" ./configure --prefix=\"$PREFIX\" --enable-readline
 # The custom configure omits termcap from its static Readline link.
 make -j\"$CORES\" LDFLAGS=\"$LDFLAGS -lreadline -ltermcap\"
 make install
