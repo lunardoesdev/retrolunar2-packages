@@ -1,0 +1,8 @@
+deps = ["lz4@source"]
+buildsystem = "make"
+# The lib/ Makefile honours PREFIX and BUILD_SHARED/LIBDIR, which is
+# how lz4 expects to be installed into a staged prefix.
+make = false
+install = false
+targets = ["programs"]
+make_args = ["-C", "PREFIX=$PREFIX"]

@@ -1,0 +1,6 @@
+deps = ["msgpack-c@source"]
+buildsystem = "cmake"
+# C++ library, headers and pkg-config files for msgpack and msgpack-c.
+# The benchmarks and the other language implementations in the tree
+# are host-side and stay off.
+args = ["-DMSGPACK_BUILD_TESTS=OFF", "-DMSGPACK_BUILD_BENCHMARKS=OFF", "-DMSGPACK_ENABLE_CXX=ON", "-DMSGPACK_ENABLE_C=OFF", "-DBUILD_SHARED_LIBS=OFF"]

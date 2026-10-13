@@ -1,0 +1,13 @@
+version = "0.14.0"
+
+build = """
+mkdir -p dl
+if [ ! -f dl/gumbo.tar.gz ]; then
+  curl -fSL -C - -o dl/gumbo.tar.gz \"https://github.com/GerHobbelt/gumbo-parser/archive/refs/tags/0.14.0.tar.gz\"
+fi
+rm -rf src
+mkdir -p src
+tar -xzf dl/gumbo.tar.gz -C src --strip-components=1
+mkdir -p $PREFIX
+cp -r src/* $PREFIX/
+"""

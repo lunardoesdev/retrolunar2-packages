@@ -1,0 +1,23 @@
+deps = ["flex@native", "bison@native", "libnl-3@source"]
+buildsystem = "autoconf"
+# Bionic has no libpthread at all: the NDK sysroot ships no
+# libpthread.a or libpthread.so for any API level (checked
+# r28b), and configure.ac:119 does
+#   AC_CHECK_LIB([pthread], [pthread_mutex_lock], [],
+#                 AC_MSG_ERROR([libpthread is required]))
+# which is a hard error, not a warning. --disable-pthreads is the
+# upstream switch for that: it defines DISABLE_PTHREADS, which
+# turns the internal NL_LOCK/NL_RW_LOCK helpers into no-ops. The
+# library still builds and works; it just stops guarding its own
+# caches against concurrent callers.
+# Verified: `find` over the whole NDK sysroot for `libpthread*`
+# returns nothing, and `aarch64-linux-android24-clang ... -lpthread`
+# fails with `ld.lld: error: unable to find library -lpthread`. There
+# is no stub at any API level.
+make = false
+install = false
+configure_args = ["--enable-static", "--disable-shared", "--with-pic", "--enable-cli=no", "--disable-pthreads"]
+post = """
+make -j\"$CORES\" CFLAGS=\"$CFLAGS -Din_addr_t=uint32_t\"
+make install
+"""

@@ -1,0 +1,3 @@
+deps = ["setuptools@source"]
+buildsystem = "python"
+whole_tree = true

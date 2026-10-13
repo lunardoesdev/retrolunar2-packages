@@ -1,0 +1,7 @@
+deps = ["nghttp2@source"]
+buildsystem = "autoconf"
+# The library alone: no applications, no examples, no tests, no
+# Python or Rust bindings. The TLS backend is off, since that would
+# need an SSL library and this prefix keeps the core protocol and
+# HPACK code dependency-free.
+configure_args = ["--enable-static", "--disable-shared", "--with-pic", "--disable-app", "--disable-examples", "--disable-tests", "--disable-python-bindings", "--disable-rust-bindings", "--without-libxml2", "--without-libevent-openssl", "--without-jansson", "--without-c-ares", "--without-libev", "--without-zlib"]

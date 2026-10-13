@@ -1,0 +1,7 @@
+deps = ["xxhash@source"]
+buildsystem = "cmake"
+# Upstream's CMake build lives in cmake_unofficial/, not at the top
+# level, so point -S at it. Static library, header, pkg-config file
+# and the xxhsum tool; nothing here ever runs a target binary.
+args = ["-DBUILD_SHARED_LIBS=OFF"]
+source_dir = "cmake_unofficial"

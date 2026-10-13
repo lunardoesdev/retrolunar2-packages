@@ -1,0 +1,25 @@
+deps = ["freetype", "libpng"]
+version = "0.1.0"
+libpng_sys = "1.1.11"
+buildsystem = "cargo"
+env = "PNG_CONFIG=false"
+bin = "pngprobe"
+pre = """
+mkdir -p src
+cat > Cargo.toml <<EOF
+[package]
+name = \"pngprobe\"
+version = \"0.1.0\"
+edition = \"2021\"
+[dependencies]
+libpng-sys = \"=1.1.11\"
+EOF
+mkdir -p src
+cat > src/main.rs <<'EOF'
+fn main() {
+    let ver = unsafe { libpng_sys::ffi::png_access_version_number() };
+    println!(\"libpng version: {ver}\");
+    assert!(ver >= 10648, \"unexpected libpng version: {ver}\");
+}
+EOF
+"""

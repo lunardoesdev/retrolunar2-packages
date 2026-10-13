@@ -1,0 +1,2 @@
+deps = ["patch@source"]
+buildsystem = "autoconf"

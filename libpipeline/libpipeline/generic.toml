@@ -1,0 +1,2 @@
+deps = ["libpipeline@source"]
+buildsystem = "autoconf"

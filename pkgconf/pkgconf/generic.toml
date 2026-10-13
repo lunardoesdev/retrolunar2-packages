@@ -1,0 +1,2 @@
+deps = ["pkgconf@source"]
+buildsystem = "autoconf"

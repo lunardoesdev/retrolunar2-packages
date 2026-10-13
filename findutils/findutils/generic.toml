@@ -1,0 +1,3 @@
+deps = ["findutils@source"]
+buildsystem = "autoconf"
+configure_args = ["--localstatedir=$PREFIX/var/lib/locate"]

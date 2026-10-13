@@ -1,0 +1,21 @@
+deps = ["squashfs-tools@source"]
+buildsystem = "make"
+# LIBS is restated here, minus -lpthread. A command-line variable
+# overrides the Makefile's own `LIBS = -lpthread -lm` (Makefile:271),
+# so nothing upstream is edited; the list below is exactly what
+# Makefile:271 + the four selected compressors add -lm (:271), -lz
+# (:276), -llz4 (:300), -llzma (:317), -lzstd (:329) - with the
+# pthread entry dropped. LZO_SUPPORT=0 keeps -llzo2 (:288) out, as in
+# the generic recipe.
+# -pthread is deliberately NOT added: the thread code in thread.c and
+# nprocessors_compat.c calls pthread_create/pthread_join, which live
+# in Bionic's libc, so no link flag is needed at all once -lpthread is
+# gone. The system's LDFLAGS already carry -lm.
+# USE_PREBUILT_MANPAGES=y for the reason given in generic.lua: the
+# alternative renders the manuals by RUNNING the freshly built tools.
+make = false
+install = false
+make_args = ["LZO_SUPPORT=0", "USE_PREBUILT_MANPAGES=y", "INSTALL_PREFIX=$OUTPKG", "LIBS=-lm -lz -llz4 -llzma -lzstd"]
+pre = """
+cd squashfs-tools
+"""

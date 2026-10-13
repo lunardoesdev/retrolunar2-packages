@@ -1,0 +1,13 @@
+version = "3.10.2"
+
+build = """
+mkdir -p dl
+if [ ! -f dl/nettle.tar.gz ]; then
+  curl -fSL -C - -o dl/nettle.tar.gz \"https://mirrors.kernel.org/gnu/nettle/nettle-3.10.2.tar.gz\"
+fi
+rm -rf src
+mkdir -p src
+tar -xzf dl/nettle.tar.gz -C src --strip-components=1
+mkdir -p $PREFIX
+cp -r src/* $PREFIX/
+"""

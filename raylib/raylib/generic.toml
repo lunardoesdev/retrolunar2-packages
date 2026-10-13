@@ -1,0 +1,3 @@
+deps = ["raylib@source"]
+buildsystem = "cmake"
+args = ["-DCMAKE_BUILD_TYPE=Release", "-DBUILD_EXAMPLES=OFF"]

@@ -1,0 +1,15 @@
+deps = ["p7zip@source"]
+buildsystem = "make"
+# makefile.machine is a fragment, not an entry point: the top-level
+# `makefile` includes makefile.common, which includes it (line 15).
+# makefile.machine:14-15 hardcodes CC=gcc/CXX=g++, so the system's
+# compilers are passed as make variables, which override them. The
+# system's flags reach the build through $(ALLFLAGS).
+make = false
+install = false
+targets = ["7za"]
+make_args = ["CXX=$CXX"]
+post = """
+mkdir -p $PREFIX/bin
+cp bin/7za $PREFIX/bin/7za
+"""

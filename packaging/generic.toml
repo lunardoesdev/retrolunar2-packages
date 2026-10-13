@@ -1,9 +1,5 @@
 deps = ["packaging@source"]
-
-build = """
-cp -r $NESTDIR/packaging@source/* .
+buildsystem = "python"
 # Packaging is pure Python; install its module for the target Python 3.14.
-mkdir -p $PREFIX/lib/python3.14/site-packages
-cp -r src/packaging $PREFIX/lib/python3.14/site-packages/
-cp LICENSE LICENSE.APACHE LICENSE.BSD $PREFIX/lib/python3.14/site-packages/packaging/
-"""
+modules = ["src/packaging"]
+licenses = ["LICENSE", "LICENSE.APACHE", "LICENSE.BSD"]

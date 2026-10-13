@@ -1,0 +1,5 @@
+deps = ["zlib", "libpng@source"]
+buildsystem = "autoconf"
+# configure's zlib probe hardcodes -lz and prepends its own -lz, so LIBS cannot
+# override it and a missing -l is a hard error. On mingw, where zlib installs as
+# libzlib, the alias that makes -lz resolve lives in zlib's own mingw64.toml.

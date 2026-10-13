@@ -1,0 +1,10 @@
+deps = ["libogg", "flac@source"]
+buildsystem = "autoconf"
+# Static libraries against the libogg in this prefix: libFLAC (the
+# format) and libFLAC++ (the C++ decoder interface). flac and metaflac
+# are bin_PROGRAMS; there is no switch that drops them without
+# --disable-programs, so they are built, installed and never run here.
+# --disable-version-from-git keeps configure from shelling out to git,
+# which AGENTS.md keeps out of the build path; the tarball's version
+# string is already substituted.
+configure_args = ["--enable-static", "--disable-shared", "--with-pic", "--disable-version-from-git"]

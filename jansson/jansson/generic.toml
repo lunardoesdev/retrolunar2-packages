@@ -1,0 +1,5 @@
+deps = ["jansson@source"]
+buildsystem = "autoconf"
+# Autotools build, static library only: a target prefix wants the
+# archive and the header, and the tests and docs are host-side work.
+configure_args = ["--enable-static", "--disable-shared", "--with-pic"]

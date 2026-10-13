@@ -1,0 +1,8 @@
+deps = ["c-ares@source"]
+buildsystem = "autoconf"
+# Static library, headers and the pkg-config file. The two sample
+# tools (adig, ahost) are noinst_PROGRAMS: they are compiled as
+# target programs but never installed, and no switch stops the
+# compile. --disable-tests is the real cut, because the test suite
+# wants a live network the build machine should not depend on.
+configure_args = ["--enable-static", "--disable-shared", "--with-pic", "--disable-tests"]

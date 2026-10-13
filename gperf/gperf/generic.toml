@@ -1,0 +1,2 @@
+deps = ["gperf@source"]
+buildsystem = "autoconf"

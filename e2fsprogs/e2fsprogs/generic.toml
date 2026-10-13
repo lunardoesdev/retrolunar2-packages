@@ -1,0 +1,5 @@
+deps = ["e2fsprogs@source"]
+buildsystem = "autoconf"
+# Util-linux provides the blkid, uuid and fsck wrappers; this package
+# only needs the shared libraries and the e2fsprogs tools themselves.
+configure_args = ["--sysconfdir=$PREFIX/etc", "--enable-elf-shlibs", "--disable-libblkid", "--disable-libuuid", "--disable-uuidd", "--disable-fsck"]

@@ -1,0 +1,8 @@
+deps = ["tcl@source"]
+buildsystem = "make"
+# Tcl's configure script lives in unix/ but accepts being run from
+# the source root; the build then happens in this directory.
+targets = ["install-private-headers"]
+pre = """
+./unix/configure $AUTOCONF_CONFIGURE_FLAGS --mandir=\"$PREFIX/share/man\" --disable-rpath
+"""

@@ -1,0 +1,2 @@
+deps = ["psmisc@source"]
+buildsystem = "autoconf"

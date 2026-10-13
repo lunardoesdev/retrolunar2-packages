@@ -1,0 +1,7 @@
+deps = ["zopfli@source"]
+buildsystem = "cmake"
+# CMake build, static only. ZOPFLI_BUILD_INSTALL is on by default for
+# a standalone build and its install(TARGETS) covers both libraries
+# and both tools in one rule, so naming only the library target would
+# leave the install step without files to copy. All four are cheap.
+args = ["-DZOPFLI_BUILD_SHARED=OFF"]

@@ -1,16 +1,10 @@
 deps = ["meson@source"]
-
-build = """
-cp -r $NESTDIR/meson@source/* .
+buildsystem = "python"
 # Meson is pure Python with no C extension, so it installs as a module
 # plus its launcher script. LFS runs setup.py, which needs a target
 # Python interpreter to run; the module plus the bin/ launcher is what
 # build recipes actually use, so dist-info metadata is skipped here, as
 # with the other pure-Python entries in this backlog.
-mkdir -p $PREFIX/lib/python3.14/site-packages
-cp -r mesonbuild $PREFIX/lib/python3.14/site-packages/
-cp COPYING $PREFIX/lib/python3.14/site-packages/mesonbuild/COPYING
-mkdir -p $PREFIX/bin
-cp meson.py $PREFIX/bin/meson
-chmod +x $PREFIX/bin/meson
-"""
+modules = ["mesonbuild"]
+licenses = ["COPYING"]
+scripts = ["meson.py:meson"]

@@ -1,0 +1,24 @@
+deps = ["kmod@source"]
+buildsystem = "meson"
+# Completion directories are disabled because the shell completions are
+# installed to absolute paths that $OUT does not own.
+#
+# Man pages are turned off because man/meson.build:1 does an
+# unconditional find_program('scdoc'), which is not in this prefix.
+#
+# The xz backend is enabled because the prefix ships liblzma.pc; zstd
+# is off for the same reason liblzma is preferred, so the backend set
+# does not vary with whatever the host happens to have installed.
+# kmod's zlib backend is an Android question and lives in
+# android.lua, not here.
+args = ["-Dbashcompletiondir=", "-Dfishcompletiondir=", "-Dmanpages=false", "-Dxz=enabled", "-Dzstd=disabled"]
+pre = """
+cp -r $NESTDIR/kmod@source/. .
+"""
+post = """
+meson compile -C build --jobs \"$CORES\"
+# No DESTDIR: meson's --prefix is already $OUT (it comes from
+# $MESON_FLAGS), so DESTDIR would concatenate the two and the
+# install would land in $OUT$OUT.
+meson install -C build
+"""

@@ -1,0 +1,2 @@
+deps = ["sed@source"]
+buildsystem = "autoconf"

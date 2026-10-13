@@ -1,0 +1,8 @@
+deps = ["gmp@source"]
+buildsystem = "autoconf"
+# No --docdir: upstream's default already lands under $OUT, and
+# pinning a version here would go stale on a bump.
+configure_args = ["--enable-cxx", "--disable-static"]
+post = """
+make -j\"$CORES\" install-html
+"""

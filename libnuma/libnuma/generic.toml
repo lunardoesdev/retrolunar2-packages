@@ -1,0 +1,17 @@
+deps = ["libnuma@source"]
+buildsystem = "autoconf"
+# Static with PIC. numactl's numa_init() constructor is wired in with
+# -Wl,-init, which only applies to a shared object, so consumers of
+# the static library must call numa_available() themselves; that is
+# libnuma's documented entry point anyway.
+make = false
+install = false
+configure_args = ["--enable-static", "--disable-shared", "--with-pic"]
+post = """
+# One non-recursive Makefile whose bin_PROGRAMS (numactl, numastat,
+# numademo, migratepages, migspeed, memhog) are host tools. Build the
+# library on its own, then install only the library, the public
+# headers and numa.pc; the man pages belong to the tools.
+make -j\"$CORES\" libnuma.la
+make -j\"$CORES\" install-libLTLIBRARIES install-includeHEADERS install-pkgconfigDATA
+"""

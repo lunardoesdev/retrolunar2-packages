@@ -1,0 +1,10 @@
+deps = ["lame@source"]
+buildsystem = "autoconf"
+make = false
+install = false
+configure_args = ["--disable-shared", "--enable-static", "--disable-frontend", "--disable-gtktest", "--disable-nasm"]
+post = """
+make -j\"$CORES\"
+make -C libmp3lame install
+make -C include install
+"""

@@ -1,0 +1,9 @@
+deps = ["autoconf", "automake@source"]
+buildsystem = "autoconf"
+# The Perl scripts embed their module directory; stage install separately.
+make = false
+install = false
+post = """
+make -j\"$CORES\"
+make -j\"$CORES\" prefix=\"$OUTPKG\" install
+"""

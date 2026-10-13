@@ -1,0 +1,3 @@
+deps = ["readline", "python@source"]
+buildsystem = "autoconf"
+configure_args = ["--with-build-python=python3", "--disable-shared", "--without-ensurepip", "--disable-test-modules"]

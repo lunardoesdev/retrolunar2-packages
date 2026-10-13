@@ -1,0 +1,2 @@
+deps = ["zlib", "bzip2", "lz4", "lzo", "perl@native", "lrzip@source"]
+buildsystem = "autoconf"

@@ -1,0 +1,31 @@
+# A recipe says `buildsystem = "python"` when a package is nothing but Python
+# modules to place:
+#   modules      directories to copy into site-packages
+#   licenses     files copied into each module's directory
+#   scripts      `source:name` pairs to install into bin/, made executable
+#   whole_tree   true to copy the unpacked tree itself
+# The system provides $PYTHON_SITE, `lib/python3.14/site-packages` on this host:
+# the interpreter's version belongs in one place, not in every recipe.
+[buildsystem.python]
+PYTHON_SITE = "lib/python3.14/site-packages"
+script = """
+_site=\"$PREFIX/${PYTHON_SITE:?the system must say where its site-packages is}\"
+mkdir -p \"$_site\"
+if [ \"${BS_whole_tree:-}\" != \"\" ]; then
+  cp -r . \"$_site/\"
+else
+  for _m in ${BS_modules:?a python recipe must name its modules}; do
+    cp -r \"$_m\" \"$_site/\"
+  done
+fi
+for _l in ${BS_licenses:-}; do
+  for _m in ${BS_modules:-}; do
+    [ -f \"$_l\" ] && cp \"$_l\" \"$_site/${_m##*/}/\" || true
+  done
+done
+for _s in ${BS_scripts:-}; do
+  mkdir -p \"$PREFIX/bin\"
+  cp \"${_s%%:*}\" \"$PREFIX/bin/${_s##*:}\"
+  chmod +x \"$PREFIX/bin/${_s##*:}\"
+done
+"""

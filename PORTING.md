@@ -629,10 +629,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **rewrote $OUT to $PREFIX (staging)**: `cp -r flit_core $OUT/lib/python3.14/site-packages/`
 - **rewrote $OUT to $PREFIX (staging)**: `cp LICENSE $OUT/lib/python3.14/site-packages/flit_core/LICENSE`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/flit-core@source/* .`
-- **left as a shell body (no build system)**: `generic.lua`
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/lib/python3.14/site-packages`
-- **rewrote $OUT to $PREFIX (staging)**: `cp -r flit_core $OUT/lib/python3.14/site-packages/`
-- **rewrote $OUT to $PREFIX (staging)**: `cp LICENSE $OUT/lib/python3.14/site-packages/flit_core/LICENSE`
+- **driven by the python build system**: `modules=['flit_core'], licenses=['LICENSE']`
 - **ported**: `generic.toml`
 
 ## flit-core/source.lua
@@ -739,7 +736,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 ## glad/generic.lua
 
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/glad@source/* .`
-- **left as a shell body (no build system)**: `generic.lua`
+- **left as a shell body (a compilation of its own, not a build system)**: `generic.lua`
 - **rewrote $OUT to $PREFIX (staging)**: `mkdir -p obj $OUT/lib $OUT/include`
 - **rewrote $OUT to $PREFIX (staging)**: `$AR rcs $OUT/lib/libglad.a obj/gl.o obj/gles2.o obj/egl.o`
 - **rewrote $OUT to $PREFIX (staging)**: `$RANLIB $OUT/lib/libglad.a`
@@ -929,7 +926,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 - **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/bin`
 - **rewrote $OUT to $PREFIX (staging)**: `$CC $CFLAGS main.c -o $OUT/bin/hello`
-- **left as a shell body (no build system)**: `generic.lua`
+- **left as a shell body (a compilation of its own, not a build system)**: `generic.lua`
 - **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/bin`
 - **rewrote $OUT to $PREFIX (staging)**: `$CC $CFLAGS main.c -o $OUT/bin/hello`
 - **ported**: `generic.toml`
@@ -1008,7 +1005,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 - **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/etc`
 - **rewrote $OUT to $PREFIX (staging)**: `cp $NESTDIR/source/iana-etc/services $NESTDIR/source/iana-etc/protocols $OUT/etc/`
-- **left as a shell body (no build system)**: `generic.lua`
+- **left as a shell body (installing files is the whole recipe)**: `generic.lua`
 - **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/etc`
 - **rewrote $OUT to $PREFIX (staging)**: `cp $NESTDIR/source/iana-etc/services $NESTDIR/source/iana-etc/protocols $OUT/etc/`
 - **ported**: `generic.toml`
@@ -1033,7 +1030,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 ## imgui/generic.lua
 
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/imgui@source/* .`
-- **left as a shell body (no build system)**: `generic.lua`
+- **left as a shell body (a compilation of its own, not a build system)**: `generic.lua`
 - **rewrote $OUT to $PREFIX (staging)**: `mkdir -p obj $OUT/lib $OUT/include $OUT/lib/pkgconfig`
 - **rewrote $OUT to $PREFIX (staging)**: `$AR rcs $OUT/lib/libimgui.a obj/*.o`
 - **rewrote $OUT to $PREFIX (staging)**: `$RANLIB $OUT/lib/libimgui.a`
@@ -1111,10 +1108,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **rewrote $OUT to $PREFIX (staging)**: `cp -r src/jinja2 $OUT/lib/python3.14/site-packages/`
 - **rewrote $OUT to $PREFIX (staging)**: `cp LICENSE.txt $OUT/lib/python3.14/site-packages/jinja2/LICENSE.txt`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/jinja2@source/* .`
-- **left as a shell body (no build system)**: `generic.lua`
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/lib/python3.14/site-packages`
-- **rewrote $OUT to $PREFIX (staging)**: `cp -r src/jinja2 $OUT/lib/python3.14/site-packages/`
-- **rewrote $OUT to $PREFIX (staging)**: `cp LICENSE.txt $OUT/lib/python3.14/site-packages/jinja2/LICENSE.txt`
+- **driven by the python build system**: `modules=['src/jinja2'], licenses=['LICENSE.txt']`
 - **ported**: `generic.toml`
 
 ## jinja2/source.lua
@@ -1177,7 +1171,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## lapack/generic.lua
 
-- **left as a shell body (no build system)**: `generic.lua`
+- **left as a shell body (the recipe reports it cannot be built here)**: `generic.lua`
 - **ported**: `generic.toml`
 
 ## lapack/source.lua
@@ -1217,7 +1211,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 - **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/etc`
 - **rewrote $OUT to $PREFIX (staging)**: `cp -r $NESTDIR/source/lfs-bootscripts/* $OUT/etc/`
-- **left as a shell body (no build system)**: `generic.lua`
+- **left as a shell body (installing files is the whole recipe)**: `generic.lua`
 - **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/etc`
 - **rewrote $OUT to $PREFIX (staging)**: `cp -r $NESTDIR/source/lfs-bootscripts/* $OUT/etc/`
 - **ported**: `generic.toml`
@@ -1591,7 +1585,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 ## lua/generic.lua
 
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/lua@source/* .`
-- **left as a shell body (no build system)**: `generic.lua`
+- **left as a shell body (a compilation of its own, not a build system)**: `generic.lua`
 - **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/include $OUT/lib $OUT/lib/pkgconfig`
 - **rewrote $OUT to $PREFIX (staging)**: `cp src/lua.h src/luaconf.h src/lualib.h src/lauxlib.h src/lua.hpp $OUT/include/`
 - **rewrote $OUT to $PREFIX (staging)**: `cp liblua.a $OUT/lib/`
@@ -1669,7 +1663,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/share/man`
 - **rewrote $OUT to $PREFIX (staging)**: `cp -r "$_s" "$OUT/share/man/"`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/man-pages@source/* .`
-- **left as a shell body (no build system)**: `generic.lua`
+- **left as a shell body (installing files is the whole recipe)**: `generic.lua`
 - **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/share/man`
 - **rewrote $OUT to $PREFIX (staging)**: `cp -r "$_s" "$OUT/share/man/"`
 - **ported**: `generic.toml`
@@ -1684,10 +1678,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **rewrote $OUT to $PREFIX (staging)**: `cp -r src/markupsafe $OUT/lib/python3.14/site-packages/`
 - **rewrote $OUT to $PREFIX (staging)**: `cp LICENSE.txt $OUT/lib/python3.14/site-packages/markupsafe/LICENSE.txt`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/markupsafe@source/* .`
-- **left as a shell body (no build system)**: `generic.lua`
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/lib/python3.14/site-packages`
-- **rewrote $OUT to $PREFIX (staging)**: `cp -r src/markupsafe $OUT/lib/python3.14/site-packages/`
-- **rewrote $OUT to $PREFIX (staging)**: `cp LICENSE.txt $OUT/lib/python3.14/site-packages/markupsafe/LICENSE.txt`
+- **driven by the python build system**: `modules=['src/markupsafe'], licenses=['LICENSE.txt']`
 - **ported**: `generic.toml`
 
 ## markupsafe/source.lua
@@ -1723,13 +1714,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **rewrote $OUT to $PREFIX (staging)**: `cp meson.py $OUT/bin/meson`
 - **rewrote $OUT to $PREFIX (staging)**: `chmod +x $OUT/bin/meson`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/meson@source/* .`
-- **left as a shell body (no build system)**: `generic.lua`
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/lib/python3.14/site-packages`
-- **rewrote $OUT to $PREFIX (staging)**: `cp -r mesonbuild $OUT/lib/python3.14/site-packages/`
-- **rewrote $OUT to $PREFIX (staging)**: `cp COPYING $OUT/lib/python3.14/site-packages/mesonbuild/COPYING`
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/bin`
-- **rewrote $OUT to $PREFIX (staging)**: `cp meson.py $OUT/bin/meson`
-- **rewrote $OUT to $PREFIX (staging)**: `chmod +x $OUT/bin/meson`
+- **driven by the python build system**: `modules=['mesonbuild'], licenses=['COPYING'], scripts=['meson.py:meson']`
 - **ported**: `generic.toml`
 
 ## meson/source.lua
@@ -1748,7 +1733,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## minizip/generic.lua
 
-- **left as a shell body (no build system)**: `generic.lua`
+- **left as a shell body (the recipe reports it cannot be built here)**: `generic.lua`
 - **ported**: `generic.toml`
 
 ## minizip/source.lua
@@ -1872,7 +1857,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/bin`
 - **rewrote $OUT to $PREFIX (staging)**: `cp ninja $OUT/bin/ninja`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/ninja@source/* .`
-- **left as a shell body (no build system)**: `generic.lua`
+- **left as a shell body (installing files is the whole recipe)**: `generic.lua`
 - **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/bin`
 - **rewrote $OUT to $PREFIX (staging)**: `cp ninja $OUT/bin/ninja`
 - **ported**: `generic.toml`
@@ -1989,10 +1974,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **rewrote $OUT to $PREFIX (staging)**: `cp -r src/packaging $OUT/lib/python3.14/site-packages/`
 - **rewrote $OUT to $PREFIX (staging)**: `cp LICENSE LICENSE.APACHE LICENSE.BSD $OUT/lib/python3.14/site-packages/packaging/`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/packaging@source/* .`
-- **left as a shell body (no build system)**: `generic.lua`
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/lib/python3.14/site-packages`
-- **rewrote $OUT to $PREFIX (staging)**: `cp -r src/packaging $OUT/lib/python3.14/site-packages/`
-- **rewrote $OUT to $PREFIX (staging)**: `cp LICENSE LICENSE.APACHE LICENSE.BSD $OUT/lib/python3.14/site-packages/packaging/`
+- **driven by the python build system**: `modules=['src/packaging'], licenses=['LICENSE', 'LICENSE.APACHE', 'LICENSE.BSD']`
 - **ported**: `generic.toml`
 
 ## packaging/source.lua
@@ -2291,9 +2273,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 - **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/lib/python3.14/site-packages`
 - **rewrote $OUT to $PREFIX (staging)**: `cp -r $NESTDIR/source/setuptools/* $OUT/lib/python3.14/site-packages/`
-- **left as a shell body (no build system)**: `generic.lua`
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/lib/python3.14/site-packages`
-- **rewrote $OUT to $PREFIX (staging)**: `cp -r $NESTDIR/source/setuptools/* $OUT/lib/python3.14/site-packages/`
+- **driven by the python build system**: `whole_tree=True`
 - **ported**: `generic.toml`
 
 ## setuptools/source.lua
@@ -2415,7 +2395,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/include`
 - **rewrote $OUT to $PREFIX (staging)**: `cp stb*.h stb_vorbis.c LICENSE $OUT/include/`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/stb@source/* .`
-- **left as a shell body (no build system)**: `generic.lua`
+- **left as a shell body (installing files is the whole recipe)**: `generic.lua`
 - **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/include`
 - **rewrote $OUT to $PREFIX (staging)**: `cp stb*.h stb_vorbis.c LICENSE $OUT/include/`
 - **ported**: `generic.toml`
@@ -2458,7 +2438,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 - **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/share/man`
 - **rewrote $OUT to $PREFIX (staging)**: `cp -r $NESTDIR/source/systemd-man-pages/* $OUT/share/man/`
-- **left as a shell body (no build system)**: `generic.lua`
+- **left as a shell body (installing files is the whole recipe)**: `generic.lua`
 - **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/share/man`
 - **rewrote $OUT to $PREFIX (staging)**: `cp -r $NESTDIR/source/systemd-man-pages/* $OUT/share/man/`
 - **ported**: `generic.toml`
@@ -2513,7 +2493,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 - **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/share/doc/tcl8.6.18`
 - **rewrote $OUT to $PREFIX (staging)**: `cp -r $NESTDIR/source/tcl-docs/* $OUT/share/doc/tcl8.6.18/`
-- **left as a shell body (no build system)**: `generic.lua`
+- **left as a shell body (installing files is the whole recipe)**: `generic.lua`
 - **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/share/doc/tcl8.6.18`
 - **rewrote $OUT to $PREFIX (staging)**: `cp -r $NESTDIR/source/tcl-docs/* $OUT/share/doc/tcl8.6.18/`
 - **ported**: `generic.toml`
@@ -2628,7 +2608,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **rewrote $OUT to $PREFIX (staging)**: `cp init-net-rules.sh rule_generator.functions $OUT/usr/share/doc/udev-20230818/`
 - **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/usr/share/udev`
 - **rewrote $OUT to $PREFIX (staging)**: `cp write_cd_rules write_net_rules $OUT/usr/share/udev/`
-- **left as a shell body (no build system)**: `generic.lua`
+- **left as a shell body (installing files is the whole recipe)**: `generic.lua`
 - **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/lib/udev/rules.d`
 - **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/lib/udev/rules.d/network`
 - **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/usr/share/doc/udev-20230818`
@@ -2718,10 +2698,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **rewrote $OUT to $PREFIX (staging)**: `cp -r src/wheel $OUT/lib/python3.14/site-packages/`
 - **rewrote $OUT to $PREFIX (staging)**: `cp LICENSE.txt $OUT/lib/python3.14/site-packages/wheel/LICENSE.txt`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/wheel@source/* .`
-- **left as a shell body (no build system)**: `generic.lua`
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/lib/python3.14/site-packages`
-- **rewrote $OUT to $PREFIX (staging)**: `cp -r src/wheel $OUT/lib/python3.14/site-packages/`
-- **rewrote $OUT to $PREFIX (staging)**: `cp LICENSE.txt $OUT/lib/python3.14/site-packages/wheel/LICENSE.txt`
+- **driven by the python build system**: `modules=['src/wheel'], licenses=['LICENSE.txt']`
 - **ported**: `generic.toml`
 
 ## wheel/source.lua

@@ -1,0 +1,7 @@
+deps = ["iana-etc@source"]
+
+build = """
+# Pure data: the tarball holds the IANA protocol registry tables.
+mkdir -p $PREFIX/etc
+cp $NESTDIR/iana-etc@source/services $NESTDIR/iana-etc@source/protocols $PREFIX/etc/
+"""
