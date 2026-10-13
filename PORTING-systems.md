@@ -45,6 +45,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
 
+## aarch64-android21/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
+
 ## system@aarch64-android21/autoconf.toml
 
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
@@ -122,6 +126,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `AUTOCONF_CONFIGURE_FLAGS`
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
+
+## aarch64-android23/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
 
 ## system@aarch64-android23/autoconf.toml
 
@@ -203,6 +211,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
 
+## aarch64-android24/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
+
 ## system@aarch64-android24/autoconf.toml
 
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
@@ -280,6 +292,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `AUTOCONF_CONFIGURE_FLAGS`
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
+
+## aarch64-android25/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
 
 ## system@aarch64-android25/autoconf.toml
 
@@ -359,6 +375,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
 
+## aarch64-android26/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
+
 ## system@aarch64-android26/autoconf.toml
 
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
@@ -436,6 +456,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `AUTOCONF_CONFIGURE_FLAGS`
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
+
+## aarch64-android27/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
 
 ## system@aarch64-android27/autoconf.toml
 
@@ -515,6 +539,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
 
+## aarch64-android28/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
+
 ## system@aarch64-android28/autoconf.toml
 
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
@@ -592,6 +620,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `AUTOCONF_CONFIGURE_FLAGS`
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
+
+## aarch64-android29/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
 
 ## system@aarch64-android29/autoconf.toml
 
@@ -671,6 +703,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
 
+## aarch64-android30/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
+
 ## system@aarch64-android30/autoconf.toml
 
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
@@ -748,6 +784,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `AUTOCONF_CONFIGURE_FLAGS`
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
+
+## aarch64-android31/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
 
 ## system@aarch64-android31/autoconf.toml
 
@@ -827,6 +867,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
 
+## aarch64-android32/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
+
 ## system@aarch64-android32/autoconf.toml
 
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
@@ -904,6 +948,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `AUTOCONF_CONFIGURE_FLAGS`
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
+
+## aarch64-android33/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
 
 ## system@aarch64-android33/autoconf.toml
 
@@ -983,6 +1031,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
 
+## aarch64-android34/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
+
 ## system@aarch64-android34/autoconf.toml
 
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
@@ -1060,6 +1112,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `AUTOCONF_CONFIGURE_FLAGS`
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
+
+## aarch64-android35/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
 
 ## system@aarch64-android35/autoconf.toml
 
@@ -1140,6 +1196,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
 
+## armv7a-android21/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
+
 ## system@armv7a-android21/autoconf.toml
 
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
@@ -1218,6 +1278,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `AUTOCONF_CONFIGURE_FLAGS`
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
+
+## armv7a-android23/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
 
 ## system@armv7a-android23/autoconf.toml
 
@@ -1298,6 +1362,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
 
+## armv7a-android24/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
+
 ## system@armv7a-android24/autoconf.toml
 
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
@@ -1376,6 +1444,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `AUTOCONF_CONFIGURE_FLAGS`
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
+
+## armv7a-android25/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
 
 ## system@armv7a-android25/autoconf.toml
 
@@ -1456,6 +1528,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
 
+## armv7a-android26/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
+
 ## system@armv7a-android26/autoconf.toml
 
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
@@ -1534,6 +1610,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `AUTOCONF_CONFIGURE_FLAGS`
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
+
+## armv7a-android27/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
 
 ## system@armv7a-android27/autoconf.toml
 
@@ -1614,6 +1694,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
 
+## armv7a-android28/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
+
 ## system@armv7a-android28/autoconf.toml
 
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
@@ -1692,6 +1776,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `AUTOCONF_CONFIGURE_FLAGS`
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
+
+## armv7a-android29/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
 
 ## system@armv7a-android29/autoconf.toml
 
@@ -1772,6 +1860,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
 
+## armv7a-android30/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
+
 ## system@armv7a-android30/autoconf.toml
 
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
@@ -1850,6 +1942,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `AUTOCONF_CONFIGURE_FLAGS`
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
+
+## armv7a-android31/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
 
 ## system@armv7a-android31/autoconf.toml
 
@@ -1930,6 +2026,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
 
+## armv7a-android32/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
+
 ## system@armv7a-android32/autoconf.toml
 
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
@@ -2008,6 +2108,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `AUTOCONF_CONFIGURE_FLAGS`
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
+
+## armv7a-android33/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
 
 ## system@armv7a-android33/autoconf.toml
 
@@ -2088,6 +2192,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
 
+## armv7a-android34/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
+
 ## system@armv7a-android34/autoconf.toml
 
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
@@ -2167,6 +2275,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
 
+## armv7a-android35/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
+
 ## system@armv7a-android35/autoconf.toml
 
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
@@ -2226,6 +2338,13 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `CFLAGS`
 - **merged repeated assignments**: `CXXFLAGS`
 - **merged repeated assignments**: `CMAKE_FLAGS`
+
+## clang-native/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
+
+## clang-native/generic.lua
+
 - **added the cargo target v1 never defined**: `x86_64-unknown-linux-gnu`
 
 ## system@clang-native/autoconf.toml
@@ -2298,6 +2417,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `AUTOCONF_CONFIGURE_FLAGS`
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
+
+## i686-android21/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
 
 ## system@i686-android21/autoconf.toml
 
@@ -2378,6 +2501,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
 
+## i686-android23/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
+
 ## system@i686-android23/autoconf.toml
 
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
@@ -2456,6 +2583,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `AUTOCONF_CONFIGURE_FLAGS`
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
+
+## i686-android24/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
 
 ## system@i686-android24/autoconf.toml
 
@@ -2536,6 +2667,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
 
+## i686-android25/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
+
 ## system@i686-android25/autoconf.toml
 
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
@@ -2614,6 +2749,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `AUTOCONF_CONFIGURE_FLAGS`
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
+
+## i686-android26/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
 
 ## system@i686-android26/autoconf.toml
 
@@ -2694,6 +2833,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
 
+## i686-android27/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
+
 ## system@i686-android27/autoconf.toml
 
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
@@ -2772,6 +2915,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `AUTOCONF_CONFIGURE_FLAGS`
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
+
+## i686-android28/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
 
 ## system@i686-android28/autoconf.toml
 
@@ -2852,6 +2999,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
 
+## i686-android29/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
+
 ## system@i686-android29/autoconf.toml
 
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
@@ -2930,6 +3081,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `AUTOCONF_CONFIGURE_FLAGS`
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
+
+## i686-android30/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
 
 ## system@i686-android30/autoconf.toml
 
@@ -3010,6 +3165,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
 
+## i686-android31/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
+
 ## system@i686-android31/autoconf.toml
 
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
@@ -3088,6 +3247,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `AUTOCONF_CONFIGURE_FLAGS`
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
+
+## i686-android32/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
 
 ## system@i686-android32/autoconf.toml
 
@@ -3168,6 +3331,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
 
+## i686-android33/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
+
 ## system@i686-android33/autoconf.toml
 
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
@@ -3247,6 +3414,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
 
+## i686-android34/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
+
 ## system@i686-android34/autoconf.toml
 
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
@@ -3325,6 +3496,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `AUTOCONF_CONFIGURE_FLAGS`
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
+
+## i686-android35/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
 
 ## system@i686-android35/autoconf.toml
 
@@ -3485,6 +3660,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
 
+## x86_64-android21/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
+
 ## system@x86_64-android21/autoconf.toml
 
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
@@ -3563,6 +3742,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `AUTOCONF_CONFIGURE_FLAGS`
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
+
+## x86_64-android23/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
 
 ## system@x86_64-android23/autoconf.toml
 
@@ -3643,6 +3826,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
 
+## x86_64-android24/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
+
 ## system@x86_64-android24/autoconf.toml
 
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
@@ -3721,6 +3908,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `AUTOCONF_CONFIGURE_FLAGS`
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
+
+## x86_64-android25/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
 
 ## system@x86_64-android25/autoconf.toml
 
@@ -3801,6 +3992,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
 
+## x86_64-android26/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
+
 ## system@x86_64-android26/autoconf.toml
 
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
@@ -3879,6 +4074,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `AUTOCONF_CONFIGURE_FLAGS`
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
+
+## x86_64-android27/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
 
 ## system@x86_64-android27/autoconf.toml
 
@@ -3959,6 +4158,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
 
+## x86_64-android28/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
+
 ## system@x86_64-android28/autoconf.toml
 
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
@@ -4037,6 +4240,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `AUTOCONF_CONFIGURE_FLAGS`
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
+
+## x86_64-android29/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
 
 ## system@x86_64-android29/autoconf.toml
 
@@ -4117,6 +4324,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
 
+## x86_64-android30/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
+
 ## system@x86_64-android30/autoconf.toml
 
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
@@ -4195,6 +4406,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `AUTOCONF_CONFIGURE_FLAGS`
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
+
+## x86_64-android31/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
 
 ## system@x86_64-android31/autoconf.toml
 
@@ -4275,6 +4490,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
 
+## x86_64-android32/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
+
 ## system@x86_64-android32/autoconf.toml
 
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
@@ -4353,6 +4572,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `AUTOCONF_CONFIGURE_FLAGS`
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
+
+## x86_64-android33/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
 
 ## system@x86_64-android33/autoconf.toml
 
@@ -4433,6 +4656,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
 
+## x86_64-android34/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
+
 ## system@x86_64-android34/autoconf.toml
 
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
@@ -4511,6 +4738,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **merged repeated assignments**: `AUTOCONF_CONFIGURE_FLAGS`
 - **merged repeated assignments**: `CMAKE_FLAGS`
 - **merged repeated assignments**: `MESON_FLAGS`
+
+## x86_64-android35/system.toml
+
+- **built with $ORIGIN in its runtime path**: `so an exported bundle of it is a copy, not a patch`
 
 ## system@x86_64-android35/autoconf.toml
 
