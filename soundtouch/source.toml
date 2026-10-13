@@ -1,0 +1,13 @@
+version = "2.4.1"
+
+build = """
+mkdir -p dl
+if [ ! -f dl/soundtouch.tar.gz ]; then
+  curl -fSL -C - -o dl/soundtouch.tar.gz \"https://www.surina.net/soundtouch/soundtouch-2.4.1.tar.gz\"
+fi
+rm -rf src
+mkdir -p src
+tar -xzf dl/soundtouch.tar.gz -C src --strip-components=1
+mkdir -p $PREFIX
+cp -r src/* $PREFIX/
+"""

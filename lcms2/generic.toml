@@ -1,0 +1,6 @@
+deps = ["zlib", "libjpeg-turbo", "libtiff", "lcms2@source"]
+buildsystem = "autoconf"
+# Static library with the JPEG and TIFF plug-ins, found through this
+# prefix's pkg-config path, plus zlib for the utilities. The tiff and
+# jpeg utilities are host programs and stay off.
+configure_args = ["--enable-static", "--disable-shared", "--with-pic", "--with-jpeg=$libjpeg_turbo_PREFIX", "--with-tiff=$libtiff_PREFIX", "--without-python", "--disable-utils"]

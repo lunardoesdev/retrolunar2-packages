@@ -1,12 +1,21 @@
-# autotools: ./configure.
+# A recipe says `buildsystem = "autoconf"` and gives:
+#   configure_args  extra arguments for ./configure
+#   targets         arguments for the build step
+#   install_args    arguments for the install step (default: install)
 #
-# $OUTPKG is the package's final directory, which is what has to end up inside
-# the generated config files. The build writes into $DESTDIR (the emitter
-# exports it), so `make install` — the plain command a recipe writes — lands in
-# the staging tree and is moved into $OUTPKG on success.
-
+# The timestamps are touched before building because a release tarball unpacks
+# with mtimes older than the configure/Makefile.in it ships, which makes make try
+# to regenerate them with autotools - not installed in these systems, because
+# building from a release tarball should not need them.
 [buildsystem.autoconf]
-AUTOCONF_CONFIGURE_FLAGS = "--prefix=$OUTPKG"
-
-# Autoconf probes link a test program and then run it. On a native build that
-# is fine; a cross system overrides these with cache answers.
+AUTOCONF_CONFIGURE_FLAGS = "--build=$BUILD_TRIPLET --prefix=$OUTPKG"
+script = """
+cd \"${BS_source_dir:-.}\"
+./configure $AUTOCONF_CONFIGURE_FLAGS $BS_configure_args
+for _f in aclocal.m4 configure config.h.in; do
+  [ -f \"$_f\" ] && touch \"$_f\"
+done
+find . -name 'Makefile.in' -exec touch {} + 2>/dev/null || true
+make -j\"$CORES\" $BS_targets
+make $BS_install_args install
+"""

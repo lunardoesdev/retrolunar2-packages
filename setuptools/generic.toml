@@ -1,0 +1,6 @@
+deps = ["setuptools@source"]
+
+build = """
+mkdir -p $PREFIX/lib/python3.14/site-packages
+cp -r $NESTDIR/setuptools@source/* $PREFIX/lib/python3.14/site-packages/
+"""

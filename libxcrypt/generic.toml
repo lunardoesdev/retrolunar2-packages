@@ -1,0 +1,9 @@
+deps = ["perl@native", "libxcrypt@source"]
+buildsystem = "autoconf"
+# build-aux/scripts/expand-selected-hashes is a perl script run by
+# configure, and the native perl's compiled-in @INC names the build
+# staging dir, so its core modules are unreachable without this.
+configure_args = ["--enable-hashes=strong,glibc", "--enable-obsolete-api=glibc"]
+pre = """
+export PERL5LIB=\"$NATIVE_PREFIX/lib/perl5/5.44/core_perl\"
+"""

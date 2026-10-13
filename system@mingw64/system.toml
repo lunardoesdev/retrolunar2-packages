@@ -1,0 +1,66 @@
+[system]
+
+CC = "x86_64-w64-mingw32-gcc"
+CXX = "x86_64-w64-mingw32-g++"
+AR = "x86_64-w64-mingw32-ar"
+RANLIB = "x86_64-w64-mingw32-ranlib"
+LD = "x86_64-w64-mingw32-ld"
+STRIP = "x86_64-w64-mingw32-strip"
+OBJCOPY = "x86_64-w64-mingw32-objcopy"
+READELF = "x86_64-w64-mingw32-readelf"
+NM = "x86_64-w64-mingw32-nm"
+OBJDUMP = "x86_64-w64-mingw32-objdump"
+WINDRES = "x86_64-w64-mingw32-windres"
+# CPPFLAGS covers the autoconf probes ($CC -E without $CFLAGS).
+CFLAGS = "-O2"
+CXXFLAGS = "$CFLAGS"
+# No -Wl,--undefined-version: that's ELF-only, ld for PE fails.
+# The Windows import libraries are NOT in $LDFLAGS, and that is a
+# deliberate result of measuring where they have to land.
+#
+# cmake seeds CMAKE_EXE_LINKER_FLAGS from $LDFLAGS on its own
+# (CMakeCommonLanguageInclude.cmake:9 appends "$ENV{LDFLAGS}" to
+# CMAKE_EXE_LINKER_FLAGS_INIT), so putting them there does put them
+# on the link line -- but BEFORE the archives that reference them.
+# i2pd links its static libs through a response file, so libcrypto.a
+# is scanned after every linker flag, and ld does not revisit an
+# archive it already passed. Measured, with the objects from a real
+# failed build:
+#   ... -lcrypt32 -lole32 -loleaut32 -luuid -lgdi32 \
+#       -Wl,--whole-archive objects.a ... @linkLibs.rsp
+#     -> undefined reference to `__imp_CertFindCertificateInStore'
+# and the same flags moved to the END of the identical link line:
+#     -> i2pd.exe, clean link.
+#
+# CMAKE_REQUIRED_LIBRARIES is the variable i2pd itself forwards to
+# the final link (build/CMakeLists.txt:409), so it lands after
+# linkLibs.rsp, which is the position that resolves.
+#
+# -lcrypt32 is the load-bearing one: OpenSSL's mingw build reaches
+# the Windows certificate store, so libcrypto.a itself carries the
+# __imp_CertFindCertificateInStore reference. -lole32/-loleaut32/
+# -luuid are what Win32/COM consumers need (CoCreateInstance,
+# CoUninitialize, the IID_/CLSID_ constants); -lgdi32 is parity with
+# upstream's Makefile.mingw:44-52. Upstream's cmake only appends
+# crypt32 for MSVC (build/CMakeLists.txt:378-381), so a mingw build
+# has to get these from the system.
+# Look up .pc files in our prefix, ignore host ones.
+PKG_CONFIG_PATH = "$PKG_CONFIG_PATH"
+# build = the machine that runs the build; host = the machine the
+# artifacts run on (autoconf's --host). FFmpeg-family configure
+# scripts are not autoconf and reject --host/--build, so they read
+# $HOST_ARCH/$HOST_OS and spell them their own way. Nothing here
+# builds a compiler for a further machine: target == host.
+BUILD_TRIPLET = "x86_64-pc-linux-gnu"
+HOST_TRIPLET = "x86_64-w64-mingw32"
+TARGET_TRIPLET = "$HOST_TRIPLET"
+HOST_ARCH = "x86_64"
+HOST_OS = "mingw32"
+# How many jobs a build may use. retrolunar will export CORES itself
+# in the future; until then it comes from the environment and falls
+# back to 1, so a build is serial unless the caller asked otherwise.
+# Recipes pass it to their build tool (`make -j"$CORES"`,
+# `cmake --build ... --parallel "$CORES"`, `ninja -j "$CORES"`,
+# `meson compile --jobs "$CORES"`). MAKEFLAGS covers bare `make`,
+# including recursive submakes that never see the recipe line.
+MAKEFLAGS = "-j$CORES"

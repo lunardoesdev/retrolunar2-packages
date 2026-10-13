@@ -1,0 +1,9 @@
+deps = ["mpg123@source"]
+buildsystem = "autoconf"
+# The release tarball ships a genuine generated configure (GNU
+# Autoconf 2.71, 702414 bytes), aclocal.m4 (83526) and Makefile.in
+# (458218), so no autoreconf is needed and no host autotools are
+# required.
+#
+# The config template is src/config.h.in - it is the only one in the
+# tree, and there is no top-level template.

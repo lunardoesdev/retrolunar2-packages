@@ -1,0 +1,24 @@
+# A recipe says `buildsystem = "meson"` and gives:
+#   args        extra -D options for setup
+#   source_dir  where meson.build lives, when not the top of the work dir
+[buildsystem.meson]
+# ZLIB_ROOT is a search-path hint (FindZLIB.cmake:140-143 searches it
+# first), and it is ALSO read directly by projects: i2pd does
+# `link_directories(${ZLIB_ROOT}/lib)` at build/CMakeLists.txt:314.
+# Left unset, that expands to the literal path /lib, and on this
+# build host /lib is a symlink to /usr/lib -- the HOST's library
+# directory. So the target link line grew `-L/lib`, and every
+# `-lpthread` after it resolved to glibc's libpthread.a, which on
+# this host is an 8-byte empty archive (`!<arch>\n`, verified with
+# od). mingw's real winpthreads archive at
+# /usr/x86_64-w64-mingw32/lib/libpthread.a was never reached and the
+# link died on `undefined reference to pthread_self' and every other
+# winpthreads symbol. A host library directory on a target link line
+# is never what anyone meant; pointing the variable at $PREFIX is.
+MESON_CROSS_FILE = "$SYSDIR/crossfile-x86_64-mingw.ini"
+MESON_FLAGS = "--prefix=$OUTPKG "
+script = """
+meson setup build ${MESON_CROSS_FILE:+--cross-file \"$MESON_CROSS_FILE\"} $MESON_FLAGS $BS_args
+ninja -C build -j \"$CORES\"
+ninja -C build -j \"$CORES\" install
+"""

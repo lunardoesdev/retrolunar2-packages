@@ -1,0 +1,16 @@
+# A recipe says `buildsystem = "make"` and gives:
+#   targets       what to build
+#   make_args     arguments after the toolchain ones, so a recipe can override
+#   install_args  what to install (default: install)
+#   install       false when the build step already installs
+#
+# The toolchain is passed as arguments rather than through the environment
+# because a Makefile that says `CC=gcc` ignores the environment and would build
+# with the host's compiler.
+[buildsystem.make]
+script = """
+make -j\"$CORES\" CC=\"$CC\" AR=\"$AR\" RANLIB=\"$RANLIB\" CFLAGS=\"$CFLAGS\" CXXFLAGS=\"$CXXFLAGS\" LDFLAGS=\"$LDFLAGS\" $BS_make_args $BS_targets
+if [ \"$BS_install\" != \"false\" ]; then
+  DESTDIR=\"$DESTDIR\" make CC=\"$CC\" AR=\"$AR\" RANLIB=\"$RANLIB\" $BS_install_args install
+fi
+"""

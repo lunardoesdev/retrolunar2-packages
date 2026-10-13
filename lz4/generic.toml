@@ -1,0 +1,11 @@
+deps = ["lz4@source"]
+
+build = """
+cp -r $NESTDIR/lz4@source/* .
+# The lib/ Makefile honours PREFIX and BUILD_SHARED/LIBDIR, which is
+# how lz4 expects to be installed into a staged prefix.
+make -C lib PREFIX=\"$PREFIX\" BUILD_SHARED=no BUILD_STATIC=yes
+make -C lib PREFIX=\"$PREFIX\" BUILD_SHARED=no BUILD_STATIC=yes install
+make -C programs PREFIX=\"$PREFIX\"
+make -C programs PREFIX=\"$PREFIX\" install
+"""

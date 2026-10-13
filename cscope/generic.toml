@@ -1,0 +1,2 @@
+deps = ["flex@native", "bison@native", "cscope@source"]
+buildsystem = "autoconf"

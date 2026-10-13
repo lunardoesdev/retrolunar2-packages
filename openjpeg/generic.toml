@@ -1,0 +1,3 @@
+deps = ["openjpeg@source"]
+buildsystem = "cmake"
+args = ["-DBUILD_SHARED_LIBS=OFF", "-DBUILD_TESTING=OFF", "-DBUILD_CODEC=OFF"]

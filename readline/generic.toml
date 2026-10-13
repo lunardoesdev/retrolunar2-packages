@@ -1,0 +1,8 @@
+deps = ["termcap", "readline@source"]
+buildsystem = "autoconf"
+# Python links readline into a shared module: objects need -fPIC.
+# Use the existing termcap dependency instead of adding ncurses here.
+configure_args = ["--disable-shared", "--enable-static", "--without-curses"]
+pre = """
+export CFLAGS=\"$CFLAGS -fPIC\"
+"""

@@ -1,72 +1,38 @@
-# The native system: this host's clang, driven with the GNU binutils that are
-# actually installed here.
-#
-# Values are shell text. A single-line value becomes a quoted assignment, so
-# `$(...)` runs when the generated script sets it, and a value that reads
-# `$CPPFLAGS` appends to what the emitter already put there. A value with
-# newlines is emitted verbatim and exports what it needs itself.
-#
-# Search paths are not defined here: the emitter builds them from the package's
-# dependency closure ($CPPFLAGS, $LDFLAGS, $PKG_CONFIG_LIBDIR,
-# $CMAKE_PREFIX_PATH, and $PATH/$LD_LIBRARY_PATH from the host dependencies)
-# because in v2 every dependency has its own directory. This file adds only what
-# is true of the toolchain.
-
 [system]
-# Where host helper programs come from: a native system is its own host.
-host = "clang-native"
 
-# Changes to any of these make every package of this system stale, even when
-# not one file in this directory changed.
-probe = [
-    "${system.CC} --version",
-    "cmake --version",
-    "meson --version",
-    "ninja --version",
-]
-
-# Required tools are checked before a build starts rather than half way
-# through one.
-#
-# `rl_need`, not `command -v` inside a value: the script runs under `set -e`,
-# so `CC="$(command -v clang)"` with clang missing kills the shell with no
-# message at all, and the check below it never runs.
-script = """
-rl_need() {
-  if ! command -v "$1" >/dev/null 2>&1; then
-    echo "clang-native: $1 is not installed" >&2
-    exit 1
-  fi
-}
-rl_need clang
-rl_need clang++
-rl_need ar
-rl_need ranlib
-"""
-
-# --- toolchain ---
-# Plain names, resolved through PATH: this is a native system, so the host's own
-# tools are the right ones. A cross system names its wrappers by absolute path
-# instead, because a target toolchain never goes on PATH.
 CC = "clang"
 CXX = "clang++"
 AR = "ar"
 RANLIB = "ranlib"
+LD = "ld"
 AS = "$CC"
 STRIP = "strip"
 OBJCOPY = "objcopy"
 READELF = "readelf"
 OBJDUMP = "objdump"
-NM = "nm"
-
-# --- flags ---
-CFLAGS = "-O2 -fPIC"
-CXXFLAGS = "-O2 -fPIC"
-
-# --- machine identities: build, host, target ---
-# Nothing here builds a compiler for a further machine, so target == host.
+# $PREFIX points at this system's nest dir, where deps landed.
+# CPPFLAGS/LDFLAGS cover the autoconf probes (e.g. libpng's
+# zlib check); plain CFLAGS stay clean for direct $CC users.
+CFLAGS = "-O2 -fPIC $CPPFLAGS"
+CXXFLAGS = "-O2 -fPIC $CPPFLAGS"
+LDFLAGS = "$LDFLAGS -Wl,--undefined-version"
+# Ignore host .pc files: only ours count.
+PKG_CONFIG_PATH = "$PKG_CONFIG_PATH"
+# A native build runs on the same machine it targets, so build, host
+# and target are one triplet. FFmpeg-family configure scripts are not
+# autoconf and reject --host/--build, so they read $HOST_ARCH/
+# $HOST_OS and spell them their own way.
 BUILD_TRIPLET = "x86_64-pc-linux-gnu"
-HOST_TRIPLET = "x86_64-pc-linux-gnu"
-TARGET_TRIPLET = "x86_64-pc-linux-gnu"
+HOST_TRIPLET = "$BUILD_TRIPLET"
+TARGET_TRIPLET = "$HOST_TRIPLET"
 HOST_ARCH = "x86_64"
 HOST_OS = "linux"
+# How many jobs a build may use. retrolunar will export CORES itself
+# in the future; until then it comes from the environment and falls
+# back to 1, so a build is serial unless the caller asked otherwise.
+# Recipes pass it to their build tool (`make -j"$CORES"`,
+# `cmake --build ... --parallel "$CORES"`, `ninja -j "$CORES"`,
+# `meson compile --jobs "$CORES"`). MAKEFLAGS covers bare `make`,
+# including recursive submakes that never see the recipe line.
+MAKEFLAGS = "-j$CORES"
+probe = ["clang --version", "meson --version", "cmake --version", "pkg-config --version"]

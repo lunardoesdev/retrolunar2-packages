@@ -1,0 +1,6 @@
+deps = ["tcl-docs@source"]
+
+build = """
+mkdir -p $PREFIX/share/doc/tcl8.6.18
+cp -r $NESTDIR/tcl-docs@source/* $PREFIX/share/doc/tcl8.6.18/
+"""

@@ -1,0 +1,33 @@
+[system]
+
+CC = "i686-w64-mingw32-gcc"
+CXX = "i686-w64-mingw32-g++"
+AR = "i686-w64-mingw32-ar"
+RANLIB = "i686-w64-mingw32-ranlib"
+LD = "i686-w64-mingw32-ld"
+STRIP = "i686-w64-mingw32-strip"
+OBJCOPY = "i686-w64-mingw32-objcopy"
+READELF = "i686-w64-mingw32-readelf"
+NM = "i686-w64-mingw32-nm"
+OBJDUMP = "i686-w64-mingw32-objdump"
+WINDRES = "i686-w64-mingw32-windres"
+# CPPFLAGS covers the autoconf probes ($CC -E without $CFLAGS).
+CFLAGS = "-O2"
+CXXFLAGS = "$CFLAGS"
+# Look up .pc files in our prefix, ignore host ones.
+PKG_CONFIG_PATH = "$PKG_CONFIG_PATH"
+# build = the machine that runs the build; host = the machine the
+# artifacts run on (autoconf's --host). FFmpeg-family configure
+# scripts are not autoconf and reject --host/--build, so they read
+# $HOST_ARCH/$HOST_OS and spell them their own way. Nothing here
+# builds a compiler for a further machine: target == host.
+BUILD_TRIPLET = "x86_64-pc-linux-gnu"
+HOST_TRIPLET = "i686-w64-mingw32"
+TARGET_TRIPLET = "$HOST_TRIPLET"
+HOST_ARCH = "i686"
+HOST_OS = "mingw32"
+# How many jobs a build may use. Takes the value from the
+# environment so retrolunar can export CORES itself; falls back to 1.
+# MAKEFLAGS is what carries the count into a bare `make` and into its
+# recursive submakes.
+MAKEFLAGS = "-j$CORES"

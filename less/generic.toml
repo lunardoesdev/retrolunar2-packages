@@ -1,0 +1,2 @@
+deps = ["less@source", "ncurses"]
+buildsystem = "autoconf"

@@ -1,0 +1,2 @@
+deps = ["file@native", "file@source"]
+buildsystem = "autoconf"

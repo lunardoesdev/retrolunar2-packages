@@ -1,0 +1,29 @@
+# A recipe says `buildsystem = "cargo"` and gives:
+#   bin                  the binary to install (required)
+#   features             --features value
+#   no_default_features  true to add --no-default-features
+#   install              false when something else installs the result
+#
+# Cargo does not read $LDFLAGS, so a binary it builds carries no runtime path;
+# `retrolunar export` writes a launcher beside a bundle for those.
+[buildsystem.cargo]
+# cc-crate Vars mirror $CC/$CFLAGS for build scripts.
+CARGO_BUILD_TARGET = "aarch64-linux-android"
+CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER = "$CC"
+CARGO_TARGET_AARCH64_LINUX_ANDROID_AR = "$AR"
+PKG_CONFIG_ALLOW_CROSS = "1"
+CC_aarch64_linux_android = "$CC"
+CFLAGS_aarch64_linux_android = "$CFLAGS"
+CXX_aarch64_linux_android = "$CXX"
+CXXFLAGS_aarch64_linux_android = "$CXXFLAGS"
+script = """
+${BS_env:+env $BS_env }cargo build --release --target \"$CARGO_BUILD_TARGET\" -j \"$CORES\" ${BS_no_default_features:+--no-default-features} ${BS_features:+--features \"$BS_features\"}
+if [ \"$BS_install\" != \"false\" ]; then
+  mkdir -p \"$PREFIX/bin\"
+  for _bin in ${BS_bin:?a cargo recipe must name its bin}; do
+    _exe=\"target/$CARGO_BUILD_TARGET/release/$_bin\"
+    [ -f \"$_exe\" ] || _exe=\"$_exe.exe\"
+    cp \"$_exe\" \"$PREFIX/bin/\"
+  done
+fi
+"""

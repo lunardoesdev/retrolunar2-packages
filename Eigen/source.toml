@@ -1,0 +1,13 @@
+version = "5.0.1"
+
+build = """
+mkdir -p dl
+if [ ! -f dl/eigen.tar.gz ]; then
+  curl -fSL -C - -o dl/eigen.tar.gz \"https://gitlab.com/libeigen/eigen/-/archive/5.0.1/eigen-5.0.1.tar.gz\"
+fi
+rm -rf src
+mkdir -p src
+tar -xzf dl/eigen.tar.gz -C src --strip-components=1
+mkdir -p $PREFIX
+cp -r src/* $PREFIX/
+"""

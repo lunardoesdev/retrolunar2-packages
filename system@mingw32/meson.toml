@@ -1,0 +1,15 @@
+# A recipe says `buildsystem = "meson"` and gives:
+#   args        extra -D options for setup
+#   source_dir  where meson.build lives, when not the top of the work dir
+[buildsystem.meson]
+# FindZLIB.cmake searches this first, and projects read it directly.
+# Left unset it expands to the literal /lib, the HOST's library
+# directory, which silently resolves target -l flags to host
+# archives.
+MESON_CROSS_FILE = "$SYSDIR/crossfile-i686-w64-mingw32.ini"
+MESON_FLAGS = "--prefix=$OUTPKG "
+script = """
+meson setup build ${MESON_CROSS_FILE:+--cross-file \"$MESON_CROSS_FILE\"} $MESON_FLAGS $BS_args
+ninja -C build -j \"$CORES\"
+ninja -C build -j \"$CORES\" install
+"""

@@ -1,0 +1,12 @@
+deps = ["autoconf", "automake@source"]
+
+build = """
+cp -r $NESTDIR/automake@source/* .
+# The Perl scripts embed their module directory; stage install separately.
+./configure $AUTOCONF_CONFIGURE_FLAGS
+# Keep the release's generated version macro and aclocal.m4 current.
+touch m4/amversion.m4 aclocal.m4 configure config.h.in
+find . -name 'Makefile.in' | xargs touch
+make -j\"$CORES\"
+make -j\"$CORES\" prefix=\"$OUTPKG\" install
+"""

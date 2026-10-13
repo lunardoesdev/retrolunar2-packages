@@ -1,0 +1,3 @@
+deps = ["gdbm@source"]
+buildsystem = "autoconf"
+configure_args = ["--disable-static", "--enable-libgdbm-compat"]

@@ -1,11 +1,22 @@
-# meson.
-#
-# --prefix only. meson takes the toolchain from the environment ($CC, $CXX,
-# $AR are exported by the system) and has no policy floor to set. The job count
-# comes from the recipe's own `meson compile --jobs "$CORES"`.
-#
-# No cross-file: a native build needs none, and a cross system passes its own
-# with --cross-file $SYSDIR/<file>.ini.
-
+# A recipe says `buildsystem = "meson"` and gives:
+#   args        extra -D options for setup
+#   source_dir  where meson.build lives, when not the top of the work dir
 [buildsystem.meson]
+MESON_CROSS_FILE = ""
+# MESON_FLAGS was missing here entirely, which is a silent-failure
+# defect rather than a cosmetic gap: meson with no --prefix records
+# prefix=/usr/local, so a meson build compiles happily, "installs",
+# writes nothing into $OUT, and reports no error. The package then
+# appears to build and produces no artifact at all.
+#
+# --prefix only. Unlike the cross systems there is no cross-file to
+# pass, because meson takes the native toolchain from the environment
+# ($CC, $CXX, $AR and friends are all exported above), and no policy
+# floor is needed because this is not cmake. The job count comes from
+# the recipes' own `meson compile --jobs "$CORES"`, not from here.
 MESON_FLAGS = "--prefix=$OUTPKG"
+script = """
+meson setup build ${MESON_CROSS_FILE:+--cross-file \"$MESON_CROSS_FILE\"} $MESON_FLAGS $BS_args
+ninja -C build -j \"$CORES\"
+ninja -C build -j \"$CORES\" install
+"""

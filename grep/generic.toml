@@ -1,0 +1,2 @@
+deps = ["grep@source"]
+buildsystem = "autoconf"

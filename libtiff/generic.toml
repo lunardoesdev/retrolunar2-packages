@@ -1,0 +1,3 @@
+deps = ["zlib", "libjpeg-turbo", "libtiff@source"]
+buildsystem = "cmake"
+args = ["-DBUILD_SHARED_LIBS=OFF", "-Dtiff-tools=OFF", "-Dtiff-tests=OFF", "-Dtiff-contrib=OFF", "-Dtiff-docs=OFF", "-Dwebp=OFF", "-Dlerc=OFF", "-Dzstd=OFF", "-Dlibdeflate=OFF", "-Dlzma=ON", "-Djpeg=ON"]

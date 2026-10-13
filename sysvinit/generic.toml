@@ -1,0 +1,7 @@
+deps = ["sysvinit@source"]
+buildsystem = "make"
+install = false
+make_args = ["ROOT=$PREFIX", "usrdir="]
+pre = """
+make
+"""

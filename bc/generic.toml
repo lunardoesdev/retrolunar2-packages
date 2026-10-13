@@ -1,0 +1,7 @@
+deps = ["readline", "bc@source"]
+buildsystem = "make"
+# Bc uses a custom configure script and requires C99.
+# The custom configure omits termcap from its static Readline link.
+pre = """
+CC=\"$CC -std=c99\" ./configure --prefix=\"$OUTPKG\" --enable-readline
+"""

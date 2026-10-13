@@ -1,0 +1,4 @@
+deps = ["acl", "coreutils@source"]
+buildsystem = "autoconf"
+# Procps provides both of these commands separately.
+configure_args = ["--enable-no-install-program=kill,uptime"]

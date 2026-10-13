@@ -1,0 +1,26 @@
+# A recipe says `buildsystem = "cmake"` and gives only what is its own:
+#   args        extra arguments, after the system's flags
+#   source_dir  where CMakeLists.txt lives, when not the top of the work dir
+[buildsystem.cmake]
+CMAKE_GENERATOR = "Ninja"
+CMAKE_TOOLCHAIN_FILE = "$SYSDIR/x86_64-linux-android33-toolchain.cmake"
+CMAKE_FLAGS = "-DCMAKE_TOOLCHAIN_FILE=$CMAKE_TOOLCHAIN_FILE -DCMAKE_INSTALL_PREFIX=$OUTPKG -DCMAKE_TRY_COMPILE_TARGET_TYPE=STATIC_LIBRARY -DTHREADS_PREFER_PTHREAD_FLAG=ON -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_MAKE_PROGRAM=$CMAKE_MAKE_PROGRAM"
+# cmake's compiler check links a test program and then runs it. A
+# cross target binary cannot run here, and running one would be
+# emulation, which we never do: link a static library instead.
+# Bionic keeps pthreads in libc, which FindThreads cannot detect on
+# a cross build: its libc probe fails and it then settles on a
+# "pthreads" library that no Android sysroot has. Prefer the plain
+# -pthread flag, which is what this platform actually wants.
+# cmake 4.x refuses any project whose minimum policy is below 3.5,
+# and most of these projects are older than cmake itself. Give them
+# a floor instead of editing their CMakeLists.txt.
+# cmake runs the make program it finds, and it would find ours:
+# $PREFIX/bin/make is an Android binary, so running it would need an
+# emulator. Pin the host make.
+CMAKE_MAKE_PROGRAM = "$(command -v make || true)"
+script = """
+cmake -S \"${BS_source_dir:-.}\" -B build -G \"$CMAKE_GENERATOR\" ${CMAKE_TOOLCHAIN_FILE:+-DCMAKE_TOOLCHAIN_FILE=\"$CMAKE_TOOLCHAIN_FILE\"} $CMAKE_FLAGS $BS_args
+cmake --build build --parallel \"$CORES\"
+cmake --install build
+"""

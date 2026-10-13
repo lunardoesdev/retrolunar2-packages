@@ -1,0 +1,2 @@
+deps = ["tcl", "dejagnu@source"]
+buildsystem = "autoconf"

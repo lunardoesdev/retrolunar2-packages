@@ -1,0 +1,7 @@
+deps = ["libyaml@source"]
+buildsystem = "autoconf"
+# Static library, header and pkg-config file. The reference parser
+# and the hpricot test tool are host programs and stay off; so does
+# the optional uchardet encoding probe, which the generic build would
+# otherwise try to compile.
+configure_args = ["--enable-static", "--disable-shared", "--with-pic", "--disable-python-bindings"]

@@ -1,0 +1,11 @@
+deps = ["jinja2@source"]
+
+build = """
+cp -r $NESTDIR/jinja2@source/* .
+# Pure Python: copy the package into site-packages. LFS builds a
+# wheel with pip3, which would also add dist-info metadata; we skip
+# that because it needs a host Python, and only the module is used.
+mkdir -p $PREFIX/lib/python3.14/site-packages
+cp -r src/jinja2 $PREFIX/lib/python3.14/site-packages/
+cp LICENSE.txt $PREFIX/lib/python3.14/site-packages/jinja2/LICENSE.txt
+"""

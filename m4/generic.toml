@@ -1,22 +1,17 @@
-version = "1.4.20"
 deps = ["m4@source"]
 
-# autotools. The timestamp guard sits after ./configure because the tarball's
-# mtimes otherwise send make looking for aclocal-1.17, which this prefix does
-# not have. The template is lib/config.hin here — m4's own spelling, checked in
-# the unpacked tree, not the config.h.in most packages use.
 build = """
-cp -r "$NESTDIR/m4@source"/. .
+cp -r $NESTDIR/m4@source/* .
 ./configure $AUTOCONF_CONFIGURE_FLAGS
 touch aclocal.m4 configure lib/config.hin
 find . -name 'Makefile.in' | xargs touch
-make -j"$CORES" -C lib
-make -j"$CORES" -C src
-make -j"$CORES" .version
-make -j"$CORES" -C doc version.texi
-# Keep the shipped man page: regenerating it would run the m4 binary we just
-# built with a fresh --version output, which is pointless churn here.
+make -j\"$CORES\" -C lib
+make -j\"$CORES\" -C src
+make -j\"$CORES\" .version
+make -j\"$CORES\" -C doc version.texi
+# Keep the shipped man page; regenerating it would execute the
+# Android m4 binary on the build host.
 touch doc/m4.1
-make -j"$CORES"
+make -j\"$CORES\"
 make install
 """

@@ -1,0 +1,2 @@
+deps = ["libffi@source"]
+buildsystem = "autoconf"

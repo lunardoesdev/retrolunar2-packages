@@ -1,0 +1,6 @@
+deps = ["flex@native", "bison@native", "libnl-3@source"]
+buildsystem = "autoconf"
+# Static with PIC. The default --enable-cli=yes builds 51 command
+# line tools, and with it libnl-cli-3 (the only object that links
+# -ldl); the libraries themselves need neither.
+configure_args = ["--enable-static", "--disable-shared", "--with-pic", "--enable-cli=no"]

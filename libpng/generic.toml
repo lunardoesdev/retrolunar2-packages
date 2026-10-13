@@ -1,17 +1,5 @@
-version = "1.6.48"
 deps = ["zlib", "libpng@source"]
-
-# autotools. zlib is found through $CPPFLAGS and $LDFLAGS, which the emitter
-# builds from the dependency closure, so the old --with-zlib-prefix is not
-# needed: there is no single prefix to point at any more.
-#
-# The timestamp guard touches libpng's own template name, config.h.in, and runs
-# after ./configure for the reason given in m4.
-build = """
-cp -r "$NESTDIR/libpng@source"/. .
-./configure $AUTOCONF_CONFIGURE_FLAGS
-touch aclocal.m4 configure config.h.in
-find . -name 'Makefile.in' | xargs touch
-make -j"$CORES"
-make install
-"""
+buildsystem = "autoconf"
+# configure's zlib probe hardcodes -lz and prepends its own -lz, so LIBS cannot
+# override it and a missing -l is a hard error. On mingw, where zlib installs as
+# libzlib, the alias that makes -lz resolve lives in zlib's own mingw64.toml.

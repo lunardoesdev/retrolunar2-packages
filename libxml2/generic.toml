@@ -1,0 +1,9 @@
+deps = ["libxml2@source"]
+buildsystem = "autoconf"
+# --without-python and --without-docs are already this release's
+# upstream defaults (configure.ac:579 runs the Python probe only for
+# an explicit "yes", configure.ac:563 likewise for docs), but an
+# explicit "yes" pulls a hard doxygen/xsltproc requirement
+# (configure.ac:589-593). Both are stated so an upstream default
+# flip cannot quietly add a host toolchain to a cross build.
+configure_args = ["--without-python", "--without-docs"]

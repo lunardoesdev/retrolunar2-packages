@@ -1,14 +1,12 @@
-# cmake.
-#
-# CMAKE_PREFIX_PATH is already in the environment, built from the dependency
-# closure by the emitter, so a find_package() looking for a dependency finds
-# that dependency's own directory.
-#
-# -DCMAKE_POLICY_VERSION_MINIMUM=3.5 gives old projects a policy floor: cmake
-# 4.x refuses anything whose minimum is below 3.5, and most of these projects
-# predate cmake's own default.
-
+# A recipe says `buildsystem = "cmake"` and gives only what is its own:
+#   args        extra arguments, after the system's flags
+#   source_dir  where CMakeLists.txt lives, when not the top of the work dir
 [buildsystem.cmake]
+CMAKE_TOOLCHAIN_FILE = ""
+CMAKE_GENERATOR = "Ninja"
 CMAKE_FLAGS = "-DCMAKE_INSTALL_PREFIX=$OUTPKG -DCMAKE_POLICY_VERSION_MINIMUM=3.5"
-
-# touched for the invalidation test
+script = """
+cmake -S \"${BS_source_dir:-.}\" -B build -G \"$CMAKE_GENERATOR\" ${CMAKE_TOOLCHAIN_FILE:+-DCMAKE_TOOLCHAIN_FILE=\"$CMAKE_TOOLCHAIN_FILE\"} $CMAKE_FLAGS $BS_args
+cmake --build build --parallel \"$CORES\"
+cmake --install build
+"""
