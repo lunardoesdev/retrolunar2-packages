@@ -1,0 +1,63 @@
+deps = ["perl@native", "help2man@source"]
+buildsystem = "autoconf"
+# help2man writes a program's man page from its --help output. A texinfo
+# build runs it: texinfo/Makefile.am builds man/makeinfo.1 with a
+# `$(HELP2MAN) --output=... --no-info ./makeinfo` rule, and without it the
+# build stops with `help2man: command not found` (makeinfo.1, Error 127) -
+# nothing else in the tree provides it and the host has none.
+#
+# perl@native is a program this build runs, not a convenience: help2man.PL is
+# expanded into the script `help2man` by @PERL@ (Makefile.in:target = help2man),
+# and the installed program keeps perl in its shebang, so the same interpreter
+# has to be there at build time and at run time.
+#
+# --disable-nls: with NLS on, configure.ac:29-58 wants the perl module
+# Locale::gettext, MSGFMT, dlsym and bindtextdomain, and sets
+# extra_make_all = 'preload man_l10n info_l10n', i.e. the build then runs
+# msgfmt on the translations and compiles a preload shim. help2man is a build
+# tool here - its own localised man pages are of no use to a cross build - and
+# the tree has no gettext that builds (gettext/generic.toml records its own
+# iconv/libtextstyle wall), so the flag is the one that keeps the dependency
+# out instead of quietly taking the host's msgfmt.
+#
+# The manual is kept, not rebuilt: help2man.1 and help2man.info both ship in
+# the tarball and install_base installs them as they are (Makefile.in
+# `$(INSTALL_DATA) $($(FIND_VPATH) $(target).1) ...`), but `all` depends on
+# `man` and `info` and neither the source node's `cp -r` nor the copy into the
+# work directory preserves mtimes, so help2man.PL can land newer than the
+# manual and make would rebuild it - for `info` that means makeinfo, the very
+# program this package exists to help build, and for the man page help2man
+# itself. Touching the shipped files keeps both, newest last so nothing they
+# depend on stays newer than they are; it is the same thing gmp's and m4's
+# recipes do with the documentation they ship.
+# PERL is named explicitly because this build *runs* the interpreter it bakes
+# into the installed script: help2man.PL is expanded into bin/help2man by it,
+# and with the interpreter resolved from PATH the shebang came out as the host's
+# /usr/bin/perl - the machine fact the @native dependency exists to keep out.
+# Naming the perl this tree built puts it in the artifact instead; $NESTDIR is
+# the nest the entry lives in, the class a later move cannot rewrite.
+configure_args = ["--disable-nls", "PERL=$NESTDIR/perl@clang-native/bin/perl"]
+pre = """
+for _f in help2man.info help2man.1; do
+  [ -f \"$_f\" ] && touch \"$_f\"
+done
+"""
+# The driver's fields are asserted rather than left to their defaults: the
+# emitted script reads BS_make as ${BS_make:-} in every node's block, so a field
+# this recipe does not define is whatever the node before it left behind, and
+# bzip2 and lame build in post with make = false / install = false.
+# install_args carries DESTDIR on the command line, and that is not a
+# belt-and-braces spelling: help2man's Makefile.in:29 is `DESTDIR =`, a variable
+# the Makefile itself defines, and a Makefile variable beats the environment.
+# The declared DESTDIR alone therefore installed straight into the published
+# path - the entry was written in place, nothing was staged, and the publish
+# step then reported
+#   sh: line 50: <stage>/.../store/<hash>/../.relax-list: No such file or directory
+# A command-line assignment outranks the Makefile, which is what puts the
+# install back under the stage. (openssl's recipe needs the same thing for the
+# same reason - its generated Makefile assigns DESTDIR too.)
+make = true
+install = true
+targets = ""
+make_args = ""
+install_args = "DESTDIR=$DESTDIR"
