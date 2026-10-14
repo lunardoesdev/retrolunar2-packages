@@ -1,0 +1,32 @@
+# libilbc 3.x carries its abseil dependency as a git submodule, and a GitHub
+# archive tarball has no submodule content: abseil-cpp/ unpacks empty while
+# rtc_base/checks.h:57-58 includes absl/meta/type_traits.h and
+# absl/strings/string_view.h, and rtc_base/checks.cc:36 includes checks.h, so
+# the build needs the headers present. The submodule is part of what the
+# v3.0.4 tag pins (libilbc's tree records it as a gitlink), so its commit is
+# pinned here too and fetched the same way as the source: the abseil tree is
+# laid out under src/abseil-cpp/, which is the path CMakeLists.txt:149 adds
+# to the include directories.
+#
+# The pin is the submodule commit of v3.0.4, 1bae23e32ba1, not abseil's tip:
+# a later abseil can drop what this project compiles against, and the tag is
+# what the version above names.
+version = "3.0.4"
+
+build = """
+mkdir -p dl
+if [ ! -f dl/libilbc.tar.gz ]; then
+  curl -fSL -C - -o dl/libilbc.tar.gz \"https://github.com/TimothyGu/libilbc/archive/refs/tags/v3.0.4.tar.gz\"
+fi
+if [ ! -f dl/abseil-cpp.tar.gz ]; then
+  curl -fSL -C - -o dl/abseil-cpp.tar.gz \"https://github.com/abseil/abseil-cpp/archive/1bae23e32ba1f1af7c7d1488a69a351ec96dc98d.tar.gz\"
+fi
+rm -rf src
+mkdir -p src
+tar -xzf dl/libilbc.tar.gz -C src --strip-components=1
+rm -rf src/abseil-cpp
+mkdir -p src/abseil-cpp
+tar -xzf dl/abseil-cpp.tar.gz -C src/abseil-cpp --strip-components=1
+mkdir -p $PREFIX
+cp -r src/* $PREFIX/
+"""

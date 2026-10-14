@@ -1,0 +1,25 @@
+deps = ["libilbc@source"]
+buildsystem = "cmake"
+# The library, its two installed headers (ilbc.h and the ilbc_export.h
+# generate_export_header writes, CMakeLists.txt:310, 331) and libilbc.pc.
+#
+# BUILD_SHARED_LIBS=OFF: upstream defaults it ON (CMakeLists.txt:34-35) and a
+# cross target prefix has no loader path we control, so the archive has to be
+# asked for.
+#
+# Nothing else needs switching off. ilbc_test and ilbc_test2
+# (CMakeLists.txt:314, 317) are executables: a cross build compiles and links
+# them and never runs them, which is allowed. The two rules that would *run* a
+# target binary are the add_custom_target pairs at CMakeLists.txt:320-324
+# (ilbc_test-sample / ilbc_test2-sample, which upstream's CI invokes with
+# `cmake --build ... -t`); they carry no ALL, so they are not part of the
+# default build and `cmake --build build` never reaches them. This is the
+# reason the recipe does not have to disable tests, only to leave them alone.
+#
+# CMAKE_SYSTEM_PROCESSOR is aarch64 in this system's toolchain file, so
+# CMakeLists.txt:104 takes the ARM64 branch: WEBRTC_ARCH_ARM64 and WITH_NEON
+# are set from it (and the NEON sources are pure C, built by the NDK clang),
+# while the 32-bit ARM branch that would call check_c_source_compiles and
+# enable_language(ASM) is not reached. Nothing here is Android-specific, so no
+# android.toml is needed.
+args = ["-DBUILD_SHARED_LIBS=OFF"]
