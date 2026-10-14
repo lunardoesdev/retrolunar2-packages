@@ -1,0 +1,99 @@
+deps = ["gmp", "nettle", "libtasn1", "zlib", "gnutls@source"]
+buildsystem = "autoconf"
+# The TLS library: static libgnutls.a, its headers under include/gnutls and
+# lib/ and the gnutls.pc configure writes. Everything optional that this tree
+# does not carry is off, by name; what the tree does carry (gmp, nettle,
+# libtasn1, zlib) is a dependency above, so the closure puts its include and
+# library directories on the compile and link lines and its .pc files in
+# PKG_CONFIG_LIBDIR.
+#
+# Read from configure --help of 3.8.13, not guessed. The options that name a
+# dependency this tree does not have:
+#   --without-p11-kit   not optional in the useful sense: configure.ac:929-951
+#                       runs PKG_CHECK_MODULES(p11-kit-1) unless the flag is
+#                       given, and with nothing to find it calls AC_MSG_ERROR
+#                       ("p11-kit >= 0.23.1 was not found"), so without this
+#                       line configure cannot finish at all. gnutls' own
+#                       PKCS#11 support goes with it.
+#   --without-tpm2      tpm2-tss, not in the tree. Default is `yes`, which
+#                       with no dlopen in a cross build means `link` and a
+#                       pkg-config probe for tss2-esys and tss2-mu.
+#   --without-tpm       the older trousers TPM, also absent.
+#   --disable-libdane   libdane needs libunbound, which is not in the tree;
+#                       configure.ac:856-884 turns it off by itself after a
+#                       failed link test, this states it instead.
+#   --without-idn       libidn2/libunistring-based IDNA; libidn2 is absent.
+#   --without-brotli    brotli is in the tree, and still off: gnutls wants one
+#   --without-zstd      decompression backend, not three, and these two are the
+#                       ones this family does not need. zlib is kept because
+#                       configure wants it by default and the tree has it (see
+#                       the deps line) - letting it fall back silently would be
+#                       how a build "succeeds" with compression missing.
+#   --with-included-unistring
+#                       the one dependency that cannot be switched off: with no
+#                       libunistring in the tree, configure.ac:522-532 fails
+#                       with "Libunistring was not found. To use the included
+#                       one, use --with-included-unistring". So the choice is
+#                       the bundled copy in lib/unistring, which is what this
+#                       is - a copy inside the package, not a host library.
+#   --without-included-libtasn1
+#                       the same choice the other way: use the libtasn1 of
+#                       this tree (4.21.0 >= the 4.9 configure wants) rather
+#                       than the minitasn1 copy gnutls ships. Spelled out so
+#                       the backend is the dependency above and not a fallback.
+#   --disable-srp-authentication
+#   --disable-openssl-compatibility
+#                       both are enable-style options whose default is already
+#                       no (m4/hooks.m4:23,234), stated so the intent is in the
+#                       file rather than in a default that can move.
+#   --disable-nls       no gettext at build time (po/ is in SUBDIRS
+#                       unconditionally, and AM_GNU_GETTEXT([external]) is
+#                       called at configure.ac:411).
+#
+# The programs, and why nothing here can run a target binary:
+#   --disable-tools     drops src/ from SUBDIRS (Makefile.am:29-33) and with
+#                       it certtool, gnutls-cli, gnutls-serv, ocsptool and
+#                       psk-tool, plus the cligen code generator that writes
+#                       their argument tables with python.
+#   --disable-tests     drops `tests fuzz` from SUBDIRS (Makefile.am:35-37);
+#                       the test suite is a tree of target programs, and the
+#                       extended suite would also want python and libev.
+#   --disable-doc       drops doc/ and doc/manpages (Makefile.am:39-45;
+#                       --enable-manpages follows --disable-doc by its own
+#                       "auto" default, so it needs no line of its own; a
+#                       --disable-manpages option does not exist in 3.8.13).
+# What is left, gl/ lib/ extra/ po/, builds libraries only. The single
+# exception in lib/ is inside `if ENABLE_FIPS140` (lib/Makefile.am:266-281),
+# which is off by default and left off: it is a noinst_PROGRAMS fipshmac with
+# an all-local rule that runs it - $(builddir)/fipshmac > $(hmac_file) - i.e.
+# exactly the one place where gnutls' own build would execute an aarch64
+# binary, and --enable-fips140-mode is not passed.
+#
+# --enable-static --disable-shared has to be said out loud: gnutls' configure
+# is LT_INIT([disable-static,win32-dll,shared]) (configure.ac:660), so the
+# default is a shared library and no archive at all.
+#
+# Kept on purpose, at their defaults: the aarch64 hardware acceleration
+# (configure.ac:216-250 compiles lib/accelerated/aarch64/*.S with the NDK's own
+# clang, the same way libass and x264 do) and the C++ wrapper (a compile-only
+# probe decides it at configure time, and it is an archive in the same prefix).
+#
+# Nothing here is a fact about Android, so there is no android.toml: the driver
+# passes --host=aarch64-linux-android and the system's CFLAGS carry -DANDROID.
+# gnutls' configure already knows the platform (configure.ac:203-215 sets
+# have_android and have_elf for a *android* host), and its probes are compile
+# and link tests, never runs.
+configure_args = ["--enable-static", "--disable-shared", "--disable-tools", "--disable-tests", "--disable-doc", "--disable-nls", "--without-p11-kit", "--without-tpm2", "--without-tpm", "--disable-libdane", "--without-idn", "--without-brotli", "--without-zstd", "--with-included-unistring", "--without-included-libtasn1", "--disable-srp-authentication", "--disable-openssl-compatibility"]
+
+# The driver's fields are asserted rather than left to their defaults: the
+# emitted block reads `BS_make="${BS_make:-}"` for any field the recipe does not
+# define, and a generated script builds every node in one process, so a node
+# inherits whatever the previous node left behind. A dependency whose recipe
+# sets make = false / install = false (its own post does the building) would
+# otherwise skip this node's steps in silence and publish an empty directory
+# while exiting 0.
+make = true
+install = true
+targets = ""
+make_args = ""
+install_args = ""

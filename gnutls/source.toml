@@ -1,0 +1,27 @@
+# The TLS library, 3.8.13 - the newest release of the 3.8 series, from the
+# GnuTLS project's own download server. The two mirrors differ: ftp.gnu.org
+# carries no gnutls-3.8.13.tar.xz (404), and gnupg.org carries no .tar.gz of
+# it, so the URL and the compression are those of the release there.
+#
+# The release tarball ships a generated ./configure (autoconf 2.72) together
+# with aclocal.m4, every Makefile.in and the gnulib copies under gl/, po/ and
+# lib/unistring, which is what makes this build possible in a system that has
+# no autotools on purpose. It is an .tar.xz and carries one leading directory
+# (gnutls-3.8.13/), so it unpacks with --strip-components=1 like the others.
+#
+# gnutls 3.8.13 requires nettle and hogweed >= 3.10 (NETTLE_MINIMUM in
+# m4/hooks.m4) and libtasn1 >= 4.9; this tree builds nettle 3.10.2 with gmp and
+# libtasn1 4.21.0, and both are dependencies of the recipe beside this file.
+version = "3.8.13"
+
+build = """
+mkdir -p dl
+if [ ! -f dl/gnutls.tar.xz ]; then
+  curl -fSL -C - -o dl/gnutls.tar.xz \"https://www.gnupg.org/ftp/gcrypt/gnutls/v3.8/gnutls-3.8.13.tar.xz\"
+fi
+rm -rf src
+mkdir -p src
+tar -xf dl/gnutls.tar.xz -C src --strip-components=1
+mkdir -p $PREFIX
+cp -r src/* $PREFIX/
+"""

@@ -1,0 +1,48 @@
+deps = ["libtasn1@source"]
+buildsystem = "autoconf"
+# The ASN.1 library: libtasn1.a, libtasn1.h and libtasn1.pc.
+#
+# configure's own options are three (configure.ac:50,67,104): --disable-doc,
+# --disable-gcc-warnings and --enable-fuzzing. There is no switch for the
+# tools, and upstream builds them from src/ (src/Makefile.am:28:
+# bin_PROGRAMS = asn1Parser asn1Coding asn1Decoding), so the library subdirectory
+# is named instead: `make -C lib` builds lib/ and its own lib/gl and nothing
+# else, and `make -C lib install` installs exactly what a consumer reads -
+# lib_LTLIBRARIES = libtasn1.la, include_HEADERS = includes/libtasn1.h and
+# pkgconfig_DATA = libtasn1.pc (lib/Makefile.am), which is also what gnutls'
+# PKG_CHECK_MODULES(LIBTASN1) reads. The three tools are target programs this
+# host cannot run and nothing in the tree consumes.
+#
+# --disable-doc is not only about the manual: it is the ENABLE_DOC conditional
+# around SUBDIRS += doc examples (Makefile.am:33-39), and examples/ holds
+# more target programs.
+#
+# The generated parser is shipped: lib/ASN1.c is in the tarball with the same
+# mtime as lib/ASN1.y, so make never calls $(YACC) and no bison is needed on
+# the host. tests/ and fuzz/ stay in SUBDIRS unconditionally but build nothing
+# under `all`: their programs are check_PROGRAMS and noinst_PROGRAMS behind the
+# FUZZING conditional (--enable-fuzzing is off), and the driver never runs
+# `make check`.
+#
+# --enable-static --disable-shared: a cross target has no loader path we
+# control, so the archive is what a consumer links. --with-pic because the
+# archive is meant to be linked into a shared library later (LT_INIT: the
+# default is both, so --disable-shared has to be said out loud).
+#
+# Nothing here is android-specific: configure's cross branch is link tests,
+# never runs, and the system's driver already passes --host and -DANDROID.
+# This is generic.toml's whole recipe; there is no android.toml.
+configure_args = ["--enable-static", "--disable-shared", "--with-pic", "--disable-doc"]
+
+# The driver's fields are asserted rather than left to their defaults: the
+# emitted block reads `BS_make="${BS_make:-}"` for any field the recipe does not
+# define, and a generated script builds every node in one process, so a node
+# inherits whatever the previous node left behind. A dependency whose recipe
+# sets make = false / install = false (their own post does the building) would
+# otherwise skip this node's steps in silence and publish an empty directory
+# while exiting 0.
+make = true
+install = true
+targets = ""
+make_args = "-C lib"
+install_args = "-C lib"
