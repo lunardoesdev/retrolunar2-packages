@@ -6,11 +6,47 @@ buildsystem = "autoconf"
 # as the system reports it.
 # The sysroot goes in --extra-cflags on purpose: passed as -isystem
 # it reorders libc++ before its own C headers and breaks <cstdint>.
-configure_args = ["--prefix=$OUTPKG", "--target=$vpx_arch-$HOST_OS-gcc", "--disable-examples", "--disable-docs", "--disable-unit-tests", "--disable-tools", "--enable-pic", "--enable-static", "--disable-shared", "--extra-cflags=--sysroot=$SYSROOT", "--extra-cxxflags=--sysroot=$SYSROOT"]
+configure_args = ["--prefix=$OUTPKG", "--disable-examples", "--disable-docs", "--disable-unit-tests", "--disable-tools", "--enable-pic", "--enable-static", "--disable-shared", "--extra-cflags=--sysroot=$SYSROOT", "--extra-cxxflags=--sysroot=$SYSROOT"]
 pre = """
 case \"$HOST_ARCH\" in
     aarch64) vpx_arch=arm64 ;;
     i686) vpx_arch=x86 ;;
     *) vpx_arch=\"$HOST_ARCH\" ;;
 esac
+
+# The driver emits a recipe's fields *before* the recipe's own shell, so a
+# --target=$vpx_arch among the arguments above was expanded before this case had
+# run, and set -u reports it:
+#   sh: line 1420: vpx_arch: unbound variable
+# (ffmpeg's --arch=$ffmpeg_arch is the same shape and joins the arguments in its
+# own pre for the same reason.) The target joins the arguments here instead,
+# where the name exists, and ./configure below reads the variable after this
+# point.
+BS_configure_args=\"$BS_configure_args --target=$vpx_arch-$HOST_OS-gcc\"
+
+# libvpx's configure is hand-written (not autoconf) and knows no --host/--build,
+# which the driver puts in $AUTOCONF_CONFIGURE_FLAGS for the autotools packages:
+#   Unknown option \"--host=aarch64-linux-android\"
+# See ./configure --help for available options.
+AUTOCONF_CONFIGURE_FLAGS=\"--prefix=$OUTPKG\"
+
+# Its configure probes link with -static, and Bionic has liblog only as a shared
+# object, so the system's -llog turns every probe into
+#   ld.lld: error: unable to find library -llog
+#   Toolchain is unable to link executables
+# The variable is rebuilt rather than filtered in place, so the rest of the
+# system's linker flags survive untouched.
+_ldflags=""
+for _f in $LDFLAGS; do
+  if [ "$_f" != "-llog" ]; then
+    _ldflags="$_ldflags $_f"
+  fi
+done
+LDFLAGS=${_ldflags# }
+unset _f _ldflags
 """
+make = true
+install = true
+targets = ""
+make_args = ""
+install_args = ""
