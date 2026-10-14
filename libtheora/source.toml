@@ -1,0 +1,16 @@
+# libtheora's release tarballs do ship a generated ./configure (1.2.0,
+# 2025-03-29), so no autotools step is needed: without one this package could
+# not be built at all here, since the systems carry no autotools on purpose.
+version = "1.2.0"
+
+build = """
+mkdir -p dl
+if [ ! -f dl/libtheora.tar.gz ]; then
+  curl -fSL -C - -o dl/libtheora.tar.gz \"https://downloads.xiph.org/releases/theora/libtheora-1.2.0.tar.gz\"
+fi
+rm -rf src
+mkdir -p src
+tar -xzf dl/libtheora.tar.gz -C src --strip-components=1
+mkdir -p $PREFIX
+cp -r src/* $PREFIX/
+"""

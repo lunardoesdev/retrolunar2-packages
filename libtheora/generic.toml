@@ -1,0 +1,30 @@
+deps = ["libogg", "libtheora@source"]
+buildsystem = "autoconf"
+# The decoder, the encoder and the legacy combined library, their headers and
+# theora.pc / theoradec.pc / theoraenc.pc.
+#
+# --disable-examples is the switch that matters. configure.ac:569 defaults it
+# on, and with it automake's EXAMPLES_DIR is entered, which is where
+# encoder_example, player_example and png2theora live - target programs this
+# host must not build or run. Off, `make` and `make install` build only
+# lib/ (the three libraries), include/ and the headers. The examples would
+# also drag in SDL, libpng and libvorbis, none of which this package needs.
+#
+# tests/ stays in SUBDIRS (Makefile.am:12) but is built only by `make check` -
+# its programs are check_PROGRAMS (tests/Makefile.am) - so nothing runs a
+# freshly built binary. doc/ builds nothing: doxygen is not installed here, so
+# configure sets HAVE_DOXYGEN=false (configure.ac:86-98). The format
+# specification is off for the same reason a cross build wants it off:
+# BUILD_SPEC needs pdflatex, bibtex and fig2dev *and* a native build
+# (configure.ac:143), and this is neither.
+#
+# No assembly to switch off: configure.ac:233 chooses the asm sources from
+# $host_cpu and has cases only for i[3456]86, x86_64, arm* and tic6x. aarch64
+# is none of them, so it falls through with no OC_*_ASM define and no perl
+# requirement, and the plain C paths are what get compiled. --disable-asm
+# would only spell out what already happens.
+#
+# --enable-static --disable-shared --with-pic: the archive is what a target
+# prefix wants, since it has no loader path we control, and the archive is
+# meant to be linked into shared libraries later.
+configure_args = ["--enable-static", "--disable-shared", "--with-pic", "--disable-examples"]
