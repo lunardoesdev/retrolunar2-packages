@@ -1,0 +1,13 @@
+version = "1.5.4"
+
+build = """
+mkdir -p dl
+if [ ! -f dl/dav1d.tar.gz ]; then
+  curl -fSL -C - -o dl/dav1d.tar.gz \"https://github.com/videolan/dav1d/archive/refs/tags/1.5.4.tar.gz\"
+fi
+rm -rf src
+mkdir -p src
+tar -xzf dl/dav1d.tar.gz -C src --strip-components=1
+mkdir -p $PREFIX
+cp -r src/* $PREFIX/
+"""

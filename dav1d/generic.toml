@@ -1,0 +1,16 @@
+deps = ["dav1d@source"]
+buildsystem = "meson"
+# default_library=static: meson builds shared by default and a cross target
+# has no loader path we control, so the archive has to be asked for, the
+# same reason freetype/generic.toml passes it.
+# enable_tools / enable_tests are on upstream and build a `dav1d` CLI and a
+# checkasm binary, neither of which can run on this host; the package is
+# the library.
+# enable_asm keeps its upstream default (on): the AArch64 .S files are
+# assembled by the NDK's own clang, and the nasm requirement in
+# meson.build:530 is guarded on cpu_family x86, so aarch64 never looks for
+# it. Nothing here is Android-specific - the meson cross file already says
+# system=android, cpu_family=aarch64, and upstream's own
+# `host_machine.system() == 'android'` branch (meson.build:179) is reached
+# through it - so no android.toml is needed.
+args = ["-Ddefault_library=static", "-Denable_tools=false", "-Denable_tests=false"]
