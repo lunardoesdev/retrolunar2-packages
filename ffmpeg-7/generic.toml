@@ -1,0 +1,58 @@
+deps = ["zlib", "bzip2", "xz", "opus", "libvpx", "lame", "ffmpeg-7@source"]
+buildsystem = "autoconf"
+# ffmpeg's configure is hand-written (libav-style) and ignores
+# $CFLAGS/$LDFLAGS, so the system's flags go in explicitly.
+# Cross targets need --arch/--target-os and cannot guess the target;
+# they are served by android.lua (and any other family file), which
+# reads $HOST_ARCH/$HOST_OS from the system. A native system needs
+# neither and is served here.
+configure_args = ["--prefix=$OUTPKG", "--cc=$CC", "--cxx=$CXX", "--ar=$AR", "--ranlib=$RANLIB", "--strip=$STRIP", "--pkg-config-flags=--static", "--enable-static", "--disable-shared", "--disable-doc", "--disable-programs", "--disable-network", "--disable-iconv", "--disable-libxcb", "--enable-zlib", "--enable-bzlib", "--enable-lzma", "--enable-libopus", "--enable-libvpx", "--enable-libmp3lame", "--enable-pic"]
+pre = """
+# ffmpeg's configure is hand-written (libav family) and knows no --host/--build:
+# the driver's $AUTOCONF_CONFIGURE_FLAGS carries both for the autotools
+# packages, and ffmpeg stops at the first of them with
+#   Unknown option "--host=aarch64-linux-android".
+# See ./configure --help for available options.
+# So the driver's flags are trimmed to the install prefix, which ffmpeg does
+# take; the toolchain arrives through --cc/--cxx/--ar/--ranlib/--strip above.
+AUTOCONF_CONFIGURE_FLAGS="--prefix=$OUTPKG"
+
+# The driver expands a list field unquoted, so an element holding spaces reaches
+# configure as several arguments and ffmpeg rejects the second word -
+#   Unknown option "-fPIC".
+# See ./configure --help for available options.
+# (that was --extra-cflags=$CFLAGS: the system's CFLAGS is several words).
+# --extra-cflags is one of the few options ffmpeg *appends* - its name sits in
+# the parser's CMDLINE_APPEND list - so the flags are handed over one token at a
+# time and add up to exactly what the system set.
+#
+# There is no equivalent for the linker: --extra-ldflags is advertised in
+# ffmpeg's help, but the name appears nowhere in configure's CMDLINE_SET or
+# CMDLINE_APPEND lists, so passing it is the same trap one word later
+#   Unknown option "--extra-ldflags=..."
+# The linker flags are therefore left to ffmpeg's own target rules - a
+# static-only build of ours links no program - and the dependencies are found
+# through pkg-config, whose search path the closure sets
+# (--pkg-config-flags=--static above). CFLAGS is what the build genuinely needs:
+# -O2 and -fPIC, which the system's CFLAGS carries and $CPPFLAGS does not.
+for _f in $CFLAGS; do
+  BS_configure_args="$BS_configure_args --extra-cflags=$_f"
+done
+unset _f
+"""
+
+# The driver's fields are asserted rather than left to their defaults: the
+# emitted script reads BS_make as ${BS_make:-} in every node's block, so a field
+# this recipe does not define is whatever the node before it left behind, and
+# lame builds in post with make = false / install = false. That node is the one
+# before this one in the closure, so without the lines below ffmpeg had both
+# steps skipped in silence: nothing was staged and the entry's relax step
+# reported
+#   sh: line 50: <stage>/.../store/<hash>/../.relax-list: No such file or directory
+# targets, make_args and install_args are cleared for the same reason - the
+# previous node's value would arrive as this one's arguments.
+make = true
+install = true
+targets = ""
+make_args = ""
+install_args = ""
