@@ -1,0 +1,13 @@
+version = "1.2.1"
+
+build = """
+mkdir -p dl
+if [ ! -f dl/speex.tar.gz ]; then
+  curl -fSL -C - -o dl/speex.tar.gz \"https://downloads.xiph.org/releases/speex/speex-1.2.1.tar.gz\"
+fi
+rm -rf src
+mkdir -p src
+tar -xzf dl/speex.tar.gz -C src --strip-components=1
+mkdir -p $PREFIX
+cp -r src/* $PREFIX/
+"""

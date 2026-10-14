@@ -1,0 +1,21 @@
+deps = ["speex@source"]
+buildsystem = "autoconf"
+# The library, its headers and speex.pc - no programs.
+#
+# --disable-binaries is the switch that matters. configure.ac:167-173
+# makes BUILD_BINARIES false for it, and Makefile.am:19-20 adds `src` to
+# SUBDIRS only under `if BUILD_BINARIES`. src/ is what builds speexenc
+# and speexdec (src/Makefile.am:17-27), and they are the only things in
+# the tarball that link anything outside it - $(OGG_LIBS) and
+# $(SPEEXDSP_LIBS). Turning them off drops two target binaries nothing
+# could run here and leaves speex with no dependency at all: the library
+# proper links only $(LIBM) (libspeex/Makefile.am:43).
+#
+# include/ (headers) and doc/ (a single shipped manual.pdf, doc/Makefile.am)
+# stay in SUBDIRS harmlessly; win32/, symbian/ and ti/ are alternate-
+# platform build files with no programs of their own (Makefile.am:17).
+#
+# --disable-shared: a target prefix has no loader path for a versioned
+# object, so static only, and --with-pic because the archive is meant to
+# be linked into shared libraries later.
+configure_args = ["--enable-static", "--disable-shared", "--with-pic", "--disable-binaries"]
