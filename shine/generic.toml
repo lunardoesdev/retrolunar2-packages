@@ -1,0 +1,19 @@
+deps = ["shine@source"]
+buildsystem = "autoconf"
+# libshine (the fixed-point MP3 encoder), its header and shine.pc.
+#
+# The release tarball ships a generated `configure` and `Makefile.in`
+# next to configure.ac/Makefile.am, so nothing here has to run automake -
+# there is no autotools step and the driver's timestamp touch is enough.
+#
+# Makefile.am builds three things: libshine.la (line 10), the shineenc
+# program (line 20) and the shine.pc pkg-config file (line 26). shineenc
+# is a target binary that nothing here can run; it is harmless to compile
+# and link, and it is the only extra work the recipe asks for. shine has
+# no external dependencies at all, so libshine_la_LDFLAGS needs only -lm
+# (line 16), which the Android system already carries.
+#
+# --disable-shared: a target prefix has no loader path for a versioned
+# object, so static only, and --with-pic because the archive is meant to
+# be linked into shared libraries later.
+configure_args = ["--enable-static", "--disable-shared", "--with-pic"]

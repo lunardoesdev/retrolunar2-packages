@@ -1,0 +1,13 @@
+version = "3.1.1"
+
+build = """
+mkdir -p dl
+if [ ! -f dl/shine.tar.gz ]; then
+  curl -fSL -C - -o dl/shine.tar.gz \"https://github.com/toots/shine/releases/download/3.1.1/shine-3.1.1.tar.gz\"
+fi
+rm -rf src
+mkdir -p src
+tar -xzf dl/shine.tar.gz -C src --strip-components=1
+mkdir -p $PREFIX
+cp -r src/* $PREFIX/
+"""
