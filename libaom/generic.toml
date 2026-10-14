@@ -1,0 +1,37 @@
+deps = ["libaom@source", "perl@native"]
+buildsystem = "cmake"
+# libaom is the AV1 codec library itself: libaom.a, the aom/*.h headers
+# and aom.pc.
+#
+# perl@native is a build-time tool, not a library: libaom generates its
+# runtime CPU-dispatch tables by running cmake/rtcd.pl -
+# aom_configure.cmake:503 find_package(Perl), :505 FATAL_ERROR "Perl is
+# required to build libaom", aom_optimization.cmake:287 invokes
+# ${PERL_EXECUTABLE} rtcd.pl - so by the tree's own rule the program a
+# build runs is a dependency pinned to @native. The android cmake driver
+# sets CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER, so find_package(Perl)
+# looks only at the host PATH, which is where a native dependency's bin/
+# lands.
+#
+# BUILD_SHARED_LIBS=OFF: a target prefix has no loader path we control, so
+# only the archive. That also selects AOM_INSTALL_LIBS=aom
+# (cmake/aom_install.cmake:83-87) - the STATIC target, whose OUTPUT_NAME is
+# aom (CMakeLists.txt:333) - so the installed file is libaom.a.
+#
+# ENABLE_APPS / ENABLE_EXAMPLES / ENABLE_TOOLS / ENABLE_TESTS /
+# ENABLE_TESTDATA / ENABLE_DOCS are all ON upstream
+# (cmake/aom_config_defaults.cmake:199-217) and every one of them produces a
+# target binary or a doxygen run this host must not do: ENABLE_APPS builds
+# aomenc/aomdec (aom_install.cmake:71-81 adds them to AOM_INSTALL_BINS only
+# under ENABLE_APPS), ENABLE_EXAMPLES builds examples/, ENABLE_TOOLS builds
+# tools/, ENABLE_TESTS builds the unit tests (and pulls googletest),
+# ENABLE_TESTDATA adds the download targets and ENABLE_DOCS runs doxygen.
+# ENABLE_DECODE_PERF_TESTS / ENABLE_ENCODE_PERF_TESTS are off upstream but
+# are tests too, so they are stated. None of them is the library.
+#
+# AOM_TARGET_CPU is left unset on purpose: cmake/aom_configure.cmake:57-76
+# derives it from CMAKE_SYSTEM_PROCESSOR, which the android toolchain file
+# sets to aarch64 and which the same code turns into arm64 - the CPU the
+# NDK's own clang targets. CONFIG_MULTITHREAD keeps its default (on) because
+# the library is linked into threaded consumers.
+args = ["-DBUILD_SHARED_LIBS=OFF", "-DENABLE_APPS=OFF", "-DENABLE_EXAMPLES=OFF", "-DENABLE_TOOLS=OFF", "-DENABLE_TESTS=OFF", "-DENABLE_TESTDATA=OFF", "-DENABLE_DOCS=OFF", "-DENABLE_DECODE_PERF_TESTS=OFF", "-DENABLE_ENCODE_PERF_TESTS=OFF"]

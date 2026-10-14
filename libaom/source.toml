@@ -1,0 +1,21 @@
+# libaom publishes no release tarballs of its own: upstream lives at
+# aomedia.googlesource.com, and googlesource's `+archive/<ref>.tar.gz`
+# export puts the tree at the ROOT of the tarball (no leading directory).
+# So this unpacks WITHOUT --strip-components=1 - stripping one level would
+# consume every top-level file's own name (CMakeLists.txt, cmake/, aom/,
+# aom_dsp/, ...) and leave an empty source tree.
+#
+# v3.15.2 is a tagged release, so the archive URL is stable.
+version = "3.15.2"
+
+build = """
+mkdir -p dl
+if [ ! -f dl/libaom.tar.gz ]; then
+  curl -fSL -C - -o dl/libaom.tar.gz \"https://aomedia.googlesource.com/aom/+archive/refs/tags/v3.15.2.tar.gz\"
+fi
+rm -rf src
+mkdir -p src
+tar -xzf dl/libaom.tar.gz -C src
+mkdir -p $PREFIX
+cp -r src/. $PREFIX/
+"""
