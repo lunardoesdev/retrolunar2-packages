@@ -10,9 +10,4 @@ mkdir -p src
 tar -xzf dl/perl.tar.gz -C src --strip-components=1
 mkdir -p $PREFIX
 cp -r src/. $PREFIX/
-# The CPAN tarball ships its files read-only (tar -tvzf shows -r--r--r--), and
-# cp keeps the mode, so a published tree would be read-only too. perl's own
-# Configure re-copies these files into its work directory and dies with
-# "Permission denied" on the first one, so the tree has to be writable.
-chmod -R u+w "$PREFIX"
 """
