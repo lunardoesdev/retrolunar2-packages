@@ -1,0 +1,96 @@
+deps = ["libjxl@source"]
+buildsystem = "cmake"
+# The JPEG XL codec library and nothing else: libjxl.a, libjxl_cms.a and
+# libjxl_threads.a with the installed jxl/ header tree, libjxl.pc,
+# libjxl_cms.pc and libjxl_threads.pc. Every program the project can build --
+# cjxl, djxl, jxlinfo, jxltran, the examples, the benchmark, the fuzzers, the
+# JNI wrapper, the doxygen and man pages -- is off, and so is the test suite.
+#
+# lib/CMakeLists.txt:182-190 is what decides the library set: jxl_cms and jxl
+# always, jxl_extras only `if(JPEGXL_ENABLE_TOOLS OR BUILD_TESTING)` (:187-189),
+# jxl_threads always. So tools and tests off is exactly what leaves the three
+# core libraries, and the extras library (the one that reads and writes PNG,
+# JPEG and EXR files) is never configured.
+#
+# -DBUILD_TESTING=OFF is required rather than optional: the testdata submodule
+# is not in the release archive, and CMakeLists.txt:428-431 stops with
+# "testdata directory ... is not populated" when BUILD_TESTING is on.
+# BUILD_TESTING comes from include(CTest) at CMakeLists.txt:419 and defaults to
+# ON, so it has to be said. With it off, third_party/testing.cmake:21-64 does not
+# pull googletest (and does not run its find_package(GTest REQUIRED)) and
+# lib/jxl_tests.cmake returns at its first lines instead of building the library
+# tests.
+#
+# -DBUILD_SHARED_LIBS=OFF: CMakeLists.txt:136 defaults it to whether the target
+# platform supports shared libraries, which for this system's Linux-shaped
+# toolchain is yes. Every cross build here publishes archives.
+#
+# -DJPEGXL_ENABLE_TOOLS=OFF, -DJPEGXL_ENABLE_DEVTOOLS=OFF and
+# -DJPEGXL_ENABLE_FUZZERS=OFF keep the project's programs out. The tools option
+# is ON by default (CMakeLists.txt:142) and gates cjxl/djxl/jxlinfo/jxltran
+# (tools/CMakeLists.txt:136-172); devtools is off by default (:140) and gates
+# the sixteen internal tools; the fuzzers option is not stable -- it defaults to
+# ${ENABLE_FUZZERS_DEFAULT}, which this clang makes true (CMakeLists.txt:79-83)
+# -- and turning it off is what stops tools/CMakeLists.txt:349-391 from building
+# djxl_fuzzer and friends, which are linked with the sanitizer flags and are
+# part of the default build target. Deviations from upstream defaults are named
+# in all cases, so none of them has to be looked up to know what is switched
+# off.
+#
+# -DJPEGXL_ENABLE_EXAMPLES=OFF (:150, ON upstream) drops examples/; nothing in
+# the tree consumes them and they are programs.
+#
+# -DJPEGXL_ENABLE_BENCHMARK=OFF (:148, ON upstream) drops tools/benchmark, which
+# is only built together with the tools anyway and is a set of programs.
+#
+# -DJPEGXL_ENABLE_DOXYGEN=OFF (:144, ON upstream) drops doc/ and the doxygen
+# run; -DJPEGXL_ENABLE_MANPAGES=OFF (:146, ON upstream) drops the man pages,
+# whose target is `ALL` and which is built by running a2x (an asciidoc script,
+# found by find_program at CMakeLists.txt:447-459) over doc/man/*.txt during the
+# build -- a host tool run that produces documentation for tools this recipe
+# does not build.
+#
+# -DJPEGXL_ENABLE_JNI=OFF (:154, ON upstream) is the one switch that would add a
+# shared object and a jar: tools/CMakeLists.txt:441-493 build jxl_jni and
+# install it when a JDK is present.
+#
+# -DJPEGXL_ENABLE_SJPEG=OFF (:156, ON upstream): third_party/sjpeg is one of the
+# submodules the release archive leaves empty, and third_party/CMakeLists.txt
+# stops with "Please provide sjpeg" when the option is on. The recipe does not
+# fetch sjpeg, so it says off rather than leaving the failure to the configure.
+#
+# -DJPEGXL_ENABLE_OPENEXR=OFF (:158, ON upstream) and
+# -DJPEGXL_ENABLE_TCMALLOC=OFF (:164, x86_64-only default): openexr is read by
+# jxl_extras, which is not built here, and tcmalloc is a host allocation library
+# a cross build has no business linking. Stated so neither is probed for.
+#
+# -DJPEGXL_ENABLE_SKCMS=ON is upstream's default for a little-endian target
+# (CMakeLists.txt:119-125, :160) and is stated because it is what keeps lcms2
+# out: third_party/CMakeLists.txt:108-118 reaches for `find_package(LCMS2
+# 2.12)` when JPEGXL_ENABLE_SKCMS is off. That is also why
+# -DJPEGXL_ENABLE_VIEWERS=OFF (:162, off upstream) and
+# -DJPEGXL_ENABLE_PLUGINS=OFF (:166, off upstream) are written down -- they are
+# the other two inputs of that condition, and leaving them implicit would make
+# the lcms2 dependency depend on a default rather than on this line.
+#
+# The library's own feature switches are left alone: JPEGXL_ENABLE_TRANSCODE_JPEG
+# (:170) and JPEGXL_ENABLE_BOXES (:174) are defaults that decide what the
+# library can decode, not what the build produces, and turning them off would be
+# a smaller libjxl than upstream's.
+#
+# Two things ride along from third_party/CMakeLists.txt, both of them upstream's
+# design rather than this recipe's: the bundled highway and brotli are installed
+# into this same entry. :19-27 forces highway's static/no-contrib/no-tests/
+# no-examples options but not HWY_ENABLE_INSTALL, and :64-70 forces
+# BROTLI_BUNDLED_MODE off, so libhwy.a, hwy/, libbrotli*.a and their .pc files
+# land beside libjxl.a. That is what makes the entry self-consistent:
+# lib/jxl.cmake:280-281 writes `Requires: libhwy libbrotlienc libbrotlidec
+# libjxl_cms` into libjxl.pc unconditionally, so those pkg-config files have to
+# be resolvable from the entry -- nothing else in the closure provides them,
+# because the source node pins its own highway and brotli rather than depending
+# on this tree's.
+#
+# Nothing else is Android-specific: the compiler is the system's, the toolchain
+# file already says aarch64, and the code that reads like a platform test
+# (JPEGXL_FORCE_NEON, the HWY target list) is upstream's own CPU selection.
+args = ["-DBUILD_SHARED_LIBS=OFF", "-DBUILD_TESTING=OFF", "-DJPEGXL_ENABLE_TOOLS=OFF", "-DJPEGXL_ENABLE_DEVTOOLS=OFF", "-DJPEGXL_ENABLE_EXAMPLES=OFF", "-DJPEGXL_ENABLE_BENCHMARK=OFF", "-DJPEGXL_ENABLE_FUZZERS=OFF", "-DJPEGXL_ENABLE_DOXYGEN=OFF", "-DJPEGXL_ENABLE_MANPAGES=OFF", "-DJPEGXL_ENABLE_JNI=OFF", "-DJPEGXL_ENABLE_SJPEG=OFF", "-DJPEGXL_ENABLE_OPENEXR=OFF", "-DJPEGXL_ENABLE_TCMALLOC=OFF", "-DJPEGXL_ENABLE_SKCMS=ON", "-DJPEGXL_ENABLE_VIEWERS=OFF", "-DJPEGXL_ENABLE_PLUGINS=OFF"]

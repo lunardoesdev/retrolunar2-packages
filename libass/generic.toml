@@ -1,0 +1,44 @@
+deps = ["freetype", "harfbuzz", "fribidi", "fontconfig", "libass@source"]
+buildsystem = "autoconf"
+# The subtitle renderer: libass.a, the two public headers under include/ass
+# and the libass.pc configure writes (AC_CONFIG_FILES, configure.ac:447).
+#
+# The three required libraries are hard pkg-config checks with no switch of
+# their own - configure.ac:95 wants freetype2 >= 9.17.3, :101 fribidi >=
+# 0.19.1 and :107 harfbuzz >= 1.2.3, each as a bare PKG_CHECK_MODULES with no
+# fallback action, so a miss stops configure. They are on because the
+# dependencies above are declared, not because of a flag: the versions in this
+# tree satisfy all three (freetype's .pc reports its libtool version 26.2.20,
+# fribidi 1.0.16, harfbuzz 14.5.0).
+#
+# --enable-fontconfig: fontconfig is the fourth check and the only one that is
+# optional (configure.ac:30 declares --disable-fontconfig, :139 does the
+# check). It is asked for explicitly rather than left to its "check" default
+# because configure.ac:236-249 refuses to configure when no system font
+# provider was found - "No system font provider!" - and the tree has one.
+#
+# The programs are all switched off by name. test/test, profile/profile,
+# compare/compare and fuzz/fuzz are noinst_PROGRAMS behind ENABLE_TEST,
+# ENABLE_PROFILE, ENABLE_COMPARE and ENABLE_FUZZ (Makefile_util.am:1-24), and
+# upstream's default is already "no" for every one of them (configure.ac:22-28)
+# - the flags state the intent instead of resting on that default. They are
+# target binaries this host must not build or run, and test/ and compare/ would
+# additionally need libpng, which this package does not carry. checkasm is not
+# named on purpose: it is a check_PROGRAMS/TESTS entry (Makefile_util.am:43-45)
+# that only `make check` builds, and the driver never runs that.
+#
+# --enable-static --disable-shared --with-pic: a target prefix has no loader
+# path we control, and the archive is what gets linked into a shared library
+# later. --with-pic also reaches the assembly: configure.ac:258-260 sets
+# ASFLAGS="-DPIC=1" when it is given.
+#
+# Assembly stays on: an aarch64 target needs no assembler from outside, because
+# configure.ac:349-356 sets cpu_family=aarch64 and can_asm=true without looking
+# for nasm (the nasm path is the x86 one, configure.ac:263-347), so the NDK's
+# own clang assembles libass/aarch64/*.S with the C preprocessor. --disable-asm
+# would only drop the optimised paths.
+#
+# Nothing here differs for android, so there is no android.toml: the driver
+# passes --host=aarch64-linux-android, the system's CFLAGS carry -DANDROID, and
+# configure's own checks are link tests, never runs.
+configure_args = ["--enable-static", "--disable-shared", "--with-pic", "--enable-fontconfig", "--disable-test", "--disable-compare", "--disable-profile", "--disable-fuzz"]

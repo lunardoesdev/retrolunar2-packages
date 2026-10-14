@@ -1,0 +1,35 @@
+deps = ["openh264@source"]
+buildsystem = "make"
+# Android differs from generic.toml in exactly one thing, and it is the
+# pkgconfig file: Bionic has no libpthread. glibc ships a libpthread.so (and
+# has folded pthreads into libc), so upstream's
+# `STATIC_LDFLAGS += -lpthread -lm` (build/platform-gnu-chain.mk:7) resolves on
+# a GNU system, but the NDK's sysroot carries no libpthread at all:
+#
+#   $ $CC ... t.c -lpthread
+#   ld.lld: error: unable to find library -lpthread
+#
+# install-static writes that flag into the entry's own openh264.pc, which is
+# the file a consumer reads through pkg-config, so the flag has to come out of
+# it. This is a rewrite of a file the build itself generated in the staging
+# directory, done with awk and cp (the publisher does the same kind of
+# rewrite for .pc prefixes). -lstdc++ stays: the NDK sysroot has libstdc++.a
+# and a per-API-level libstdc++.so, and -lm and -llog are Bionic's own.
+# The build itself is identical, so everything else is generic.toml's, and
+# the comments explaining its shape live there - including make = false and
+# install = false, which this file needs for the same reason.
+make = false
+install = false
+post = """
+make -j"$CORES" ARCH="$HOST_ARCH" \
+  CC="$CC" CXX="$CXX" AR="$AR" RANLIB="$RANLIB" \
+  libopenh264.a
+make DESTDIR="$DESTDIR" PREFIX="$OUTPKG" LIBDIR_NAME=lib \
+  ARCH="$HOST_ARCH" CC="$CC" CXX="$CXX" AR="$AR" RANLIB="$RANLIB" \
+  install-static
+_pc=\"$PREFIX/lib/pkgconfig/openh264.pc\"
+awk '{ if ($1 == \"Libs:\" || $1 == \"Libs.private:\") { printf \"%s\", $1; for (i = 2; i <= NF; i++) if ($i != \"-lpthread\") printf \" %s\", $i; print \"\" } else print }' \"$_pc\" > \"$_pc.fixed\"
+cp \"$_pc.fixed\" \"$_pc\"
+rm -f \"$_pc.fixed\"
+echo \"openh264: $(basename \"$_pc\") rewritten to drop -lpthread (Bionic has none)\"
+"""

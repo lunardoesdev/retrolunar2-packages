@@ -1,0 +1,53 @@
+deps = ["rubberband@source"]
+buildsystem = "meson"
+# The time-stretching / pitch-shifting library: librubberband.a, the public
+# headers under include/rubberband (meson.build:674) and rubberband.pc
+# (meson.build:864).
+#
+# default_library=static: meson.build:11 defaults it to `both`, so a plain
+# build would write a shared object as well, and a target prefix has no
+# loader path we control.
+#
+# Each optional dependency this project can pick up is switched off by name,
+# because every one of them would either link something this tree does not
+# have or add a target program:
+#   cmdline=disabled - drops the `rubberband` and `rubberband-r3` CLIs. They
+#     are built when sndfile is found (meson.build:778), from `sndfile_dep`
+#     whose required-ness is `get_option('cmdline')` (meson.build:130), so
+#     this switch is what keeps libsndfile from being demanded at all and
+#     keeps two target ELF binaries nothing in the tree consumes out of the
+#     archive.
+#   tests=disabled - drops the boost unit-test program: meson.build:822
+#     builds `tests` and registers nine meson test() cases when
+#     boost_unit_test_framework is found, which meson.build:132 asks for with
+#     `required: get_option('tests')`. It is a program to run, so it stays
+#     off (meson.build:840 already says build_by_default: false).
+#   lv2=disabled - meson.build:136 probes for lv2.h and meson.build:714
+#     builds a shared LV2 plugin into lib/lv2.
+#   ladspa=disabled - the same for ladspa.h (meson.build:135) and the LADSPA
+#     plugin in lib/ladspa (meson.build:679).
+#   vamp=disabled - meson.build:131 wants vamp-sdk for the Vamp plugin in
+#     lib/vamp (meson.build:746).
+#   jni=disabled - meson.build:178 adds the `java` language with
+#     `required: get_option('jni')`, and meson.build:642 then builds a JNI
+#     shared library and runs javac/jar to install a .jar. On `auto` the
+#     package's content would depend on whether the machine happens to have a
+#     Java toolchain, which is not a dependency of this package: the entry
+#     would differ between two identical trees. (Measured on this host:
+#     `meson setup -Djni=auto` prints "Compiler for language java for the host
+#     machine not found" - a fact about the machine, which is the thing the
+#     recipe must not rest on.)
+#
+# fft=builtin and resampler=builtin spell out what `auto` already resolves to
+# off Darwin (meson.build:208-217): the built-in implementations, so nothing
+# is linked for FFTW, KissFFT, SLEEF, libsamplerate, Speex or Speex DSP.
+# Stated rather than inherited, so the package cannot start taking one of
+# those because a host .pc file appeared on a search path.
+#
+# No android.toml is needed: the meson cross file already says
+# system=android, cpu_family=aarch64, and the non-Darwin non-Windows branch
+# that adds -DUSE_PTHREADS and -DHAVE_POSIX_MEMALIGN (meson.build:508-509) is
+# the one an android cross build reaches. Nothing else here is
+# android-specific - no test tries to execute on the target, and the library
+# is the whole package.
+args = ["-Ddefault_library=static", "-Dfft=builtin", "-Dresampler=builtin", "-Dcmdline=disabled", "-Dtests=disabled", "-Dlv2=disabled", "-Dladspa=disabled", "-Dvamp=disabled", "-Djni=disabled"]

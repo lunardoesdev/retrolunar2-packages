@@ -1,0 +1,51 @@
+deps = ["liblc3@source"]
+buildsystem = "meson"
+# The LC3 codec library: liblc3.a, the three public headers (lc3.h, lc3_cpp.h,
+# lc3_private.h) and lc3.pc.
+#
+# That is all upstream declares for it:
+#
+#   lc3lib = library('lc3', lc3_sources, dependencies: m_dep,
+#                    include_directories: inc, gnu_symbol_visibility: 'hidden',
+#                    soversion: 1, install: true)   # src/meson.build:32-38
+#   install_headers(lc3_install_headers)            # src/meson.build:46
+#   pkg_mod.generate(libraries : lc3lib, ...
+#                    filebase : 'lc3', ...)         # src/meson.build:50-52
+#
+# The rest of the tree is tests and tools, and this recipe switches those off.
+#
+# The build system here is meson, not cmake: liblc3 has never shipped a
+# CMakeLists.txt (checked at v1.0.0, v1.0.4, v1.1.0 and v1.1.3 -- the root is
+# meson.build plus a hand-written Makefile), and the systems carry a meson
+# driver, so no new machinery is needed for it.
+#
+# The codec is plain C11 written for embedded targets: the CFLAGS come from the
+# system, the project adds -ffast-math itself (meson.build:26), and there is no
+# CPU or platform detection anywhere, so nothing here is Android-specific and
+# there is no android.toml.
+#
+# -Ddefault_library=static: meson builds a shared object by default upstream of
+# any project default, and this system's crossfile sets no default_library, so
+# the archive has to be asked for explicitly. Static is the rule for every cross
+# build here: a target prefix has no loader path we control.
+#
+# -Dtools=false and -Dpython=false are the project's own switches
+# (meson_options.txt:15, :20). Both already default to false and are stated
+# because they are the reason the encoder and decoder CLIs (tools/elc3.c,
+# tools/dlc3.c, tools/lc3bin.c) and the ctypes bindings stay out of the build:
+# the root build enters those two subdirectories only under those options
+# (meson.build:34-40), so what is built is src/ and nothing else.
+#
+# test/ needs no switch: it is a Python harness with no meson.build and the root
+# build never descends into it.
+#
+# -Db_lto=false: the project turns LTO on for itself
+# (default_options: ['buildtype=release', 'b_lto=true'], meson.build:19), and
+# meson then archives LLVM bitcode instead of machine code -- measured: every
+# member of liblc3.a came out "LLVM IR bitcode" and the NDK's llvm-readelf
+# refused them ("bitcode files are not supported"), so nothing about the
+# archive said it was AArch64 build output. A consumer would have to link it
+# with a toolchain carrying the LTO plugin, which is a requirement upstream
+# never stated for a released static library. Off, the members are ordinary
+# AArch64 objects an archiver and a reader can see.
+args = ["-Ddefault_library=static", "-Dtools=false", "-Dpython=false", "-Db_lto=false"]

@@ -1,0 +1,34 @@
+deps = ["vid.stab@source"]
+buildsystem = "cmake"
+# The motion-detection library, its headers under include/vid.stab and the
+# vidstab.pc cmake generates (CMakeLists.txt:98-109).
+#
+# BUILD_SHARED_LIBS=OFF: upstream defaults it ON (CMakeLists.txt:22-23) and a
+# target prefix has no loader path we control, so the archive is asked for.
+# The installed file keeps the target's name, libvidstab.a.
+#
+# USE_OMP=OFF: upstream defaults it ON (CMakeLists.txt:25) and with OpenMP
+# found, CMakeLists.txt:58-60 compiles the `#pragma omp` paths with the
+# OpenMP flag while CMakeLists.txt:89-94 puts that flag into PKG_EXTRA_LIBS,
+# so every consumer reading vidstab.pc would have to link an OpenMP runtime
+# out of its own pocket. There is none to link here: the NDK r29 aarch64
+# sysroot ships no libomp (its lib/ holds libcompiler_rt-extras.a and no
+# OpenMP runtime), and libvidstab.a's members would then reference GOMP_*
+# symbols no link in this tree can resolve. The library needs no threads to
+# stabilise a frame; the switch only parallelises the motion scan.
+#
+# No program is built or run. The top-level CMakeLists.txt has no
+# add_subdirectory() at all, so tests/ (the test suite cmake/ plus its
+# generators) and transcode/ (the vidstabdetect/vidstabtransform CLIs, which
+# link libavfilter and libavcodec) are never entered: `make` builds the
+# library and `make install` installs the library, the headers and the .pc.
+# FindSSE is included (CMakeLists.txt:6) but its check_c_compiler_flag
+# probes fail against an aarch64 target, so SSE2_FOUND stays false and no
+# x86 flag is ever added.
+#
+# Nothing here differs for android, so there is no android.toml: the
+# toolchain file takes the compiler from $CC, the system's CFLAGS already
+# carry -DANDROID, and CMAKE_FIND_ROOT_PATH_MODE_LIBRARY=ONLY keeps
+# find_package(OpenMP) and find_package(Orc) looking in $PREFIX and the
+# NDK sysroot instead of the host.
+args = ["-DBUILD_SHARED_LIBS=OFF", "-DUSE_OMP=OFF"]

@@ -1,0 +1,16 @@
+# Upstream tags as v<major>.<minor>.<patch> and the GitHub archive of the tag
+# carries one leading directory (openh264-2.6.0/), so it unpacks with
+# --strip-components=1 like the other GitHub-archive recipes here.
+version = "2.6.0"
+
+build = """
+mkdir -p dl
+if [ ! -f dl/openh264.tar.gz ]; then
+  curl -fSL -C - -o dl/openh264.tar.gz \"https://github.com/cisco/openh264/archive/refs/tags/v2.6.0.tar.gz\"
+fi
+rm -rf src
+mkdir -p src
+tar -xzf dl/openh264.tar.gz -C src --strip-components=1
+mkdir -p $PREFIX
+cp -r src/* $PREFIX/
+"""

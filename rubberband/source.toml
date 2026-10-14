@@ -1,0 +1,19 @@
+# rubberband tags releases v<major>.<minor>.<patch>; the GitHub archive of
+# the tag carries one leading directory (rubberband-4.0.0/), so it unpacks
+# with --strip-components=1 like the other GitHub-archive recipes here.
+# 4.0.0 is the newest release tag upstream has, and the version it reports is
+# the project version in meson.build:5 - the same number - so this is also
+# what the installed rubberband.pc says.
+version = "4.0.0"
+
+build = """
+mkdir -p dl
+if [ ! -f dl/rubberband.tar.gz ]; then
+  curl -fSL -C - -o dl/rubberband.tar.gz \"https://github.com/breakfastquay/rubberband/archive/refs/tags/v4.0.0.tar.gz\"
+fi
+rm -rf src
+mkdir -p src
+tar -xzf dl/rubberband.tar.gz -C src --strip-components=1
+mkdir -p $PREFIX
+cp -r src/* $PREFIX/
+"""

@@ -1,0 +1,47 @@
+deps = ["openssl", "perl@native", "srt@source"]
+# perl@native is a real dependency, not a convenience: srt's Configure *is* a perl
+# script (it runs `perl` and needs core modules such as FindBin), and the rule for a
+# program a build runs is the same one libaom's rtcd.pl follows. Without it the build
+# takes whatever `perl` is first in PATH, which on a host with a half-installed perl in
+# /usr/local is a broken one: "./Configure line 15: Can't locate FindBin.pm in @INC".
+buildsystem = "cmake"
+# The SRT transport library: libsrt.a, its headers and srt.pc. This is a C++
+# library whose crypto backend is OpenSSL, which the tree already carries; the
+# dependency is by name (no @sys), so it resolves in this recipe's own system
+# - srt@aarch64-android33 gets openssl@aarch64-android33, i.e.
+# openssl/android.toml - and the closure puts its include and library
+# directories in the compile and link lines. SRT reaches OpenSSL by itself:
+# with USE_OPENSSL_PC on (its default, CMakeLists.txt:197) it asks
+# pkg-config for libcrypto and libssl, and the closure is what makes
+# PKG_CONFIG_LIBDIR name our prefix first.
+#
+# ENABLE_SHARED=OFF, ENABLE_STATIC=ON: upstream defaults to OFF/ON the other
+# way round (CMakeLists.txt:181-182) and would link libsrt.so as well. A cross
+# target has no loader path we control, so the archive is what a consumer
+# links; CMakeLists.txt:1365 then picks the static spec for anything linking
+# SRT.
+#
+# ENABLE_APPS=OFF (CMakeLists.txt:173, ON upstream): with the default
+# ENABLE_CXX11 (ON away from Windows, :169-171) the apps block at :1444 builds
+# srt-live-transmit, srt-file-transmit, srt-tunnel and srt-test-proxy, which
+# are target binaries this host must not build or run, and nothing in the tree
+# consumes them. ENABLE_TESTING (:176) and ENABLE_UNITTESTS (:186) are off
+# upstream already; they are stated so the intent does not depend on a
+# default, and they are what keeps test/ - and the googletest that
+# CMakeLists.txt:1588 would fetch over the network - out of the build.
+#
+# ENABLE_ENCRYPTION stays on with the crypto library left at upstream's
+# default, and that is deliberate rather than lazy: with USE_ENCLIB unset SRT
+# selects openssl-evp (CMakeLists.txt:265-274), the EVP-only path in
+# haicrypt/cryspr-openssl-evp.c. Asking for -DUSE_ENCLIB=openssl takes the
+# other branch, which calls the low-level AES_set_encrypt_key
+# (haicrypt/cryspr-openssl.c:51) that our OpenSSL 4 no longer exports.
+#
+# Nothing here is android-specific: the NDK's toolchain file is the system's
+# (CMAKE_TOOLCHAIN_FILE), C++11 comes from the compiler, the platform default
+# for ENABLE_MONOTONIC_CLOCK is computed by a compile-only check
+# (test_requires_clock_gettime, scripts/haiUtil.cmake) which the system's
+# -DCMAKE_TRY_COMPILE_TARGET_TYPE=STATIC_LIBRARY keeps from needing a link and
+# a run, and srt.pc names openssl and libcrypto in Requires.private where a
+# consumer's static link finds them. So there is no android.toml.
+args = ["-DENABLE_SHARED=OFF", "-DENABLE_STATIC=ON", "-DENABLE_APPS=OFF", "-DENABLE_TESTING=OFF", "-DENABLE_UNITTESTS=OFF"]

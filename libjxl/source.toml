@@ -1,0 +1,60 @@
+# libjxl tags releases as v<major>.<minor>.<patch>; the GitHub archive of the
+# tag carries one leading directory (libjxl-0.12.0/), so it unpacks with
+# --strip-components=1 like the other GitHub-archive recipes here.
+#
+# That archive leaves third_party/ as empty directories, and three of them are
+# not optional:
+#
+#   highway   third_party/CMakeLists.txt:30 adds the subdirectory when its
+#             CMakeLists.txt is there and JPEGXL_FORCE_SYSTEM_HWY is off; the
+#             else branch is find_package(HWY 1.0.7) (:34) and a FATAL_ERROR
+#             (:37).
+#   brotli    third_party/CMakeLists.txt:49 looks for
+#             brotli/c/include/brotli/decode.h and, not finding it, calls
+#             find_package(Brotli) (:51) and stops at :54 when that fails too.
+#   skcms     JPEGXL_ENABLE_SKCMS is on for a little-endian target
+#             (CMakeLists.txt:119-125, :160), and third_party/CMakeLists.txt:99-103
+#             stops with "Please provide skcms or run deps.sh" when skcms/skcms.h
+#             is missing.
+#
+# So each is fetched at the commit the v0.12.0 tag pins -- its gitlink in the
+# release's tree, the same thing libilbc's source node does for abseil -- and
+# laid out at the path the build expects, rather than taken from another package
+# in this tree: the tag pins highway 1.2.0 (this tree's highway is 1.4.0) and
+# brotli 1.2.0 (this tree's brotli is 1.1.0), and a JPEG XL built against a
+# different SIMD backend or encoder version than the release was tested with is
+# a different build. Nothing else is fetched: googletest, sjpeg, lcms, libpng,
+# libjpeg-turbo and zlib are submodules of tests and of the tools this recipe
+# switches off, and testdata (the submodule the test suite wants) is not wanted
+# at all.
+version = "0.12.0"
+
+build = """
+mkdir -p dl
+if [ ! -f dl/libjxl.tar.gz ]; then
+  curl -fSL -C - -o dl/libjxl.tar.gz \"https://github.com/libjxl/libjxl/archive/refs/tags/v0.12.0.tar.gz\"
+fi
+if [ ! -f dl/highway.tar.gz ]; then
+  curl -fSL -C - -o dl/highway.tar.gz \"https://github.com/google/highway/archive/refs/tags/1.2.0.tar.gz\"
+fi
+if [ ! -f dl/brotli.tar.gz ]; then
+  curl -fSL -C - -o dl/brotli.tar.gz \"https://github.com/google/brotli/archive/refs/tags/v1.2.0.tar.gz\"
+fi
+if [ ! -f dl/skcms.tar.gz ]; then
+  curl -fSL -C - -o dl/skcms.tar.gz \"https://github.com/google/skcms/archive/96d9171c94b937a1b5f0293de7309ac16311b722.tar.gz\"
+fi
+rm -rf src
+mkdir -p src
+tar -xzf dl/libjxl.tar.gz -C src --strip-components=1
+rm -rf src/third_party/highway
+mkdir -p src/third_party/highway
+tar -xzf dl/highway.tar.gz -C src/third_party/highway --strip-components=1
+rm -rf src/third_party/brotli
+mkdir -p src/third_party/brotli
+tar -xzf dl/brotli.tar.gz -C src/third_party/brotli --strip-components=1
+rm -rf src/third_party/skcms
+mkdir -p src/third_party/skcms
+tar -xzf dl/skcms.tar.gz -C src/third_party/skcms --strip-components=1
+mkdir -p $PREFIX
+cp -r src/* $PREFIX/
+"""

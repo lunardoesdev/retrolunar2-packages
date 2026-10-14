@@ -1,0 +1,56 @@
+deps = ["autoconf@native", "automake@native", "libtool@native", "zimg@source"]
+buildsystem = "autoconf"
+# The z.lib library (libzimg.a), its two public headers and zimg.pc.
+#
+# The tag archive has no configure, so the recipe generates it: autogen.sh is
+# upstream's own build entry point (README.md: "Use the provided autogen.sh
+# script to instantiate the familiar configure and make build system") and it
+# is one command, autoreconf --verbose --install --force. What autoreconf
+# needs are the autotools themselves, and each of them is a real tool this
+# build runs, so all three are dependencies pinned to @native: autoconf
+# (autoreconf/autoconf/autoheader), automake (aclocal/automake) and libtool
+# (libtoolize, which --install uses to drop libtool.m4 and ltmain.sh into the
+# project's m4/ directory - the archive ships ax_pthread.m4 and
+# ax_check_compile_flag.m4 there and Ac_config_macro_dir already points at
+# m4/). Their own dependencies (m4, and autoconf for automake) come with them.
+#
+# --disable-shared --enable-static: libtool builds both by default and the
+# archive is what a cross target links.
+#
+# --disable-testapp --disable-example --disable-unit-test: all three are off
+# by default (configure.ac) and are written out so the test application,
+# the doc/example programs and the googletest-based unit tests - which
+# configure.ac would have to build through cmake, i.e. run a target library
+# the host cannot use - stay out of the package on purpose rather than by
+# inheritance. Nothing here needs autotools to run anything it produced:
+# configure only compiles and links its probes.
+#
+# SIMD stays on (there is no --disable-simd here): configure.ac maps
+# host_cpu aarch64 to ARM=yes, defines ZIMG_ARM and turns on the ARMSIMD
+# conditional (configure.ac:66-80), so the arm/ sources - NEON through
+# intrinsics, no external assembler - are compiled by the NDK's own clang.
+# The x86 branches, with their -mtune probes and AVX-512 checks, are not
+# reached for this host_cpu. Not one of the overridden values is a fact about
+# Android, so there is no android.toml: this is generic.toml's whole recipe.
+pre = """
+sh autogen.sh
+"""
+# The driver's fields are asserted rather than left to their defaults. The
+# emitted block reads `BS_make="${BS_make:-}"` for any field the recipe does
+# not define, and a generated script builds every node in one process: the
+# restore at the top of each block covers the fragment and system variables
+# but not these, so a node inherits whatever the previous node left behind.
+# In this closure the nodes before it are the native autotools, whose recipes
+# set make = false / install = false because their own post does the building,
+# and without the lines below this node's make and install are skipped in
+# silence and the package publishes an empty directory and exits 0 - observed
+# on libtool@clang-native, which published nothing for exactly this reason
+# before its fields were asserted. targets/make_args/install_args are cleared
+# for the same reason: a previous node's value would otherwise arrive as this
+# one's arguments.
+make = true
+install = true
+targets = ""
+make_args = ""
+install_args = ""
+configure_args = ["--disable-shared", "--enable-static", "--disable-testapp", "--disable-example", "--disable-unit-test"]

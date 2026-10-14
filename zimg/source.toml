@@ -1,0 +1,25 @@
+# zimg tags releases as release-<major>.<minor>.<patch> and the archive of
+# that tag carries one leading directory (zimg-release-3.0.6/), so it unpacks
+# with --strip-components=1 like the other GitHub-archive recipes here.
+#
+# The tag archive is the only source there is: the release object at
+# api.github.com/repos/sekrit-twc/zimg/releases/tags/release-3.0.6 has an empty
+# "assets" list, and no zimg-release-*.tar.gz exists on any release, so the
+# GitHub-generated archive is what upstream publishes. It is a plain git
+# archive: configure.ac, Makefile.am and m4/ (with ax_pthread.m4 and
+# ax_check_compile_flag.m4) but no generated configure, aclocal.m4 or
+# Makefile.in - which is why the recipe runs the project's own autogen.sh
+# before configure.
+version = "3.0.6"
+
+build = """
+mkdir -p dl
+if [ ! -f dl/zimg.tar.gz ]; then
+  curl -fSL -C - -o dl/zimg.tar.gz \"https://github.com/sekrit-twc/zimg/archive/refs/tags/release-3.0.6.tar.gz\"
+fi
+rm -rf src
+mkdir -p src
+tar -xzf dl/zimg.tar.gz -C src --strip-components=1
+mkdir -p $PREFIX
+cp -r src/* $PREFIX/
+"""

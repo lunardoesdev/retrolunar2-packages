@@ -1,0 +1,21 @@
+# chromaprint tags releases as v<major>.<minor>.<patch>; the GitHub archive of
+# the tag carries one leading directory (chromaprint-1.6.1/), so it unpacks
+# with --strip-components=1 like the other GitHub-archive recipes here.
+#
+# The archive is self-contained: the two 3rdparty trees the build may use are
+# checked in rather than submodules -- src/3rdparty/kissfft (the FFT backend
+# this recipe selects) and src/3rdparty/googletest (the test suite, which the
+# recipe switches off) -- so nothing has to be fetched beside the release.
+version = "1.6.1"
+
+build = """
+mkdir -p dl
+if [ ! -f dl/chromaprint.tar.gz ]; then
+  curl -fSL -C - -o dl/chromaprint.tar.gz \"https://github.com/acoustid/chromaprint/archive/refs/tags/v1.6.1.tar.gz\"
+fi
+rm -rf src
+mkdir -p src
+tar -xzf dl/chromaprint.tar.gz -C src --strip-components=1
+mkdir -p $PREFIX
+cp -r src/* $PREFIX/
+"""

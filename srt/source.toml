@@ -1,0 +1,16 @@
+# SRT tags releases as v<major>.<minor>.<patch> and the GitHub archive of the
+# tag carries one leading directory (srt-1.5.7/), so it unpacks with
+# --strip-components=1 like the other GitHub-archive recipes here.
+version = "1.5.7"
+
+build = """
+mkdir -p dl
+if [ ! -f dl/srt.tar.gz ]; then
+  curl -fSL -C - -o dl/srt.tar.gz \"https://github.com/Haivision/srt/archive/refs/tags/v1.5.7.tar.gz\"
+fi
+rm -rf src
+mkdir -p src
+tar -xzf dl/srt.tar.gz -C src --strip-components=1
+mkdir -p $PREFIX
+cp -r src/* $PREFIX/
+"""

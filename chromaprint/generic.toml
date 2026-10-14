@@ -1,0 +1,81 @@
+deps = ["chromaprint@source"]
+buildsystem = "cmake"
+# The fingerprinting library: libchromaprint.a, chromaprint.h, libchromaprint.pc
+# and the cmake package config (lib/cmake/Chromaprint/ChromaprintConfig.cmake
+# plus ChromaprintTargets.cmake, CMakeLists.txt:225-251).
+#
+# chromaprint has no library dependency of its own. Everything it needs is in
+# the release, and the two things that are not -- ffmpeg and an external FFT --
+# are what the options below settle:
+#
+# -DBUILD_TOOLS=OFF: the command line tool fpcalc is the only part of the
+# project that wants ffmpeg. src/cmd/CMakeLists.txt:1 is
+# `find_package(FFmpeg REQUIRED)`, :34 builds fpcalc, :40 installs it, and the
+# library is linked without any of it. The option defaults to OFF already
+# (CMakeLists.txt:61) and is stated because it is the reason ffmpeg is not a
+# dependency here: this off, nothing in the build asks for ffmpeg at all (the
+# unguarded `find_package(FFmpeg)` at CMakeLists.txt:77 is not REQUIRED and its
+# result only feeds the FFT and audio-processor autodetection below).
+#
+# -DFFT_LIB=kissfft with -DKISSFFT_SOURCE_DIR=$WORK/src/3rdparty/kissfft: the
+# library refuses to build without an FFT backend (CMakeLists.txt:159
+# `FATAL_ERROR "No FFT library found"`), and the backend chromaprint carries is
+# kissfft, in-tree at src/3rdparty/kissfft -- the project's own finder searches
+# exactly there (cmake/modules/FindKissFFT.cmake:46-56, NAMES kiss_fftr.h
+# kiss_fftr.c, PATHS ${CMAKE_SOURCE_DIR}/src/3rdparty/kissfft, NO_DEFAULT_PATH)
+# and its two sources are compiled straight into the library
+# (src/CMakeLists.txt:72-73), so the backend costs no dependency.
+#
+# Naming the directory is what makes that finder work here. A cross system's
+# toolchain sets CMAKE_FIND_ROOT_PATH_MODE_INCLUDE=ONLY, which re-roots every
+# search path under $PREFIX and $SYSROOT, so the finder's absolute path into the
+# work directory is unreachable -- measured on this host: with a find root set,
+# a `find_path(... PATHS <a directory that exists> NO_DEFAULT_PATH)` returns
+# NOTFOUND, and the same call without the root path finds it. This is what the
+# configure below reported the first time it ran:
+#
+#   -- Could NOT find KissFFT (missing: KISSFFT_SOURCE_DIR)
+#   CMake Error at CMakeLists.txt:156 (message):
+#     Selected kissfft for FFT calculations, but the library is not found
+#
+# Handing find_path its answer makes it skip the search entirely ($WORK is the
+# build's own directory, into which the source node's tree was copied).
+#
+# -DFFT_LIB=kissfft is stated rather than left to autodetection so the chain at
+# CMakeLists.txt:107-118 -- ffmpeg's avtx/avfft, then fftw3, then fftw3f, then
+# kissfft -- cannot pick a library belonging to some other package, and so that
+# the missing-backend case above cannot recur silently: the option makes
+# CMakeLists.txt:152-157 fail loudly if the directory is ever not there.
+#
+# -DUSE_INTERNAL_AVRESAMPLE=ON: the other half of dropping ffmpeg. chromaprint's
+# AudioProcessor converts the incoming audio either with ffmpeg's libswresample
+# or with the copy of ffmpeg's avresample that it ships under src/avresample
+# (resample2.c, avcodec.h, dsputil.h). With no ffmpeg in the closure,
+# AUDIO_PROCESSOR_LIB stays unset -- CMakeLists.txt:164-167 sets it to
+# "swresample" only when FFMPEG_LIBSWRESAMPLE_FOUND, and the configure prints
+# "Building without audio conversion support" in that case -- and this option is
+# what compiles src/avresample/resample2.c in (src/CMakeLists.txt:77-78,
+# CMakeLists.txt:18, upstream's default ON). It is load-bearing: without it
+# AudioProcessor::Reset() refuses any stream whose sample rate is not already the
+# analysis rate ("Cannot resample from ... without internal avresample",
+# src/audio_processor.cpp:158-163), so the library would only fingerprint audio
+# that arrived at exactly the target rate.
+#
+# -DBUILD_SHARED_LIBS=OFF: upstream defaults it ON (CMakeLists.txt:28) and a
+# target prefix has no loader path we control, so the archive is asked for; off,
+# the build also defines CHROMAPRINT_NODLL for the exported symbols
+# (CMakeLists.txt:69-71). The installed file keeps the target's name,
+# libchromaprint.a.
+#
+# -DBUILD_TESTS=OFF is load-bearing rather than tidy: upstream defaults it ON
+# (CMakeLists.txt:62), :210 then enters tests/, which builds the vendored
+# googletest and an `all_tests` executable (tests/CMakeLists.txt:11) -- and
+# tests/CMakeLists.txt:60 calls gtest_discover_tests(all_tests), which RUNS that
+# binary during the build to enumerate its tests. On a cross build that is a
+# target binary the host cannot execute, so the suite has to be off rather than
+# merely unnecessary.
+#
+# Nothing here is Android-specific -- the sources are plain C/C++ compiled by
+# the NDK's clang with the system's flags, and no code path asks about the
+# platform -- so there is no android.toml.
+args = ["-DBUILD_SHARED_LIBS=OFF", "-DBUILD_TOOLS=OFF", "-DBUILD_TESTS=OFF", "-DFFT_LIB=kissfft", "-DKISSFFT_SOURCE_DIR=$WORK/src/3rdparty/kissfft", "-DUSE_INTERNAL_AVRESAMPLE=ON"]

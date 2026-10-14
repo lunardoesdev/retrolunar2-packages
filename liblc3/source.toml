@@ -1,0 +1,18 @@
+# liblc3 tags releases as v<major>.<minor>.<patch>; the GitHub archive of the
+# tag carries one leading directory (liblc3-1.1.3/), so it unpacks with
+# --strip-components=1 like the other GitHub-archive recipes here. The archive
+# is the complete tree: the codec, the tables, test/, tools/ and python/ all
+# come from here.
+version = "1.1.3"
+
+build = """
+mkdir -p dl
+if [ ! -f dl/liblc3.tar.gz ]; then
+  curl -fSL -C - -o dl/liblc3.tar.gz \"https://github.com/google/liblc3/archive/refs/tags/v1.1.3.tar.gz\"
+fi
+rm -rf src
+mkdir -p src
+tar -xzf dl/liblc3.tar.gz -C src --strip-components=1
+mkdir -p $PREFIX
+cp -r src/* $PREFIX/
+"""

@@ -1,0 +1,23 @@
+# vid.stab publishes release tags named v<major>.<minor>.<patch> and the
+# GitHub archive of the tag carries one leading directory (vid.stab-1.1.2/),
+# so it unpacks with --strip-components=1 like the other GitHub-archive
+# recipes here. 1.1.2 is the newest release tag upstream has.
+#
+# The version here is the release, not the number the library reports: the
+# CMakeLists.txt inside this tag still computes VIDSTAB_VERSION from its own
+# MAJOR/MINOR/PATCH 1/2/0 as "${MAJOR}.${MINOR}${PATCH}" (CMakeLists.txt:12-15)
+# - the string "1.20" - and writes that into vidstab.pc. It is a number only
+# the .pc carries, so it is noted here rather than used as the package name.
+version = "1.1.2"
+
+build = """
+mkdir -p dl
+if [ ! -f dl/vid.stab.tar.gz ]; then
+  curl -fSL -C - -o dl/vid.stab.tar.gz \"https://github.com/georgmartius/vid.stab/archive/refs/tags/v1.1.2.tar.gz\"
+fi
+rm -rf src
+mkdir -p src
+tar -xzf dl/vid.stab.tar.gz -C src --strip-components=1
+mkdir -p $PREFIX
+cp -r src/* $PREFIX/
+"""
