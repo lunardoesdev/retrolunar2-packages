@@ -1,0 +1,33 @@
+deps = ["vvenc@source"]
+buildsystem = "cmake"
+# The VVC encoder library: libvvenc.a, the vvenc/*.h headers and
+# libvvenc.pc.
+#
+# VVENC_LIBRARY_ONLY=ON is the whole reason this is one field and no more.
+# vvenc's top level always add_subdirectory()s the programs and test
+# binaries (CMakeLists.txt:439-446), but each of them sets EXCLUDE_FROM_ALL
+# when VVENC_LIBRARY_ONLY is on (source/App/vvencapp/CMakeLists.txt and
+# test/vvenc_unit_test/CMakeLists.txt both do), so `cmake --build` never
+# builds them, and cmake/modules/vvencInstall.cmake installs only the
+# `vvenc` target (VVENC_INST_TARGETS) - no vvencapp, no vvencFFapp, no
+# vvenclibtest, no vvencinterfacetest, no vvenc_unit_test. Nothing
+# target-side is built or run.
+#
+# BUILD_SHARED_LIBS=OFF is upstream's own default here (CMakeLists.txt:187)
+# but is stated for the same reason every other cross recipe states it: a
+# target prefix has no loader path for a versioned object.
+#
+# VVENC_ENABLE_WERROR=OFF (upstream ON, :200): -Werror turns a warning of
+# this host's clang into a build failure for a library whose warnings we do
+# not own.
+# VVENC_ENABLE_LINK_TIME_OPT=OFF (upstream ON, :192): LTO would leave the
+# archive full of bitcode only an LTO-aware consumer can link; a plain
+# archive is what a build meant to be handed over wants.
+#
+# The target arch is detected from the toolchain: CMakeLists.txt:26 calls
+# detect_target_architecture, which reads CMAKE_SYSTEM_PROCESSOR (aarch64,
+# set by the android toolchain file) and returns AARCH64, enabling the Neon
+# intrinsics. VVENC_ENABLE_X86_SIMD keeps its default: on a non-x86 target
+# upstream routes it through the bundled SIMDE layer, which is its own
+# supported path.
+args = ["-DBUILD_SHARED_LIBS=OFF", "-DVVENC_LIBRARY_ONLY=ON", "-DVVENC_ENABLE_WERROR=OFF", "-DVVENC_ENABLE_LINK_TIME_OPT=OFF"]

@@ -1,0 +1,16 @@
+# vvenc tags releases as v<major>.<minor>.<patch>; the GitHub archive of
+# the tag carries one leading directory (vvenc-1.14.0/), so it unpacks with
+# --strip-components=1.
+version = "1.14.0"
+
+build = """
+mkdir -p dl
+if [ ! -f dl/vvenc.tar.gz ]; then
+  curl -fSL -C - -o dl/vvenc.tar.gz \"https://github.com/fraunhoferhhi/vvenc/archive/refs/tags/v1.14.0.tar.gz\"
+fi
+rm -rf src
+mkdir -p src
+tar -xzf dl/vvenc.tar.gz -C src --strip-components=1
+mkdir -p $PREFIX
+cp -r src/* $PREFIX/
+"""
