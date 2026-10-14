@@ -1,0 +1,13 @@
+version = "0.1.6"
+
+build = """
+mkdir -p dl
+if [ ! -f dl/opencore-amr.tar.gz ]; then
+  curl -fSL -C - -o dl/opencore-amr.tar.gz \"https://downloads.sourceforge.net/project/opencore-amr/opencore-amr/opencore-amr-0.1.6.tar.gz\"
+fi
+rm -rf src
+mkdir -p src
+tar -xzf dl/opencore-amr.tar.gz -C src --strip-components=1
+mkdir -p $PREFIX
+cp -r src/* $PREFIX/
+"""

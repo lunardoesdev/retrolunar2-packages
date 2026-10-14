@@ -1,0 +1,23 @@
+deps = ["opencore-amr@source"]
+buildsystem = "autoconf"
+# Two archives, libopencore-amrnb.a and libopencore-amrwb.a, their four
+# headers (interf_enc.h and interf_dec.h under include/opencore-amrnb,
+# dec_if.h and if_rom.h under include/opencore-amrwb) and the two .pc files.
+# No programs: configure.ac:29-32 makes --enable-examples default to no, and
+# Makefile.am:2-4 adds the test directory to SUBDIRS only under `if EXAMPLES`
+# - that directory is where amrwb-dec, amrnb-dec and amrnb-enc are
+# bin_PROGRAMS (test/Makefile.am:2, 7, 12), i.e. the only things in the
+# tarball that would be installed and that nothing here could run. The flag is
+# spelled out rather than left to upstream's default so the fact is stated.
+#
+# --disable-shared: a cross target prefix has no loader path we control, so
+# only the archive is wanted, and --with-pic because the archive is meant to
+# be linked into shared libraries later. Both are libtool switches, provided
+# by LT_INIT (configure.ac:49); --enable-static is libtool's own default and
+# is written out for the same reason.
+#
+# The library's sources are .cpp but it is built as C: --enable-compile-c is
+# upstream's default (configure.ac:12-17) and amrnb/Makefile.am:21 turns it
+# into `-x c -std=c99` for the whole library (the mirror is amrwb/Makefile.am).
+# Nothing here has to ask for C++ mode, and the recipe does not touch it.
+configure_args = ["--enable-static", "--disable-shared", "--with-pic", "--disable-examples"]
