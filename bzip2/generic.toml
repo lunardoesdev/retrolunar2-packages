@@ -17,7 +17,27 @@ make -j\"$CORES\" CC=\"$CC\" AR=\"$AR\" RANLIB=\"$RANLIB\" CFLAGS=\"$CFLAGS\" LD
 # the names the install rule looks for keeps `make install` as the
 # single source of truth for what gets installed; reimplementing its
 # ~30 lines in the recipe would let the two drift apart.
-cp bzip2.exe bzip2
-cp bzip2recover.exe bzip2recover
-make -j\"$CORES\" CC=\"$CC\" AR=\"$AR\" RANLIB=\"$RANLIB\" CFLAGS=\"$CFLAGS\" LDFLAGS=\"$LDFLAGS\" PREFIX=\"$OUTPKG\" install
+# Only a PE target appends .exe. An ELF link written as `-o bzip2`
+# (upstream Makefile:44) produces `bzip2`, with no `bzip2.exe` beside
+# it, so an unconditional copy is what stopped every non-mingw build of
+# this package -
+#   cp: cannot stat 'bzip2.exe': No such file or directory
+# (aarch64-android33, as ffmpeg's bzlib dependency) - and `make install`
+# then found no `bzip2` to install either. Copy only when the suffixed
+# name is actually there, so both families reach the install target.
+for _b in bzip2 bzip2recover; do
+  [ -f \"$_b.exe\" ] && cp \"$_b.exe\" \"$_b\"
+done
+# The prefix handed to install is the *staged* one, not $OUTPKG: bzip2
+# has no DESTDIR support at all, its install rule copies into
+# $(PREFIX)/bin, $(PREFIX)/lib, $(PREFIX)/man and $(PREFIX)/include
+# itself, so this argument *is* the destination a copy is written to.
+# Given $OUTPKG it wrote straight into the published path, the staged
+# tree was never created, and the publish step then reported
+#   sh: line 50: <stage>/.../store/<hash>/../.relax-list: No such file or directory
+# (its own relax step, with nothing staged to relax) before publishing an
+# empty entry - publishing is rm -rf the entry and mkdir it again when
+# there is no staged tree to move. DESTDIR is exported and bzip2 ignores
+# it, which is why the path has to be right in the argument.
+make -j\"$CORES\" CC=\"$CC\" AR=\"$AR\" RANLIB=\"$RANLIB\" CFLAGS=\"$CFLAGS\" LDFLAGS=\"$LDFLAGS\" PREFIX=\"$PREFIX\" install
 """
