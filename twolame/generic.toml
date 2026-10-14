@@ -1,0 +1,24 @@
+deps = ["twolame@source"]
+buildsystem = "autoconf"
+# The library, its header and twolame.pc.
+#
+# --disable-sndfile: configure.ac:103-118 only looks for libsndfile
+# under `if test "${enable_sndfile}" != "no"`, and configure.ac:139-149
+# makes TWOLAME_BIN non-empty only when it was found, so this both
+# removes the dependency and empties bin_PROGRAMS in frontend/Makefile.am
+# - the `twolame` command-line encoder is not built at all.
+#
+# simplefrontend/ is the one thing that cannot be switched off:
+# simplefrontend/Makefile.am:5 has `noinst_PROGRAMS = stwolame`
+# unconditionally, so it is compiled and linked even here. It is a
+# noinst program and is never installed, and it is never run - a
+# cross build just produces the object and does not execute it.
+#
+# tests/ is only entered for `make check`, not `make`/`make install`,
+# and doc/ builds nothing unless maintainer mode is on (the default),
+# since every doc rule sits under `if MAINTAINER_MODE`.
+#
+# --disable-shared: a target prefix has no loader path for a versioned
+# object, so static only, and --with-pic because the archive is meant
+# to be linked into shared libraries later.
+configure_args = ["--enable-static", "--disable-shared", "--with-pic", "--disable-sndfile"]

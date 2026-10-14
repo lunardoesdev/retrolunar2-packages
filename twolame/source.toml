@@ -1,0 +1,13 @@
+version = "0.4.0"
+
+build = """
+mkdir -p dl
+if [ ! -f dl/twolame.tar.gz ]; then
+  curl -fSL -C - -o dl/twolame.tar.gz \"https://downloads.sourceforge.net/project/twolame/twolame/0.4.0/twolame-0.4.0.tar.gz\"
+fi
+rm -rf src
+mkdir -p src
+tar -xzf dl/twolame.tar.gz -C src --strip-components=1
+mkdir -p $PREFIX
+cp -r src/* $PREFIX/
+"""
