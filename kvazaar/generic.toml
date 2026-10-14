@@ -1,0 +1,29 @@
+deps = ["kvazaar@source"]
+buildsystem = "cmake"
+# The HEVC encoder library, its header and kvazaar.pc.
+#
+# BUILD_SHARED_LIBS=OFF: upstream defaults it ON (CMakeLists.txt:9) and a
+# target prefix has no loader path we control, so the archive is asked for
+# (CMakeLists.txt:195 add_library(kvazaar STATIC)). The installed file keeps
+# the target's name, libkvazaar.a.
+#
+# BUILD_TESTS=OFF (CMakeLists.txt:11, ON upstream) keeps tests/ out of the
+# build: CMakeLists.txt:399 enters that subdirectory and builds kvazaar_tests
+# as soon as greatest/greatest.h is present. The GitHub tag archive ships
+# greatest/ as an empty directory, so it would not be built here even by
+# default, and the switch says so instead of relying on that.
+#
+# The command-line encoder cannot be switched off: `add_executable(kvazaar-bin
+# ...)` (CMakeLists.txt:216) is unconditional, nothing guards it with an
+# option, and CMakeLists.txt:311 installs it. So this package builds the CLI
+# as well, and installs it as bin/kvazaar; it is never run - the build runs
+# nothing it produced.
+#
+# Nothing here is android-specific, so there is no android.toml. One hazard is
+# worth knowing about: CMakeLists.txt:238 adds `-Wa,-muse-unaligned-vector-move`
+# (an assembler option this NDK clang refuses: "unsupported argument ... to
+# option '-Wa,'") whenever cmake's LINUX is false, and the android toolchain
+# file sets CMAKE_SYSTEM_NAME Linux on purpose, so LINUX is true and the flag
+# is not added. Setting CMAKE_SYSTEM_NAME to Android in a recipe would break
+# the build with exactly that error.
+args = ["-DBUILD_SHARED_LIBS=OFF", "-DBUILD_TESTS=OFF"]

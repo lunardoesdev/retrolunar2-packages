@@ -1,0 +1,16 @@
+# Upstream tags as v<major>.<minor>.<patch> and the GitHub archive of the tag
+# carries one leading directory (kvazaar-2.3.1/), so it unpacks with
+# --strip-components=1 like the other GitHub-archive recipes here.
+version = "2.3.1"
+
+build = """
+mkdir -p dl
+if [ ! -f dl/kvazaar.tar.gz ]; then
+  curl -fSL -C - -o dl/kvazaar.tar.gz \"https://github.com/ultravideo/kvazaar/archive/refs/tags/v2.3.1.tar.gz\"
+fi
+rm -rf src
+mkdir -p src
+tar -xzf dl/kvazaar.tar.gz -C src --strip-components=1
+mkdir -p $PREFIX
+cp -r src/* $PREFIX/
+"""
