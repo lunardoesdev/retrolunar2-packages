@@ -4,8 +4,9 @@
 #   no_default_features  true to add --no-default-features
 #   install              false when something else installs the result
 #
-# Cargo does not read $LDFLAGS, so a binary it builds carries no runtime path;
-# `retrolunar export` writes a launcher beside a bundle for those.
+# Cargo does not read $LDFLAGS, so the runtime path goes into $RUSTFLAGS here, in
+# the system; a binary built without it would carry none, and `retrolunar export`
+# would leave a launcher beside the bundle for it.
 [buildsystem.cargo]
 CARGO_BUILD_TARGET = "x86_64-pc-windows-gnu"
 CARGO_TARGET_X86_64_PC_WINDOWS_GNU_LINKER = "$CC"
