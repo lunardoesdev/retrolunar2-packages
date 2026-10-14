@@ -1,0 +1,24 @@
+deps = ["vo-amrwbenc@source"]
+buildsystem = "autoconf"
+# One archive, libvo-amrwbenc.a, its header enc_if.h under
+# include/vo-amrwbenc and vo-amrwbenc.pc.
+#
+# --disable-example is the switch that matters: Makefile.am:111-113 puts
+# amrwb-enc in bin_PROGRAMS only under `if EXAMPLE`, and configure.ac:20-23
+# makes --enable-example default to no, so the command-line encoder is not
+# built at all. The flag is spelled out so the fact is stated rather than
+# inherited from upstream's default.
+#
+# --disable-armv5e and --disable-armv7neon: both default to no
+# (configure.ac:12-19) and both only add hand-written .s files for *32-bit*
+# ARM (Makefile.am:77-105, ARMV7NEON and ARMV5E), which are not what
+# aarch64 assembles; leaving them off is what keeps this a pure C build. The
+# switches are named so a reader sees the assembler was considered, and
+# because turning either on is the one thing that would make this recipe
+# architecture-specific.
+#
+# --disable-shared: a cross target prefix has no loader path we control, so
+# only the archive is wanted, and --with-pic because the archive is meant to
+# be linked into shared libraries later. Both are libtool switches, provided
+# by LT_INIT (configure.ac:35).
+configure_args = ["--enable-static", "--disable-shared", "--with-pic", "--disable-example", "--disable-armv5e", "--disable-armv7neon"]
