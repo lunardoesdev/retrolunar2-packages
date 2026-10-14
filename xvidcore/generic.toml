@@ -1,0 +1,51 @@
+deps = ["xvidcore@source"]
+buildsystem = "autoconf"
+# The build body is not at the top of the tarball: the Makefile and the
+# hand-written configure both live in build/generic, and the Makefile reads the
+# sources through SRC_DIR = ../../src, so configure has to be run there.
+source_dir = "build/generic"
+# xvidcore's configure is not produced by autotools at build time, but it is an
+# autoconf script and it does take --host, which the system's driver already
+# passes, and its config.sub knows android: aarch64-linux-android becomes
+# host_cpu=aarch64, host_os=linux-android. The `case $target_os in linux*` arm
+# of configure.in:304 is the one that matches and names the libraries below.
+# configure.in:188 picks the ARCHITECTURE from $target_cpu and has no aarch64
+# case, so aarch64 falls through to GENERIC (plain C) and the x86 assembly -
+# with it the nasm/yasm probe - is never looked for. Nothing here is
+# android-specific, so there is no android.toml.
+#
+# There is no static-only switch to pass: this configure has exactly six
+# options (--enable-idebug --enable-iprofile --enable-gnuprofile
+# --disable-assembly --disable-pthread --enable-macosx_module) and no
+# shared/static one, and its install target asks for both libraries. So both
+# are built and installed, and the oddly named one is the versioned object:
+#   lib/libxvidcore.a           the archive
+#   lib/libxvidcore.so.4.3      the odd name: SHARED_LIB is
+#   lib/libxvidcore.so.4          libxvidcore.$(SHARED_EXTENSION).$(API_MAJOR).$(API_MINOR)
+#   lib/libxvidcore.so            (configure.in:308) with API_MAJOR=4 and
+#                                 API_MINOR=3 (configure.in:15-16), so the file
+#                                 carries two version numbers; its soname is
+#                                 libxvidcore.so.4, and .so.4 and .so are
+#                                 symlinks the install rule makes.
+# The tarball builds no program, so nothing here runs a target binary.
+#
+# make/install off and the three steps in `post`, for two reasons that are both
+# about this project's own Makefile:
+#  - the autoconf driver touches ./configure after running it, and this
+#    Makefile carries the rule `platform.inc: configure platform.inc.in ->
+#    ./configure`, so make would take the configure we just ran to be older
+#    than its own input and re-run ./configure with no arguments - losing
+#    --prefix and the host triple - before building anything. `touch
+#    platform.inc` says the configured file is the current one.
+#  - platform.inc (generated from platform.inc.in:62) assigns `DESTDIR=`, and a
+#    makefile assignment beats an environment variable, so `DESTDIR=... make
+#    install` installs straight into the final path and skips the staging tree
+#    entirely. DESTDIR has to arrive on the command line, where it wins:
+#    `make DESTDIR="$DESTDIR" install`.
+make = false
+install = false
+post = """
+touch platform.inc
+make -j\"$CORES\"
+make DESTDIR=\"$DESTDIR\" install
+"""

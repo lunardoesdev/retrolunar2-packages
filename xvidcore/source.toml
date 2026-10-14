@@ -1,0 +1,15 @@
+# Xvid's own download page carries the release tarballs; the one directory
+# inside is xvidcore/, which --strip-components=1 drops.
+version = "1.3.7"
+
+build = """
+mkdir -p dl
+if [ ! -f dl/xvidcore.tar.gz ]; then
+  curl -fSL -C - -o dl/xvidcore.tar.gz \"https://downloads.xvid.com/downloads/xvidcore-1.3.7.tar.gz\"
+fi
+rm -rf src
+mkdir -p src
+tar -xzf dl/xvidcore.tar.gz -C src --strip-components=1
+mkdir -p $PREFIX
+cp -r src/* $PREFIX/
+"""
