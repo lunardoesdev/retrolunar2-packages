@@ -1,0 +1,21 @@
+deps = ["x264@source"]
+buildsystem = "autoconf"
+# x264's configure is hand-written (FFmpeg family), not autoconf, so there
+# is no Autotools to keep out of the build; it does take --host, which the
+# system's driver already passes, and config.sub turns
+# aarch64-linux-android into host_cpu=aarch64 with host_os=linux-android,
+# so neither the CPU nor the OS needs a recipe-local spelling and no
+# android.toml is needed.
+#
+# --disable-cli: the CLI is a target binary that cannot run on this host
+# and nothing in the tree consumes it; the package is the library.
+# --disable-shared --enable-static: a cross target has no loader path we
+# control, so only the archive is wanted.
+# --enable-pic: on aarch64 the assembly picks its relocation sequence from
+# the PIC macro - common/aarch64/asm.S:163 uses adrp/add for PIC and
+# asm.S:166 emits `ldr \rd, =\val+\offset` (an absolute address, i.e. a
+# text relocation) otherwise - and Android links every executable as PIE.
+# The switch is what puts -DPIC into $ASFLAGS (configure:1395); -fPIC is
+# already in the android system's CFLAGS but that does not reach the .S
+# files. The x86 asm paths want nasm and are not our business here.
+configure_args = ["--disable-cli", "--disable-shared", "--enable-static", "--enable-pic"]

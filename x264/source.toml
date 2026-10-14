@@ -1,0 +1,20 @@
+# x264 has no release tags: upstream's "release" is the tip of the stable
+# branch, so the source is pinned by commit instead of by tag
+# (b35605ac, 2025-06-08). The version is the point version that branch's own
+# version.sh computes from git, 0.<X264_BUILD>.<rev-list count> - the build
+# number in x264.h is 165 and the branch holds 3222 commits, so 0.165.3222.
+# A .git-less tarball build leaves X264_POINTVER at the placeholder "0.165.x"
+# (see the installed x264_config.h); the real number is written here.
+version = "0.165.3222"
+
+build = """
+mkdir -p dl
+if [ ! -f dl/x264.tar.gz ]; then
+  curl -fSL -C - -o dl/x264.tar.gz \"https://code.videolan.org/videolan/x264/-/archive/b35605ace3ddf7c1a5d67a2eb553f034aef41d55/x264-b35605ace3ddf7c1a5d67a2eb553f034aef41d55.tar.gz\"
+fi
+rm -rf src
+mkdir -p src
+tar -xzf dl/x264.tar.gz -C src --strip-components=1
+mkdir -p $PREFIX
+cp -r src/* $PREFIX/
+"""
