@@ -6,7 +6,7 @@ buildsystem = "autoconf"
 # why it must not point at the host's tcl: $tcl_HOST_PREFIX.
 make = false
 install = false
-configure_args = ["--with-tcl=$tcl_PREFIX/lib", "--with-tclinclude=$tcl_PREFIX/include", "--enable-shared", "--disable-rpath", "--mandir=$PREFIX/share/man"]
+configure_args = ["--with-tcl=$tcl_PREFIX/lib", "--with-tclinclude=$tcl_PREFIX/include", "--enable-shared", "--disable-rpath", "--mandir=$OUTPKG/share/man"]
 post = """
 make -j\"$CORES\"
 # TCLSH_PROG= on the make line is the whole fix for the interpreter:

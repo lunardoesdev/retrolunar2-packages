@@ -19,5 +19,5 @@ make -j\"$CORES\" CC=\"$CC\" AR=\"$AR\" RANLIB=\"$RANLIB\" CFLAGS=\"$CFLAGS\" LD
 # ~30 lines in the recipe would let the two drift apart.
 cp bzip2.exe bzip2
 cp bzip2recover.exe bzip2recover
-make -j\"$CORES\" CC=\"$CC\" AR=\"$AR\" RANLIB=\"$RANLIB\" CFLAGS=\"$CFLAGS\" LDFLAGS=\"$LDFLAGS\" PREFIX=\"$PREFIX\" install
+make -j\"$CORES\" CC=\"$CC\" AR=\"$AR\" RANLIB=\"$RANLIB\" CFLAGS=\"$CFLAGS\" LDFLAGS=\"$LDFLAGS\" PREFIX=\"$OUTPKG\" install
 """

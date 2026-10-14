@@ -17,7 +17,7 @@ mkdir -p $PREFIX/include $PREFIX/lib $PREFIX/lib/pkgconfig
 cp src/lua.h src/luaconf.h src/lualib.h src/lauxlib.h src/lua.hpp $PREFIX/include/
 cp liblua.a $PREFIX/lib/
 cat > $PREFIX/lib/pkgconfig/lua.pc <<EOF
-prefix=\"$PREFIX\"
+prefix=\"$OUTPKG\"
 exec_prefix=\\${prefix}
 libdir=\\${exec_prefix}/lib
 includedir=\\${prefix}/include

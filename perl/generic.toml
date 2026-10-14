@@ -32,5 +32,5 @@ pre = """
 cp -r $NESTDIR/perl@source/. .
 export BUILD_ZLIB=False
 export BUILD_BZIP2=0
-sh Configure -des      -Dcc=\"$CC\"      -Doptimize=\"-O2 -fPIC\"      -Dcppflags=\"$CPPFLAGS\"      -Dldflags=\"$LDFLAGS\"      -Dprefix=$PREFIX      -Dvendorprefix=$PREFIX      -Dprivlib=$PREFIX/lib/perl5/5.44/core_perl      -Darchlib=$PREFIX/lib/perl5/5.44/core_perl      -Dsitelib=$PREFIX/lib/perl5/5.44/site_perl      -Dsitearch=$PREFIX/lib/perl5/5.44/site_perl      -Dvendorlib=$PREFIX/lib/perl5/5.44/vendor_perl      -Dvendorarch=$PREFIX/lib/perl5/5.44/vendor_perl      -Dman1dir=$PREFIX/share/man/man1      -Dman3dir=$PREFIX/share/man/man3      -Dusethreads
+sh Configure -des      -Dcc=\"$CC\"      -Doptimize=\"-O2 -fPIC\"      -Dcppflags=\"$CPPFLAGS\"      -Dldflags=\"$LDFLAGS\"      -Dprefix=$OUTPKG      -Dvendorprefix=$OUTPKG      -Dprivlib=$OUTPKG/lib/perl5/5.44/core_perl      -Darchlib=$OUTPKG/lib/perl5/5.44/core_perl      -Dsitelib=$OUTPKG/lib/perl5/5.44/site_perl      -Dsitearch=$OUTPKG/lib/perl5/5.44/site_perl      -Dvendorlib=$OUTPKG/lib/perl5/5.44/vendor_perl      -Dvendorarch=$OUTPKG/lib/perl5/5.44/vendor_perl      -Dman1dir=$OUTPKG/share/man/man1      -Dman3dir=$OUTPKG/share/man/man3      -Dusethreads
 """

@@ -20,16 +20,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER`
@@ -103,16 +103,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER`
@@ -188,16 +188,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER`
@@ -271,16 +271,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER`
@@ -354,16 +354,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER`
@@ -437,16 +437,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER`
@@ -520,16 +520,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER`
@@ -603,16 +603,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER`
@@ -686,16 +686,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER`
@@ -769,16 +769,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER`
@@ -852,16 +852,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER`
@@ -935,16 +935,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER`
@@ -1018,16 +1018,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER`
@@ -1101,16 +1101,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER`
@@ -1186,16 +1186,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_ARMV7_LINUX_ANDROIDEABI_LINKER`
@@ -1270,16 +1270,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_ARMV7_LINUX_ANDROIDEABI_LINKER`
@@ -1354,16 +1354,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_ARMV7_LINUX_ANDROIDEABI_LINKER`
@@ -1438,16 +1438,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_ARMV7_LINUX_ANDROIDEABI_LINKER`
@@ -1522,16 +1522,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_ARMV7_LINUX_ANDROIDEABI_LINKER`
@@ -1606,16 +1606,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_ARMV7_LINUX_ANDROIDEABI_LINKER`
@@ -1690,16 +1690,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_ARMV7_LINUX_ANDROIDEABI_LINKER`
@@ -1774,16 +1774,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_ARMV7_LINUX_ANDROIDEABI_LINKER`
@@ -1858,16 +1858,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_ARMV7_LINUX_ANDROIDEABI_LINKER`
@@ -1942,16 +1942,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_ARMV7_LINUX_ANDROIDEABI_LINKER`
@@ -2026,16 +2026,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_ARMV7_LINUX_ANDROIDEABI_LINKER`
@@ -2110,16 +2110,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_ARMV7_LINUX_ANDROIDEABI_LINKER`
@@ -2194,16 +2194,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_ARMV7_LINUX_ANDROIDEABI_LINKER`
@@ -2278,16 +2278,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_ARMV7_LINUX_ANDROIDEABI_LINKER`
@@ -2354,12 +2354,12 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--build=$BUILD_TRIPLET --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--build=$BUILD_TRIPLET --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `-DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `-DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_PREFIX_PATH CMAKE_FLAGS MESON_FLAGS`
 - **dropped CORES (the emitter exports it)**: `CORES="${CORES:-1}"`
 - **dropped 'export' (variables are exported per file)**: `export CORES MAKEFLAGS`
@@ -2420,16 +2420,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_I686_LINUX_ANDROID_LINKER`
@@ -2504,16 +2504,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_I686_LINUX_ANDROID_LINKER`
@@ -2588,16 +2588,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_I686_LINUX_ANDROID_LINKER`
@@ -2672,16 +2672,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_I686_LINUX_ANDROID_LINKER`
@@ -2756,16 +2756,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_I686_LINUX_ANDROID_LINKER`
@@ -2840,16 +2840,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_I686_LINUX_ANDROID_LINKER`
@@ -2924,16 +2924,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_I686_LINUX_ANDROID_LINKER`
@@ -3008,16 +3008,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_I686_LINUX_ANDROID_LINKER`
@@ -3092,16 +3092,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_I686_LINUX_ANDROID_LINKER`
@@ -3176,16 +3176,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_I686_LINUX_ANDROID_LINKER`
@@ -3260,16 +3260,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_I686_LINUX_ANDROID_LINKER`
@@ -3344,16 +3344,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_I686_LINUX_ANDROID_LINKER`
@@ -3428,16 +3428,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_I686_LINUX_ANDROID_LINKER`
@@ -3512,16 +3512,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_I686_LINUX_ANDROID_LINKER`
@@ -3590,15 +3590,15 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **FLAGGED $PREFIX in a system fragment**: `$CMAKE_FLAGS -DZLIB_ROOT=$PREFIX`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped CORES (the emitter exports it)**: `CORES="${CORES:-1}"`
 - **dropped 'export' (variables are exported per file)**: `export CORES MAKEFLAGS`
@@ -3676,16 +3676,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_X86_64_LINUX_ANDROID_LINKER`
@@ -3760,16 +3760,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_X86_64_LINUX_ANDROID_LINKER`
@@ -3844,16 +3844,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_X86_64_LINUX_ANDROID_LINKER`
@@ -3928,16 +3928,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_X86_64_LINUX_ANDROID_LINKER`
@@ -4012,16 +4012,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_X86_64_LINUX_ANDROID_LINKER`
@@ -4096,16 +4096,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_X86_64_LINUX_ANDROID_LINKER`
@@ -4180,16 +4180,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_X86_64_LINUX_ANDROID_LINKER`
@@ -4264,16 +4264,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_X86_64_LINUX_ANDROID_LINKER`
@@ -4348,16 +4348,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_X86_64_LINUX_ANDROID_LINKER`
@@ -4432,16 +4432,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_X86_64_LINUX_ANDROID_LINKER`
@@ -4516,16 +4516,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_X86_64_LINUX_ANDROID_LINKER`
@@ -4600,16 +4600,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_X86_64_LINUX_ANDROID_LINKER`
@@ -4684,16 +4684,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_X86_64_LINUX_ANDROID_LINKER`
@@ -4768,16 +4768,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **kept an exported assignment (v2 exports every variable)**: `ac_cv_func_ffsl=yes`
 - **kept an exported assignment (v2 exports every variable)**: `gl_cv_func_strcasecmp_works=yes`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_X86_64_LINUX_ANDROID_LINKER`
@@ -4847,15 +4847,15 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 - **dropped (closure provides it)**: `PKG_CONFIG_LIBDIR="$PKG_CONFIG_LIBDIR:$PREFIX/share/pkgconfig"`
 - **dropped 'export' (variables are exported per file)**: `export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH`
 - **dropped 'export' (variables are exported per file)**: `export BUILD_TRIPLET HOST_TRIPLET TARGET_TRIPLET HOST_ARCH HOST_OS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AUTOCONF_CONFIGURE_FLAGS --prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export AUTOCONF_CONFIGURE_FLAGS`
 - **dropped (closure provides it)**: `CMAKE_PREFIX_PATH="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CMAKE_FLAGS -DCMAKE_INSTALL_PREFIX=$OUT`
 - **dropped (closure provides it)**: `CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_PREFIX_PATH=$PREFIX"`
 - **made a tool lookup survive set -e**: `$(command -v make)`
 - **FLAGGED $PREFIX in a system fragment**: `$CMAKE_FLAGS -DZLIB_ROOT=$PREFIX`
 - **dropped 'export' (variables are exported per file)**: `export CMAKE_TOOLCHAIN_FILE CMAKE_PREFIX_PATH CMAKE_FLAGS`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--prefix=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--prefix=$OUT`
 - **dropped 'export' (variables are exported per file)**: `export MESON_CROSS_FILE MESON_FLAGS`
 - **dropped (closure provides it)**: `RUSTFLAGS="-L $PREFIX/lib"`
 - **dropped 'export' (variables are exported per file)**: `export CARGO_BUILD_TARGET CARGO_TARGET_X86_64_PC_WINDOWS_GNU_LINKER`

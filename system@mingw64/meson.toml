@@ -16,7 +16,7 @@
 # winpthreads symbol. A host library directory on a target link line
 # is never what anyone meant; pointing the variable at $PREFIX is.
 MESON_CROSS_FILE = "$SYSDIR/crossfile-x86_64-mingw.ini"
-MESON_FLAGS = "--prefix=$PREFIX "
+MESON_FLAGS = "--prefix=$OUTPKG "
 script = """
 meson setup build ${MESON_CROSS_FILE:+--cross-file \"$MESON_CROSS_FILE\"} $MESON_FLAGS $BS_args
 ninja -C build -j \"$CORES\"

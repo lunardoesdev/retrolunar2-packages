@@ -35,7 +35,7 @@ post = """
 # systems' PKG_CONFIG_LIBDIR and LDFLAGS search. Spelling it out is
 # what keeps the .pc findable.
 #
-# prefix=$OUT: Make.Rules:32-43 switches the install layout to
+# prefix=$OUTPKG: Make.Rules:32-43 switches the install layout to
 # autoconf-style prefixes, so LIBDIR/INCDIR/PKGCONFIGDIR all derive
 # from it and the install lands straight in $OUT.
 #
@@ -49,6 +49,6 @@ post = """
 # portable path (libcap/Makefile:141 falls back cleanly).
 # PAM_CAP=no and GOLANG=no keep the top-level Makefile from recursing
 # into pam_cap and the Go bindings.
-make -j\"$CORES\" -C libcap CC=\"$CC\" AR=\"$AR\" RANLIB=\"$RANLIB\" BUILD_CC=\"cc\"    lib=lib prefix=\"$PREFIX\" SHARED=no PTHREADS=yes USE_GPERF=no    PAM_CAP=no GOLANG=no
-make -j\"$CORES\" -C libcap install CC=\"$CC\" AR=\"$AR\" RANLIB=\"$RANLIB\" BUILD_CC=\"cc\"    lib=lib prefix=\"$PREFIX\" SHARED=no PTHREADS=yes USE_GPERF=no    PAM_CAP=no GOLANG=no
+make -j\"$CORES\" -C libcap CC=\"$CC\" AR=\"$AR\" RANLIB=\"$RANLIB\" BUILD_CC=\"cc\"    lib=lib prefix=\"$OUTPKG\" SHARED=no PTHREADS=yes USE_GPERF=no    PAM_CAP=no GOLANG=no
+make -j\"$CORES\" -C libcap install CC=\"$CC\" AR=\"$AR\" RANLIB=\"$RANLIB\" BUILD_CC=\"cc\"    lib=lib prefix=\"$OUTPKG\" SHARED=no PTHREADS=yes USE_GPERF=no    PAM_CAP=no GOLANG=no
 """

@@ -4,5 +4,5 @@ buildsystem = "make"
 # the source root; the build then happens in this directory.
 targets = ["install-private-headers"]
 pre = """
-./unix/configure $AUTOCONF_CONFIGURE_FLAGS --mandir=\"$PREFIX/share/man\" --disable-rpath
+./unix/configure $AUTOCONF_CONFIGURE_FLAGS --mandir=\"$OUTPKG/share/man\" --disable-rpath
 """

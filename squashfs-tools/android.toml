@@ -17,6 +17,6 @@ cd squashfs-tools
 # gone. The system's LDFLAGS already carry -lm.
 # USE_PREBUILT_MANPAGES=y for the reason given in generic.lua: the
 # alternative renders the manuals by RUNNING the freshly built tools.
-make -j\"$CORES\" LZO_SUPPORT=0 USE_PREBUILT_MANPAGES=y INSTALL_PREFIX=\"$PREFIX\"      LIBS=\"-lm -lz -llz4 -llzma -lzstd\"
-make -j\"$CORES\" LZO_SUPPORT=0 USE_PREBUILT_MANPAGES=y INSTALL_PREFIX=\"$PREFIX\"      LIBS=\"-lm -lz -llz4 -llzma -lzstd\" install
+make -j\"$CORES\" LZO_SUPPORT=0 USE_PREBUILT_MANPAGES=y INSTALL_PREFIX=\"$OUTPKG\"      LIBS=\"-lm -lz -llz4 -llzma -lzstd\"
+make -j\"$CORES\" LZO_SUPPORT=0 USE_PREBUILT_MANPAGES=y INSTALL_PREFIX=\"$OUTPKG\"      LIBS=\"-lm -lz -llz4 -llzma -lzstd\" install
 """

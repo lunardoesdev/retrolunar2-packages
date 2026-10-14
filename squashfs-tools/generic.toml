@@ -19,6 +19,6 @@ cd squashfs-tools
 # target binary is exactly what this repo never does. \"y\" takes the
 # pre-built pages in Documentation/manpages instead.
 # INSTALL_PREFIX: Makefile:174-176 default to /usr/local.
-make -j\"$CORES\" LZO_SUPPORT=0 USE_PREBUILT_MANPAGES=y INSTALL_PREFIX=\"$PREFIX\"
-make -j\"$CORES\" LZO_SUPPORT=0 USE_PREBUILT_MANPAGES=y INSTALL_PREFIX=\"$PREFIX\" install
+make -j\"$CORES\" LZO_SUPPORT=0 USE_PREBUILT_MANPAGES=y INSTALL_PREFIX=\"$OUTPKG\"
+make -j\"$CORES\" LZO_SUPPORT=0 USE_PREBUILT_MANPAGES=y INSTALL_PREFIX=\"$OUTPKG\" install
 """

@@ -29,8 +29,8 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## Lexbor/generic.lua
 
-- **rewrote $OUT to $PREFIX (staging)**: `awk '{ if ($0 ~ /^Libs:/) print "Libs: -L${libdir} -llexbor_static"; else print }' "$OUT/lib/pkgconfig/lexbor.pc" > "$WORK/lexbor.pc"`
-- **rewrote $OUT to $PREFIX (staging)**: `cp "$WORK/lexbor.pc" "$OUT/lib/pkgconfig/lexbor.pc"`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `awk '{ if ($0 ~ /^Libs:/) print "Libs: -L${libdir} -llexbor_static"; else print }' "$OUT/lib/pkgconfig/lexbor.pc" > "$WORK/lexbor.pc"`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp "$WORK/lexbor.pc" "$OUT/lib/pkgconfig/lexbor.pc"`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/Lexbor@source/* .`
 - **driven by the cmake build system**: `args=['-DLEXBOR_BUILD_SHARED=OFF']`
 - **ported**: `generic.toml`
@@ -122,7 +122,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 ## autoconf/generic.lua
 
 - **FLAGGED $PREFIX meaning dependencies**: `./configure $AUTOCONF_CONFIGURE_FLAGS --prefix="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `make -j"$CORES" prefix="$OUT" install`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `make -j"$CORES" prefix="$OUT" install`
 
 ## autoconf/generic.toml
 
@@ -141,7 +141,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 ## automake/generic.lua
 
 - **FLAGGED $PREFIX meaning dependencies**: `./configure $AUTOCONF_CONFIGURE_FLAGS --prefix="$PREFIX"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `make -j"$CORES" prefix="$OUT" install`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `make -j"$CORES" prefix="$OUT" install`
 
 ## automake/generic.toml
 
@@ -169,14 +169,14 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## bc/android.lua
 
-- **rewrote $OUT to $OUTPKG (install prefix)**: `CC="$CC -std=c99" HOSTCC="cc" HOSTCFLAGS="-std=c99" ./configure --prefix="$OUT" --enable-readline --disable-nls`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `CC="$CC -std=c99" HOSTCC="cc" HOSTCFLAGS="-std=c99" ./configure --prefix="$OUT" --enable-readline --disable-nls`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/bc@source/* .`
 - **driven by the make build system**: `make=False, install=False`
 - **ported**: `android.toml`
 
 ## bc/generic.lua
 
-- **rewrote $OUT to $OUTPKG (install prefix)**: `CC="$CC -std=c99" ./configure --prefix="$OUT" --enable-readline`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `CC="$CC -std=c99" ./configure --prefix="$OUT" --enable-readline`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/bc@source/* .`
 - **driven by the make build system**: `make=False, install=False`
 - **ported**: `generic.toml`
@@ -197,16 +197,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## binutils/android.lua
 
-- **rewrote $OUT to $OUTPKG (install prefix)**: `make -j"$CORES" tooldir="$OUT"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `make -j"$CORES" tooldir="$OUT" install`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `make -j"$CORES" tooldir="$OUT"`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `make -j"$CORES" tooldir="$OUT" install`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/binutils@source/* .`
 - **driven by the autoconf build system**: `make=False, install=False, configure_args=['--enable-ld=default', '--enable-plugins', '--enable-shared', '--disable-werror', '--enable-64-bit-bfd', '--enable-new-dtags', '--with-system-zlib', '--disab`
 - **ported**: `android.toml`
 
 ## binutils/generic.lua
 
-- **rewrote $OUT to $OUTPKG (install prefix)**: `make -j"$CORES" tooldir="$OUT"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `make -j"$CORES" tooldir="$OUT" install`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `make -j"$CORES" tooldir="$OUT"`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `make -j"$CORES" tooldir="$OUT" install`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/binutils@source/* .`
 - **driven by the autoconf build system**: `make=False, install=False, configure_args=['--enable-ld=default', '--enable-plugins', '--enable-shared', '--disable-werror', '--enable-64-bit-bfd', '--enable-new-dtags', '--with-system-zlib', '--enabl`
 - **ported**: `generic.toml`
@@ -251,7 +251,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## bzip2/generic.lua
 
-- **rewrote $OUT to $PREFIX (staging)**: `make -j"$CORES" CC="$CC" AR="$AR" RANLIB="$RANLIB" CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" PREFIX="$OUT" install`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `make -j"$CORES" CC="$CC" AR="$AR" RANLIB="$RANLIB" CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" PREFIX="$OUT" install`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/bzip2@source/* .`
 - **driven by the make build system**: `make=False, install=False`
 - **ported**: `generic.toml`
@@ -474,9 +474,9 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## e2fsprogs/generic.lua
 
-- **rewrote $OUT to $PREFIX (staging)**: `--sysconfdir="$OUT/etc" \`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--sysconfdir="$OUT/etc" \`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/e2fsprogs@source/* .`
-- **driven by the autoconf build system**: `configure_args=['--sysconfdir=$PREFIX/etc', '--enable-elf-shlibs', '--disable-libblkid', '--disable-libuuid', '--disable-uuidd', '--disable-fsck']`
+- **driven by the autoconf build system**: `configure_args=['--sysconfdir=$OUTPKG/etc', '--enable-elf-shlibs', '--disable-libblkid', '--disable-libuuid', '--disable-uuidd', '--disable-fsck']`
 - **ported**: `generic.toml`
 
 ## e2fsprogs/source.lua
@@ -495,8 +495,8 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## elfutils/generic.lua
 
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/lib/pkgconfig`
-- **rewrote $OUT to $PREFIX (staging)**: `cp config/libelf.pc $OUT/lib/pkgconfig/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/lib/pkgconfig`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp config/libelf.pc $OUT/lib/pkgconfig/`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/elfutils@source/* .`
 - **driven by the autoconf build system**: `make=False, install=False, configure_args=['--disable-debuginfod', '--enable-libdebuginfod=dummy']`
 - **ported**: `generic.toml`
@@ -519,7 +519,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 - **FLAGGED $PREFIX meaning dependencies**: `--with-tcl="$PREFIX/lib" \`
 - **FLAGGED $PREFIX meaning dependencies**: `--with-tclinclude="$PREFIX/include" \`
-- **rewrote $OUT to $PREFIX (staging)**: `--mandir="$OUT/share/man"`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--mandir="$OUT/share/man"`
 
 ## expect/generic.toml
 
@@ -531,7 +531,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 ## expect/generic.lua
 
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/expect@source/* .`
-- **driven by the autoconf build system**: `make=False, install=False, configure_args=['--with-tcl=$tcl_PREFIX/lib', '--with-tclinclude=$tcl_PREFIX/include', '--enable-shared', '--disable-rpath', '--mandir=$PREFIX/share/man']`
+- **driven by the autoconf build system**: `make=False, install=False, configure_args=['--with-tcl=$tcl_PREFIX/lib', '--with-tclinclude=$tcl_PREFIX/include', '--enable-shared', '--disable-rpath', '--mandir=$OUTPKG/share/man']`
 - **ported**: `generic.toml`
 
 ## expect/source.lua
@@ -540,14 +540,14 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## ffmpeg/android.lua
 
-- **rewrote $OUT to $OUTPKG (install prefix)**: `./configure --prefix="$OUT" --enable-cross-compile --arch="$ffmpeg_arch" --target-os="$HOST_OS" --cc="$CC" --cxx="$CXX" --ar="$AR" --ranlib="$RANLIB" --strip="$STRIP" --pkg-config-flags="--static" --e`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `./configure --prefix="$OUT" --enable-cross-compile --arch="$ffmpeg_arch" --target-os="$HOST_OS" --cc="$CC" --cxx="$CXX" --ar="$AR" --ranlib="$RANLIB" --strip="$STRIP" --pkg-config-flags="--static" --e`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/ffmpeg@source/* .`
 - **driven by the autoconf build system**: `configure_args=['--prefix=$OUTPKG', '--enable-cross-compile', '--arch=$ffmpeg_arch', '--target-os=$HOST_OS', '--cc=$CC', '--cxx=$CXX', '--ar=$AR', '--ranlib=$RANLIB', '--strip=$STRIP', '--pkg-config-f`
 - **ported**: `android.toml`
 
 ## ffmpeg/generic.lua
 
-- **rewrote $OUT to $OUTPKG (install prefix)**: `./configure --prefix="$OUT" --cc="$CC" --cxx="$CXX" --ar="$AR" --ranlib="$RANLIB" --strip="$STRIP" --pkg-config-flags="--static" --enable-static --disable-shared --disable-doc --disable-programs --dis`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `./configure --prefix="$OUT" --cc="$CC" --cxx="$CXX" --ar="$AR" --ranlib="$RANLIB" --strip="$STRIP" --pkg-config-flags="--static" --enable-static --disable-shared --disable-doc --disable-programs --dis`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/ffmpeg@source/* .`
 - **driven by the autoconf build system**: `configure_args=['--prefix=$OUTPKG', '--cc=$CC', '--cxx=$CXX', '--ar=$AR', '--ranlib=$RANLIB', '--strip=$STRIP', '--pkg-config-flags=--static', '--enable-static', '--disable-shared', '--disable-doc', '`
 - **ported**: `generic.toml`
@@ -584,9 +584,9 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## findutils/generic.lua
 
-- **rewrote $OUT to $PREFIX (staging)**: `./configure $AUTOCONF_CONFIGURE_FLAGS --localstatedir="$OUT/var/lib/locate"`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `./configure $AUTOCONF_CONFIGURE_FLAGS --localstatedir="$OUT/var/lib/locate"`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/findutils@source/* .`
-- **driven by the autoconf build system**: `configure_args=['--localstatedir=$PREFIX/var/lib/locate']`
+- **driven by the autoconf build system**: `configure_args=['--localstatedir=$OUTPKG/var/lib/locate']`
 - **ported**: `generic.toml`
 
 ## findutils/source.lua
@@ -625,9 +625,9 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## flit-core/generic.lua
 
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/lib/python3.14/site-packages`
-- **rewrote $OUT to $PREFIX (staging)**: `cp -r flit_core $OUT/lib/python3.14/site-packages/`
-- **rewrote $OUT to $PREFIX (staging)**: `cp LICENSE $OUT/lib/python3.14/site-packages/flit_core/LICENSE`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/lib/python3.14/site-packages`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp -r flit_core $OUT/lib/python3.14/site-packages/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp LICENSE $OUT/lib/python3.14/site-packages/flit_core/LICENSE`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/flit-core@source/* .`
 - **driven by the python build system**: `modules=['flit_core'], licenses=['LICENSE']`
 - **ported**: `generic.toml`
@@ -698,7 +698,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## gettext/generic.lua
 
-- **rewrote $OUT to $PREFIX (staging)**: `chmod 0755 $OUT/lib/preloadable_libintl.so`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `chmod 0755 $OUT/lib/preloadable_libintl.so`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/gettext@source/* .`
 - **driven by the autoconf build system**: `configure_args=['--disable-static']`
 - **ported**: `generic.toml`
@@ -709,8 +709,8 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## giflib/generic.lua
 
-- **rewrote $OUT to $PREFIX (staging)**: `make -j"$CORES" CC="$CC" CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" PREFIX="$OUT"`
-- **rewrote $OUT to $PREFIX (staging)**: `make install-lib install-include PREFIX="$OUT"`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `make -j"$CORES" CC="$CC" CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" PREFIX="$OUT"`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `make install-lib install-include PREFIX="$OUT"`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/giflib@source/* .`
 - **driven by the make build system**: `make=False, install=False`
 - **ported**: `generic.toml`
@@ -721,12 +721,12 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## glad/generic.lua
 
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p obj $OUT/lib $OUT/include`
-- **rewrote $OUT to $PREFIX (staging)**: `$AR rcs $OUT/lib/libglad.a obj/gl.o obj/gles2.o obj/egl.o`
-- **rewrote $OUT to $PREFIX (staging)**: `$RANLIB $OUT/lib/libglad.a`
-- **rewrote $OUT to $PREFIX (staging)**: `cp -r glad-out/include/. $OUT/include/`
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/lib/pkgconfig`
-- **rewrote $OUT to $PREFIX (staging)**: `cat > $OUT/lib/pkgconfig/glad.pc <<EOF`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p obj $OUT/lib $OUT/include`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AR rcs $OUT/lib/libglad.a obj/gl.o obj/gles2.o obj/egl.o`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$RANLIB $OUT/lib/libglad.a`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp -r glad-out/include/. $OUT/include/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/lib/pkgconfig`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cat > $OUT/lib/pkgconfig/glad.pc <<EOF`
 - **FLAGGED $PREFIX meaning dependencies**: `prefix=$PREFIX`
 
 ## glad/generic.toml
@@ -737,12 +737,12 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/glad@source/* .`
 - **left as a shell body (a compilation of its own, not a build system)**: `generic.lua`
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p obj $OUT/lib $OUT/include`
-- **rewrote $OUT to $PREFIX (staging)**: `$AR rcs $OUT/lib/libglad.a obj/gl.o obj/gles2.o obj/egl.o`
-- **rewrote $OUT to $PREFIX (staging)**: `$RANLIB $OUT/lib/libglad.a`
-- **rewrote $OUT to $PREFIX (staging)**: `cp -r glad-out/include/. $OUT/include/`
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/lib/pkgconfig`
-- **rewrote $OUT to $PREFIX (staging)**: `cat > $OUT/lib/pkgconfig/glad.pc <<EOF`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p obj $OUT/lib $OUT/include`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AR rcs $OUT/lib/libglad.a obj/gl.o obj/gles2.o obj/egl.o`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$RANLIB $OUT/lib/libglad.a`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp -r glad-out/include/. $OUT/include/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/lib/pkgconfig`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cat > $OUT/lib/pkgconfig/glad.pc <<EOF`
 - **FLAGGED $PREFIX meaning dependencies**: `prefix=$PREFIX`
 
 ## glad/generic.toml
@@ -759,11 +759,11 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## glew/generic.lua
 
-- **rewrote $OUT to $PREFIX (staging)**: `make -j"$CORES" glew.lib.static CC="$CC" AR="$AR" RANLIB="$RANLIB" STRIP= GLEW_DEST="$OUT" GLEW_PREFIX="$OUT" LIBDIR="$OUT/lib" LDFLAGS.GL= GLEW_NO_GLU=-DGLEW_NO_GLU`
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/include/GL $OUT/lib/pkgconfig`
-- **rewrote $OUT to $PREFIX (staging)**: `cp include/GL/glew.h include/GL/glxew.h include/GL/wglew.h include/GL/eglew.h $OUT/include/GL/`
-- **rewrote $OUT to $PREFIX (staging)**: `cp lib/libGLEW.a $OUT/lib/`
-- **rewrote $OUT to $PREFIX (staging)**: `cp glew.pc $OUT/lib/pkgconfig/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `make -j"$CORES" glew.lib.static CC="$CC" AR="$AR" RANLIB="$RANLIB" STRIP= GLEW_DEST="$OUT" GLEW_PREFIX="$OUT" LIBDIR="$OUT/lib" LDFLAGS.GL= GLEW_NO_GLU=-DGLEW_NO_GLU`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/include/GL $OUT/lib/pkgconfig`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp include/GL/glew.h include/GL/glxew.h include/GL/wglew.h include/GL/eglew.h $OUT/include/GL/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp lib/libGLEW.a $OUT/lib/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp glew.pc $OUT/lib/pkgconfig/`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/glew@source/* .`
 - **driven by the make build system**: `make=False, install=False`
 - **ported**: `generic.toml`
@@ -794,16 +794,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## glog/android.lua
 
-- **rewrote $OUT to $PREFIX (staging)**: `awk '{ if ($0 ~ /^Cflags:/) print $0 " -DGLOG_USE_GLOG_EXPORT"; else print }' "$OUT/lib/pkgconfig/libglog.pc" > "$WORK/libglog.pc"`
-- **rewrote $OUT to $PREFIX (staging)**: `cp "$WORK/libglog.pc" "$OUT/lib/pkgconfig/libglog.pc"`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `awk '{ if ($0 ~ /^Cflags:/) print $0 " -DGLOG_USE_GLOG_EXPORT"; else print }' "$OUT/lib/pkgconfig/libglog.pc" > "$WORK/libglog.pc"`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp "$WORK/libglog.pc" "$OUT/lib/pkgconfig/libglog.pc"`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/glog@source/* .`
 - **driven by the cmake build system**: `args=['-DANDROID=ON', '-DBUILD_SHARED_LIBS=OFF', '-DBUILD_TESTING=OFF', '-DWITH_GFLAGS=OFF', '-DWITH_GTEST=OFF', '-DWITH_GMOCK=OFF', '-DWITH_PKGCONFIG=ON', '-DWITH_UNWIND=none']`
 - **ported**: `android.toml`
 
 ## glog/generic.lua
 
-- **rewrote $OUT to $PREFIX (staging)**: `awk '{ if ($0 ~ /^Cflags:/) print $0 " -DGLOG_USE_GLOG_EXPORT"; else print }' "$OUT/lib/pkgconfig/libglog.pc" > "$WORK/libglog.pc"`
-- **rewrote $OUT to $PREFIX (staging)**: `cp "$WORK/libglog.pc" "$OUT/lib/pkgconfig/libglog.pc"`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `awk '{ if ($0 ~ /^Cflags:/) print $0 " -DGLOG_USE_GLOG_EXPORT"; else print }' "$OUT/lib/pkgconfig/libglog.pc" > "$WORK/libglog.pc"`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp "$WORK/libglog.pc" "$OUT/lib/pkgconfig/libglog.pc"`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/glog@source/* .`
 - **driven by the cmake build system**: `args=['-DBUILD_SHARED_LIBS=OFF', '-DBUILD_TESTING=OFF', '-DWITH_GFLAGS=OFF', '-DWITH_GTEST=OFF', '-DWITH_GMOCK=OFF', '-DWITH_PKGCONFIG=ON', '-DWITH_UNWIND=none']`
 - **ported**: `generic.toml`
@@ -918,11 +918,11 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## hello/generic.lua
 
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/bin`
-- **rewrote $OUT to $PREFIX (staging)**: `$CC $CFLAGS main.c -o $OUT/bin/hello`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/bin`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CC $CFLAGS main.c -o $OUT/bin/hello`
 - **left as a shell body (a compilation of its own, not a build system)**: `generic.lua`
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/bin`
-- **rewrote $OUT to $PREFIX (staging)**: `$CC $CFLAGS main.c -o $OUT/bin/hello`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/bin`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$CC $CFLAGS main.c -o $OUT/bin/hello`
 - **ported**: `generic.toml`
 
 ## main.c
@@ -955,38 +955,38 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## i2pd/android.lua
 
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/etc/i2pd/tunnels.conf.d`
-- **rewrote $OUT to $PREFIX (staging)**: `cp contrib/i2pd.conf contrib/subscriptions.txt contrib/tunnels.conf $OUT/etc/i2pd/`
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/share/doc/i2pd`
-- **rewrote $OUT to $PREFIX (staging)**: `cp ChangeLog LICENSE README.md contrib/i2pd.conf contrib/subscriptions.txt contrib/tunnels.conf $OUT/share/doc/i2pd/`
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/share/i2pd`
-- **rewrote $OUT to $PREFIX (staging)**: `cp -r contrib/certificates $OUT/share/i2pd/`
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/share/man/man1`
-- **rewrote $OUT to $PREFIX (staging)**: `cp debian/i2pd.1 $OUT/share/man/man1/`
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/include/i2pd`
-- **rewrote $OUT to $PREFIX (staging)**: `cp i18n/*.h libi2pd/*.h libi2pd_client/*.h $OUT/include/i2pd/`
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/var/lib/i2pd/tunnels.d`
-- **rewrote $OUT to $PREFIX (staging)**: `cp -r contrib/certificates $OUT/var/lib/i2pd/`
-- **rewrote $OUT to $PREFIX (staging)**: `cp contrib/i2pd.conf contrib/subscriptions.txt contrib/tunnels.conf $OUT/var/lib/i2pd/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/etc/i2pd/tunnels.conf.d`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp contrib/i2pd.conf contrib/subscriptions.txt contrib/tunnels.conf $OUT/etc/i2pd/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/share/doc/i2pd`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp ChangeLog LICENSE README.md contrib/i2pd.conf contrib/subscriptions.txt contrib/tunnels.conf $OUT/share/doc/i2pd/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/share/i2pd`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp -r contrib/certificates $OUT/share/i2pd/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/share/man/man1`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp debian/i2pd.1 $OUT/share/man/man1/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/include/i2pd`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp i18n/*.h libi2pd/*.h libi2pd_client/*.h $OUT/include/i2pd/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/var/lib/i2pd/tunnels.d`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp -r contrib/certificates $OUT/var/lib/i2pd/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp contrib/i2pd.conf contrib/subscriptions.txt contrib/tunnels.conf $OUT/var/lib/i2pd/`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/i2pd@source/* .`
 - **driven by the cmake build system**: `args=['-DWITH_UPNP=OFF', '-DWITH_GIT_VERSION=OFF', '-DBUILD_TESTING=OFF'], source_dir=build`
 - **ported**: `android.toml`
 
 ## i2pd/generic.lua
 
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/etc/i2pd/tunnels.conf.d`
-- **rewrote $OUT to $PREFIX (staging)**: `cp contrib/i2pd.conf contrib/subscriptions.txt contrib/tunnels.conf $OUT/etc/i2pd/`
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/share/doc/i2pd`
-- **rewrote $OUT to $PREFIX (staging)**: `cp ChangeLog LICENSE README.md contrib/i2pd.conf contrib/subscriptions.txt contrib/tunnels.conf $OUT/share/doc/i2pd/`
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/share/i2pd`
-- **rewrote $OUT to $PREFIX (staging)**: `cp -r contrib/certificates $OUT/share/i2pd/`
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/share/man/man1`
-- **rewrote $OUT to $PREFIX (staging)**: `cp debian/i2pd.1 $OUT/share/man/man1/`
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/include/i2pd`
-- **rewrote $OUT to $PREFIX (staging)**: `cp i18n/*.h libi2pd/*.h libi2pd_client/*.h $OUT/include/i2pd/`
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/var/lib/i2pd/tunnels.d`
-- **rewrote $OUT to $PREFIX (staging)**: `cp -r contrib/certificates $OUT/var/lib/i2pd/`
-- **rewrote $OUT to $PREFIX (staging)**: `cp contrib/i2pd.conf contrib/subscriptions.txt contrib/tunnels.conf $OUT/var/lib/i2pd/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/etc/i2pd/tunnels.conf.d`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp contrib/i2pd.conf contrib/subscriptions.txt contrib/tunnels.conf $OUT/etc/i2pd/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/share/doc/i2pd`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp ChangeLog LICENSE README.md contrib/i2pd.conf contrib/subscriptions.txt contrib/tunnels.conf $OUT/share/doc/i2pd/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/share/i2pd`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp -r contrib/certificates $OUT/share/i2pd/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/share/man/man1`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp debian/i2pd.1 $OUT/share/man/man1/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/include/i2pd`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp i18n/*.h libi2pd/*.h libi2pd_client/*.h $OUT/include/i2pd/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/var/lib/i2pd/tunnels.d`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp -r contrib/certificates $OUT/var/lib/i2pd/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp contrib/i2pd.conf contrib/subscriptions.txt contrib/tunnels.conf $OUT/var/lib/i2pd/`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/i2pd@source/* .`
 - **driven by the cmake build system**: `args=['-DWITH_UPNP=OFF', '-DWITH_GIT_VERSION=OFF', '-DBUILD_TESTING=OFF'], source_dir=build`
 - **ported**: `generic.toml`
@@ -997,11 +997,11 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## iana-etc/generic.lua
 
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/etc`
-- **rewrote $OUT to $PREFIX (staging)**: `cp $NESTDIR/source/iana-etc/services $NESTDIR/source/iana-etc/protocols $OUT/etc/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/etc`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp $NESTDIR/source/iana-etc/services $NESTDIR/source/iana-etc/protocols $OUT/etc/`
 - **left as a shell body (installing files is the whole recipe)**: `generic.lua`
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/etc`
-- **rewrote $OUT to $PREFIX (staging)**: `cp $NESTDIR/source/iana-etc/services $NESTDIR/source/iana-etc/protocols $OUT/etc/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/etc`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp $NESTDIR/source/iana-etc/services $NESTDIR/source/iana-etc/protocols $OUT/etc/`
 - **ported**: `generic.toml`
 
 ## iana-etc/source.lua
@@ -1010,11 +1010,11 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## imgui/generic.lua
 
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p obj $OUT/lib $OUT/include $OUT/lib/pkgconfig`
-- **rewrote $OUT to $PREFIX (staging)**: `$AR rcs $OUT/lib/libimgui.a obj/*.o`
-- **rewrote $OUT to $PREFIX (staging)**: `$RANLIB $OUT/lib/libimgui.a`
-- **rewrote $OUT to $PREFIX (staging)**: `cp imgui.h imgui_internal.h imconfig.h imstb_rectpack.h imstb_textedit.h imstb_truetype.h LICENSE.txt $OUT/include/`
-- **rewrote $OUT to $PREFIX (staging)**: `cat > $OUT/lib/pkgconfig/imgui.pc <<EOF`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p obj $OUT/lib $OUT/include $OUT/lib/pkgconfig`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AR rcs $OUT/lib/libimgui.a obj/*.o`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$RANLIB $OUT/lib/libimgui.a`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp imgui.h imgui_internal.h imconfig.h imstb_rectpack.h imstb_textedit.h imstb_truetype.h LICENSE.txt $OUT/include/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cat > $OUT/lib/pkgconfig/imgui.pc <<EOF`
 - **FLAGGED $PREFIX meaning dependencies**: `prefix=$PREFIX`
 
 ## imgui/generic.toml
@@ -1025,11 +1025,11 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/imgui@source/* .`
 - **left as a shell body (a compilation of its own, not a build system)**: `generic.lua`
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p obj $OUT/lib $OUT/include $OUT/lib/pkgconfig`
-- **rewrote $OUT to $PREFIX (staging)**: `$AR rcs $OUT/lib/libimgui.a obj/*.o`
-- **rewrote $OUT to $PREFIX (staging)**: `$RANLIB $OUT/lib/libimgui.a`
-- **rewrote $OUT to $PREFIX (staging)**: `cp imgui.h imgui_internal.h imconfig.h imstb_rectpack.h imstb_textedit.h imstb_truetype.h LICENSE.txt $OUT/include/`
-- **rewrote $OUT to $PREFIX (staging)**: `cat > $OUT/lib/pkgconfig/imgui.pc <<EOF`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p obj $OUT/lib $OUT/include $OUT/lib/pkgconfig`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$AR rcs $OUT/lib/libimgui.a obj/*.o`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `$RANLIB $OUT/lib/libimgui.a`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp imgui.h imgui_internal.h imconfig.h imstb_rectpack.h imstb_textedit.h imstb_truetype.h LICENSE.txt $OUT/include/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cat > $OUT/lib/pkgconfig/imgui.pc <<EOF`
 - **FLAGGED $PREFIX meaning dependencies**: `prefix=$PREFIX`
 
 ## imgui/generic.toml
@@ -1046,7 +1046,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## inetutils/generic.lua
 
-- **rewrote $OUT to $PREFIX (staging)**: `ln -s ../sbin/ifconfig $OUT/bin/ifconfig`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `ln -s ../sbin/ifconfig $OUT/bin/ifconfig`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/inetutils@source/* .`
 - **driven by the autoconf build system**: `make=False, install=False, configure_args=['--bindir=/usr/bin', '--localstatedir=/var', '--disable-logger', '--disable-whois', '--disable-rcp', '--disable-rexec', '--disable-rlogin', '--disable-rsh', `
 - **ported**: `generic.toml`
@@ -1067,7 +1067,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## isa-l/generic.lua
 
-- **rewrote $OUT to $OUTPKG (install prefix)**: `make -j"$CORES" -f Makefile.unx host_cpu="$HOST_ARCH" prefix="$OUT" install`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `make -j"$CORES" -f Makefile.unx host_cpu="$HOST_ARCH" prefix="$OUT" install`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/isa-l@source/* .`
 - **driven by the make build system**: `make=False, install=False`
 - **ported**: `generic.toml`
@@ -1098,9 +1098,9 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## jinja2/generic.lua
 
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/lib/python3.14/site-packages`
-- **rewrote $OUT to $PREFIX (staging)**: `cp -r src/jinja2 $OUT/lib/python3.14/site-packages/`
-- **rewrote $OUT to $PREFIX (staging)**: `cp LICENSE.txt $OUT/lib/python3.14/site-packages/jinja2/LICENSE.txt`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/lib/python3.14/site-packages`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp -r src/jinja2 $OUT/lib/python3.14/site-packages/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp LICENSE.txt $OUT/lib/python3.14/site-packages/jinja2/LICENSE.txt`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/jinja2@source/* .`
 - **driven by the python build system**: `modules=['src/jinja2'], licenses=['LICENSE.txt']`
 - **ported**: `generic.toml`
@@ -1203,11 +1203,11 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## lfs-bootscripts/generic.lua
 
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/etc`
-- **rewrote $OUT to $PREFIX (staging)**: `cp -r $NESTDIR/source/lfs-bootscripts/* $OUT/etc/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/etc`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp -r $NESTDIR/source/lfs-bootscripts/* $OUT/etc/`
 - **left as a shell body (installing files is the whole recipe)**: `generic.lua`
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/etc`
-- **rewrote $OUT to $PREFIX (staging)**: `cp -r $NESTDIR/source/lfs-bootscripts/* $OUT/etc/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/etc`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp -r $NESTDIR/source/lfs-bootscripts/* $OUT/etc/`
 - **ported**: `generic.toml`
 
 ## lfs-bootscripts/source.lua
@@ -1226,8 +1226,8 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## libcap/generic.lua
 
-- **rewrote $OUT to $OUTPKG (install prefix)**: `lib=lib prefix="$OUT" SHARED=no PTHREADS=yes USE_GPERF=no \`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `lib=lib prefix="$OUT" SHARED=no PTHREADS=yes USE_GPERF=no \`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `lib=lib prefix="$OUT" SHARED=no PTHREADS=yes USE_GPERF=no \`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `lib=lib prefix="$OUT" SHARED=no PTHREADS=yes USE_GPERF=no \`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/libcap@source/* .`
 - **driven by the make build system**: `make=False, install=False`
 - **ported**: `generic.toml`
@@ -1466,14 +1466,14 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## libvpx/android.lua
 
-- **rewrote $OUT to $OUTPKG (install prefix)**: `./configure --prefix="$OUT" --target="$vpx_arch-$HOST_OS-gcc" \`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `./configure --prefix="$OUT" --target="$vpx_arch-$HOST_OS-gcc" \`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/libvpx@source/* .`
 - **driven by the autoconf build system**: `configure_args=['--prefix=$OUTPKG', '--target=$vpx_arch-$HOST_OS-gcc', '--disable-examples', '--disable-docs', '--disable-unit-tests', '--disable-tools', '--enable-pic', '--enable-static', '--disable-`
 - **ported**: `android.toml`
 
 ## libvpx/generic.lua
 
-- **rewrote $OUT to $OUTPKG (install prefix)**: `./configure --prefix="$OUT" \`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `./configure --prefix="$OUT" \`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/libvpx@source/* .`
 - **driven by the autoconf build system**: `configure_args=['--prefix=$OUTPKG', '--disable-examples', '--disable-docs', '--disable-unit-tests', '--disable-tools', '--enable-pic', '--enable-static', '--disable-shared']`
 - **ported**: `generic.toml`
@@ -1560,10 +1560,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## lua/generic.lua
 
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/include $OUT/lib $OUT/lib/pkgconfig`
-- **rewrote $OUT to $PREFIX (staging)**: `cp src/lua.h src/luaconf.h src/lualib.h src/lauxlib.h src/lua.hpp $OUT/include/`
-- **rewrote $OUT to $PREFIX (staging)**: `cp liblua.a $OUT/lib/`
-- **rewrote $OUT to $PREFIX (staging)**: `cat > $OUT/lib/pkgconfig/lua.pc <<EOF`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/include $OUT/lib $OUT/lib/pkgconfig`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp src/lua.h src/luaconf.h src/lualib.h src/lauxlib.h src/lua.hpp $OUT/include/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp liblua.a $OUT/lib/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cat > $OUT/lib/pkgconfig/lua.pc <<EOF`
 - **FLAGGED $PREFIX meaning dependencies**: `prefix=$PREFIX`
 
 ## lua/generic.toml
@@ -1574,10 +1574,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/lua@source/* .`
 - **left as a shell body (a compilation of its own, not a build system)**: `generic.lua`
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/include $OUT/lib $OUT/lib/pkgconfig`
-- **rewrote $OUT to $PREFIX (staging)**: `cp src/lua.h src/luaconf.h src/lualib.h src/lauxlib.h src/lua.hpp $OUT/include/`
-- **rewrote $OUT to $PREFIX (staging)**: `cp liblua.a $OUT/lib/`
-- **rewrote $OUT to $PREFIX (staging)**: `cat > $OUT/lib/pkgconfig/lua.pc <<EOF`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/include $OUT/lib $OUT/lib/pkgconfig`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp src/lua.h src/luaconf.h src/lualib.h src/lauxlib.h src/lua.hpp $OUT/include/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp liblua.a $OUT/lib/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cat > $OUT/lib/pkgconfig/lua.pc <<EOF`
 - **FLAGGED $PREFIX meaning dependencies**: `prefix=$PREFIX`
 
 ## lua/generic.toml
@@ -1594,10 +1594,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## lz4/generic.lua
 
-- **rewrote $OUT to $PREFIX (staging)**: `make -C lib PREFIX="$OUT" BUILD_SHARED=no BUILD_STATIC=yes`
-- **rewrote $OUT to $PREFIX (staging)**: `make -C lib PREFIX="$OUT" BUILD_SHARED=no BUILD_STATIC=yes install`
-- **rewrote $OUT to $PREFIX (staging)**: `make -C programs PREFIX="$OUT"`
-- **rewrote $OUT to $PREFIX (staging)**: `make -C programs PREFIX="$OUT" install`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `make -C lib PREFIX="$OUT" BUILD_SHARED=no BUILD_STATIC=yes`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `make -C lib PREFIX="$OUT" BUILD_SHARED=no BUILD_STATIC=yes install`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `make -C programs PREFIX="$OUT"`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `make -C programs PREFIX="$OUT" install`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/lz4@source/* .`
 - **driven by the make build system**: `make=False, install=False`
 - **ported**: `generic.toml`
@@ -1643,12 +1643,12 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## man-pages/generic.lua
 
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/share/man`
-- **rewrote $OUT to $PREFIX (staging)**: `cp -r "$_s" "$OUT/share/man/"`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/share/man`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp -r "$_s" "$OUT/share/man/"`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/man-pages@source/* .`
 - **left as a shell body (installing files is the whole recipe)**: `generic.lua`
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/share/man`
-- **rewrote $OUT to $PREFIX (staging)**: `cp -r "$_s" "$OUT/share/man/"`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/share/man`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp -r "$_s" "$OUT/share/man/"`
 - **ported**: `generic.toml`
 
 ## man-pages/source.lua
@@ -1657,9 +1657,9 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## markupsafe/generic.lua
 
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/lib/python3.14/site-packages`
-- **rewrote $OUT to $PREFIX (staging)**: `cp -r src/markupsafe $OUT/lib/python3.14/site-packages/`
-- **rewrote $OUT to $PREFIX (staging)**: `cp LICENSE.txt $OUT/lib/python3.14/site-packages/markupsafe/LICENSE.txt`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/lib/python3.14/site-packages`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp -r src/markupsafe $OUT/lib/python3.14/site-packages/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp LICENSE.txt $OUT/lib/python3.14/site-packages/markupsafe/LICENSE.txt`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/markupsafe@source/* .`
 - **driven by the python build system**: `modules=['src/markupsafe'], licenses=['LICENSE.txt']`
 - **ported**: `generic.toml`
@@ -1690,12 +1690,12 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## meson/generic.lua
 
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/lib/python3.14/site-packages`
-- **rewrote $OUT to $PREFIX (staging)**: `cp -r mesonbuild $OUT/lib/python3.14/site-packages/`
-- **rewrote $OUT to $PREFIX (staging)**: `cp COPYING $OUT/lib/python3.14/site-packages/mesonbuild/COPYING`
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/bin`
-- **rewrote $OUT to $PREFIX (staging)**: `cp meson.py $OUT/bin/meson`
-- **rewrote $OUT to $PREFIX (staging)**: `chmod +x $OUT/bin/meson`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/lib/python3.14/site-packages`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp -r mesonbuild $OUT/lib/python3.14/site-packages/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp COPYING $OUT/lib/python3.14/site-packages/mesonbuild/COPYING`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/bin`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp meson.py $OUT/bin/meson`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `chmod +x $OUT/bin/meson`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/meson@source/* .`
 - **driven by the python build system**: `modules=['mesonbuild'], licenses=['COPYING'], scripts=['meson.py:meson']`
 - **ported**: `generic.toml`
@@ -1745,7 +1745,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## mpc/generic.lua
 
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--docdir="$OUT/share/doc/mpc-1.3.1"`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--docdir="$OUT/share/doc/mpc-1.3.1"`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/mpc@source/* .`
 - **driven by the autoconf build system**: `configure_args=['--disable-static', '--docdir=$OUTPKG/share/doc/mpc-1.3.1']`
 - **ported**: `generic.toml`
@@ -1756,7 +1756,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## mpfr/generic.lua
 
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--docdir="$OUT/share/doc/mpfr-4.2.2"`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--docdir="$OUT/share/doc/mpfr-4.2.2"`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/mpfr@source/* .`
 - **driven by the autoconf build system**: `configure_args=['--disable-static', '--enable-thread-safe', '--docdir=$OUTPKG/share/doc/mpfr-4.2.2']`
 - **ported**: `generic.toml`
@@ -1797,16 +1797,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## ncurses/generic.lua
 
-- **rewrote $OUT to $OUTPKG (install prefix)**: `--with-pkg-config-libdir=$OUT/lib/pkgconfig \`
-- **rewrote $OUT to $PREFIX (staging)**: `ln -sf libncursesw.so $OUT/lib/libcurses.so`
-- **rewrote $OUT to $PREFIX (staging)**: `ln -sf libncursesw.so $OUT/lib/libncurses.so`
-- **rewrote $OUT to $PREFIX (staging)**: `ln -sf libformw.so $OUT/lib/libform.so`
-- **rewrote $OUT to $PREFIX (staging)**: `ln -sf libmenuw.so $OUT/lib/libmenu.so`
-- **rewrote $OUT to $PREFIX (staging)**: `ln -sf libpanelw.so $OUT/lib/libpanel.so`
-- **rewrote $OUT to $PREFIX (staging)**: `ln -sf ncursesw.pc $OUT/lib/pkgconfig/ncurses.pc`
-- **rewrote $OUT to $PREFIX (staging)**: `ln -sf formw.pc $OUT/lib/pkgconfig/form.pc`
-- **rewrote $OUT to $PREFIX (staging)**: `ln -sf menuw.pc $OUT/lib/pkgconfig/menu.pc`
-- **rewrote $OUT to $PREFIX (staging)**: `ln -sf panelw.pc $OUT/lib/pkgconfig/panel.pc`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `--with-pkg-config-libdir=$OUT/lib/pkgconfig \`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `ln -sf libncursesw.so $OUT/lib/libcurses.so`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `ln -sf libncursesw.so $OUT/lib/libncurses.so`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `ln -sf libformw.so $OUT/lib/libform.so`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `ln -sf libmenuw.so $OUT/lib/libmenu.so`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `ln -sf libpanelw.so $OUT/lib/libpanel.so`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `ln -sf ncursesw.pc $OUT/lib/pkgconfig/ncurses.pc`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `ln -sf formw.pc $OUT/lib/pkgconfig/form.pc`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `ln -sf menuw.pc $OUT/lib/pkgconfig/menu.pc`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `ln -sf panelw.pc $OUT/lib/pkgconfig/panel.pc`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/ncurses@source/* .`
 - **driven by the autoconf build system**: `configure_args=['--with-shared', '--without-debug', '--without-normal', '--with-cxx-shared', '--enable-pc-files', '--with-pkg-config-libdir=$OUTPKG/lib/pkgconfig', '--disable-stripping']`
 - **ported**: `generic.toml`
@@ -1837,12 +1837,12 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## ninja/generic.lua
 
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/bin`
-- **rewrote $OUT to $PREFIX (staging)**: `cp ninja $OUT/bin/ninja`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/bin`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp ninja $OUT/bin/ninja`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/ninja@source/* .`
 - **left as a shell body (installing files is the whole recipe)**: `generic.lua`
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/bin`
-- **rewrote $OUT to $PREFIX (staging)**: `cp ninja $OUT/bin/ninja`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/bin`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp ninja $OUT/bin/ninja`
 - **ported**: `generic.toml`
 
 ## ninja/source.lua
@@ -1871,8 +1871,8 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## openblas/generic.lua
 
-- **rewrote $OUT to $PREFIX (staging)**: `CC="$CC" AR="$AR" RANLIB="$RANLIB" PREFIX=$OUT`
-- **rewrote $OUT to $PREFIX (staging)**: `CC="$CC" AR="$AR" RANLIB="$RANLIB" PREFIX=$OUT install`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `CC="$CC" AR="$AR" RANLIB="$RANLIB" PREFIX=$OUT`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `CC="$CC" AR="$AR" RANLIB="$RANLIB" PREFIX=$OUT install`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/openblas@source/* .`
 - **driven by the make build system**: `make=False, install=False`
 - **ported**: `generic.toml`
@@ -1903,14 +1903,14 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## openssl/android.lua
 
-- **rewrote $OUT to $OUTPKG (install prefix)**: `./Configure "$ssl_target" -D__ANDROID_API__="$ANDROID_API" --prefix="$OUT" --libdir=lib no-shared no-tests no-docs no-engine no-dso no-dynamic-engine`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `./Configure "$ssl_target" -D__ANDROID_API__="$ANDROID_API" --prefix="$OUT" --libdir=lib no-shared no-tests no-docs no-engine no-dso no-dynamic-engine`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/openssl@source/* .`
 - **driven by the make build system**: `make=False, install=False`
 - **ported**: `android.toml`
 
 ## openssl/generic.lua
 
-- **rewrote $OUT to $OUTPKG (install prefix)**: `./Configure "$ssl_target" --prefix="$OUT" --libdir=lib no-shared no-tests no-docs no-engine no-dso no-dynamic-engine`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `./Configure "$ssl_target" --prefix="$OUT" --libdir=lib no-shared no-tests no-docs no-engine no-dso no-dynamic-engine`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/openssl@source/* .`
 - **driven by the make build system**: `make=False, install=False`
 - **ported**: `generic.toml`
@@ -1941,8 +1941,8 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## p7zip/generic.lua
 
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/bin`
-- **rewrote $OUT to $PREFIX (staging)**: `cp bin/7za $OUT/bin/7za`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/bin`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp bin/7za $OUT/bin/7za`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/p7zip@source/* .`
 - **driven by the make build system**: `make=False, install=False`
 - **ported**: `generic.toml`
@@ -1953,9 +1953,9 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## packaging/generic.lua
 
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/lib/python3.14/site-packages`
-- **rewrote $OUT to $PREFIX (staging)**: `cp -r src/packaging $OUT/lib/python3.14/site-packages/`
-- **rewrote $OUT to $PREFIX (staging)**: `cp LICENSE LICENSE.APACHE LICENSE.BSD $OUT/lib/python3.14/site-packages/packaging/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/lib/python3.14/site-packages`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp -r src/packaging $OUT/lib/python3.14/site-packages/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp LICENSE LICENSE.APACHE LICENSE.BSD $OUT/lib/python3.14/site-packages/packaging/`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/packaging@source/* .`
 - **driven by the python build system**: `modules=['src/packaging'], licenses=['LICENSE', 'LICENSE.APACHE', 'LICENSE.BSD']`
 - **ported**: `generic.toml`
@@ -1990,16 +1990,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## perl/generic.lua
 
-- **rewrote $OUT to $OUTPKG (install prefix)**: `-Dprefix=$OUT \`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `-Dvendorprefix=$OUT \`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `-Dprefix=$OUT \`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `-Dvendorprefix=$OUT \`
 - **FLAGGED $PREFIX meaning dependencies**: `-Dprivlib=$PREFIX/lib/perl5/5.44/core_perl \`
 - **FLAGGED $PREFIX meaning dependencies**: `-Darchlib=$PREFIX/lib/perl5/5.44/core_perl \`
 - **FLAGGED $PREFIX meaning dependencies**: `-Dsitelib=$PREFIX/lib/perl5/5.44/site_perl \`
 - **FLAGGED $PREFIX meaning dependencies**: `-Dsitearch=$PREFIX/lib/perl5/5.44/site_perl \`
 - **FLAGGED $PREFIX meaning dependencies**: `-Dvendorlib=$PREFIX/lib/perl5/5.44/vendor_perl \`
 - **FLAGGED $PREFIX meaning dependencies**: `-Dvendorarch=$PREFIX/lib/perl5/5.44/vendor_perl \`
-- **rewrote $OUT to $PREFIX (staging)**: `-Dman1dir=$OUT/share/man/man1 \`
-- **rewrote $OUT to $PREFIX (staging)**: `-Dman3dir=$OUT/share/man/man3 \`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `-Dman1dir=$OUT/share/man/man1 \`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `-Dman3dir=$OUT/share/man/man3 \`
 
 ## perl/generic.toml
 
@@ -2063,8 +2063,8 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 ## pngprobe/generic.lua
 
 - **FLAGGED $PREFIX meaning dependencies**: `echo "error: pngprobe did not link libpng16 from \$PREFIX" >&2`
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p "$OUT/bin"`
-- **rewrote $OUT to $PREFIX (staging)**: `cp "$_bin" "$OUT/bin/"`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p "$OUT/bin"`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp "$_bin" "$OUT/bin/"`
 
 ## pngprobe/generic.toml
 
@@ -2177,10 +2177,10 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## raylib/android.lua
 
-- **rewrote $OUT to $PREFIX (staging)**: `' "$OUT/lib/pkgconfig/raylib.pc" > "$WORK/raylib.pc"`
-- **rewrote $OUT to $PREFIX (staging)**: `cp "$WORK/raylib.pc" "$OUT/lib/pkgconfig/raylib.pc"`
-- **rewrote $OUT to $PREFIX (staging)**: `' "$OUT/lib/cmake/raylib/raylib-targets.cmake" > "$WORK/raylib-targets.cmake"`
-- **rewrote $OUT to $PREFIX (staging)**: `cp "$WORK/raylib-targets.cmake" "$OUT/lib/cmake/raylib/raylib-targets.cmake"`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `' "$OUT/lib/pkgconfig/raylib.pc" > "$WORK/raylib.pc"`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp "$WORK/raylib.pc" "$OUT/lib/pkgconfig/raylib.pc"`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `' "$OUT/lib/cmake/raylib/raylib-targets.cmake" > "$WORK/raylib-targets.cmake"`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp "$WORK/raylib-targets.cmake" "$OUT/lib/cmake/raylib/raylib-targets.cmake"`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/raylib@source/* .`
 - **driven by the cmake build system**: `args=['-DCMAKE_BUILD_TYPE=Release', '-DPLATFORM=Android', '-DANDROID_NDK=$NDK', '-DBUILD_EXAMPLES=OFF']`
 - **ported**: `android.toml`
@@ -2217,7 +2217,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## samurai/generic.lua
 
-- **rewrote $OUT to $PREFIX (staging)**: `make install PREFIX="$OUT"`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `make install PREFIX="$OUT"`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/samurai@source/* .`
 - **driven by the make build system**: `make=False, install=False`
 - **ported**: `generic.toml`
@@ -2248,8 +2248,8 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## setuptools/generic.lua
 
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/lib/python3.14/site-packages`
-- **rewrote $OUT to $PREFIX (staging)**: `cp -r $NESTDIR/source/setuptools/* $OUT/lib/python3.14/site-packages/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/lib/python3.14/site-packages`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp -r $NESTDIR/source/setuptools/* $OUT/lib/python3.14/site-packages/`
 - **driven by the python build system**: `whole_tree=True`
 - **ported**: `generic.toml`
 
@@ -2259,16 +2259,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## sevenzip/android.lua
 
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/bin`
-- **rewrote $OUT to $PREFIX (staging)**: `cp CPP/7zip/Bundles/Alone2/_o/7zz $OUT/bin/7zz`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/bin`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp CPP/7zip/Bundles/Alone2/_o/7zz $OUT/bin/7zz`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/sevenzip@source/* .`
 - **driven by the make build system**: `make=False, install=False`
 - **ported**: `android.toml`
 
 ## sevenzip/generic.lua
 
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/bin`
-- **rewrote $OUT to $PREFIX (staging)**: `cp CPP/7zip/Bundles/Alone2/_o/7zz $OUT/bin/7zz`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/bin`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp CPP/7zip/Bundles/Alone2/_o/7zz $OUT/bin/7zz`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/sevenzip@source/* .`
 - **driven by the make build system**: `make=False, install=False`
 - **ported**: `generic.toml`
@@ -2349,16 +2349,16 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## squashfs-tools/android.lua
 
-- **rewrote $OUT to $OUTPKG (install prefix)**: `make -j"$CORES" LZO_SUPPORT=0 USE_PREBUILT_MANPAGES=y INSTALL_PREFIX="$OUT" \`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `make -j"$CORES" LZO_SUPPORT=0 USE_PREBUILT_MANPAGES=y INSTALL_PREFIX="$OUT" \`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `make -j"$CORES" LZO_SUPPORT=0 USE_PREBUILT_MANPAGES=y INSTALL_PREFIX="$OUT" \`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `make -j"$CORES" LZO_SUPPORT=0 USE_PREBUILT_MANPAGES=y INSTALL_PREFIX="$OUT" \`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/squashfs-tools@source/* .`
 - **driven by the make build system**: `make=False, install=False`
 - **ported**: `android.toml`
 
 ## squashfs-tools/generic.lua
 
-- **rewrote $OUT to $OUTPKG (install prefix)**: `make -j"$CORES" LZO_SUPPORT=0 USE_PREBUILT_MANPAGES=y INSTALL_PREFIX="$OUT"`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `make -j"$CORES" LZO_SUPPORT=0 USE_PREBUILT_MANPAGES=y INSTALL_PREFIX="$OUT" install`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `make -j"$CORES" LZO_SUPPORT=0 USE_PREBUILT_MANPAGES=y INSTALL_PREFIX="$OUT"`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `make -j"$CORES" LZO_SUPPORT=0 USE_PREBUILT_MANPAGES=y INSTALL_PREFIX="$OUT" install`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/squashfs-tools@source/* .`
 - **driven by the make build system**: `make=False, install=False`
 - **ported**: `generic.toml`
@@ -2369,12 +2369,12 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## stb/generic.lua
 
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/include`
-- **rewrote $OUT to $PREFIX (staging)**: `cp stb*.h stb_vorbis.c LICENSE $OUT/include/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/include`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp stb*.h stb_vorbis.c LICENSE $OUT/include/`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/stb@source/* .`
 - **left as a shell body (installing files is the whole recipe)**: `generic.lua`
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/include`
-- **rewrote $OUT to $PREFIX (staging)**: `cp stb*.h stb_vorbis.c LICENSE $OUT/include/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/include`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp stb*.h stb_vorbis.c LICENSE $OUT/include/`
 - **ported**: `generic.toml`
 
 ## stb/source.lua
@@ -2413,11 +2413,11 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## systemd-man-pages/generic.lua
 
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/share/man`
-- **rewrote $OUT to $PREFIX (staging)**: `cp -r $NESTDIR/source/systemd-man-pages/* $OUT/share/man/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/share/man`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp -r $NESTDIR/source/systemd-man-pages/* $OUT/share/man/`
 - **left as a shell body (installing files is the whole recipe)**: `generic.lua`
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/share/man`
-- **rewrote $OUT to $PREFIX (staging)**: `cp -r $NESTDIR/source/systemd-man-pages/* $OUT/share/man/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/share/man`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp -r $NESTDIR/source/systemd-man-pages/* $OUT/share/man/`
 - **ported**: `generic.toml`
 
 ## systemd-man-pages/source.lua
@@ -2426,7 +2426,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## sysvinit/generic.lua
 
-- **rewrote $OUT to $PREFIX (staging)**: `make install ROOT="$OUT" usrdir=`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `make install ROOT="$OUT" usrdir=`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/sysvinit@source/* .`
 - **driven by the make build system**: `make=False, install=False`
 - **ported**: `generic.toml`
@@ -2457,7 +2457,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## tcl/generic.lua
 
-- **rewrote $OUT to $PREFIX (staging)**: `./unix/configure $AUTOCONF_CONFIGURE_FLAGS --mandir="$OUT/share/man" --disable-rpath`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `./unix/configure $AUTOCONF_CONFIGURE_FLAGS --mandir="$OUT/share/man" --disable-rpath`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/tcl@source/* .`
 - **driven by the make build system**: `targets=['install-private-headers']`
 - **ported**: `generic.toml`
@@ -2468,11 +2468,11 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## tcl-docs/generic.lua
 
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/share/doc/tcl8.6.18`
-- **rewrote $OUT to $PREFIX (staging)**: `cp -r $NESTDIR/source/tcl-docs/* $OUT/share/doc/tcl8.6.18/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/share/doc/tcl8.6.18`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp -r $NESTDIR/source/tcl-docs/* $OUT/share/doc/tcl8.6.18/`
 - **left as a shell body (installing files is the whole recipe)**: `generic.lua`
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/share/doc/tcl8.6.18`
-- **rewrote $OUT to $PREFIX (staging)**: `cp -r $NESTDIR/source/tcl-docs/* $OUT/share/doc/tcl8.6.18/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/share/doc/tcl8.6.18`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp -r $NESTDIR/source/tcl-docs/* $OUT/share/doc/tcl8.6.18/`
 - **ported**: `generic.toml`
 
 ## tcl-docs/source.lua
@@ -2481,9 +2481,9 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## termcap/generic.lua
 
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/lib/pkgconfig`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `printf 'prefix=%s\nexec_prefix=${prefix}\nlibdir=${exec_prefix}/lib\nincludedir=${prefix}/include\nName: termcap\nDescription: GNU termcap\nVersion: 1.3.1\nLibs: -L${libdir} -ltermcap\nCflags: -I${inc`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/lib/pkgconfig`
 - **FLAGGED $PREFIX meaning dependencies**: `printf 'prefix=%s\nexec_prefix=${prefix}\nlibdir=${exec_prefix}/lib\nincludedir=${prefix}/include\nName: termcap\nDescription: GNU termcap\nVersion: 1.3.1\nLibs: -L${libdir} -ltermcap\nCflags: -I${inc`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `printf 'prefix=%s\nexec_prefix=${prefix}\nlibdir=${exec_prefix}/lib\nincludedir=${prefix}/include\nName: termcap\nDescription: GNU termcap\nVersion: 1.3.1\nLibs: -L${libdir} -ltermcap\nCflags: -I${inc`
 
 ## termcap/generic.toml
 
@@ -2511,11 +2511,11 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## tinyexr/generic.lua
 
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/lib $OUT/include`
-- **rewrote $OUT to $PREFIX (staging)**: `cp build/lib/libtinyexr.a $OUT/lib/`
-- **rewrote $OUT to $PREFIX (staging)**: `cp tinyexr.h exr_reader.hh streamreader.hh $OUT/include/`
-- **rewrote $OUT to $PREFIX (staging)**: `cp deps/miniz/miniz.h $OUT/include/`
-- **rewrote $OUT to $PREFIX (staging)**: `cp build/libminiz.a $OUT/lib/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/lib $OUT/include`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp build/lib/libtinyexr.a $OUT/lib/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp tinyexr.h exr_reader.hh streamreader.hh $OUT/include/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp deps/miniz/miniz.h $OUT/include/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp build/libminiz.a $OUT/lib/`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/tinyexr@source/* .`
 - **driven by the cmake build system**: `args=['-DTINYEXR_BUILD_SAMPLE=OFF', '-DTINYEXR_USE_MINIZ=ON']`
 - **ported**: `generic.toml`
@@ -2566,7 +2566,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## tzdata/generic.lua
 
-- **rewrote $OUT to $PREFIX (staging)**: `make ZIC=zic TOPDIR="$OUT/usr" install`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `make ZIC=zic TOPDIR="$OUT/usr" install`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/tzdata@source/* .`
 - **driven by the make build system**: `make=False, install=False`
 - **ported**: `generic.toml`
@@ -2577,23 +2577,23 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## udev-lfs/generic.lua
 
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/lib/udev/rules.d`
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/lib/udev/rules.d/network`
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/usr/share/doc/udev-20230818`
-- **rewrote $OUT to $PREFIX (staging)**: `cp *.rules $OUT/lib/udev/rules.d/`
-- **rewrote $OUT to $PREFIX (staging)**: `cp *.txt $OUT/usr/share/doc/udev-20230818/`
-- **rewrote $OUT to $PREFIX (staging)**: `cp init-net-rules.sh rule_generator.functions $OUT/usr/share/doc/udev-20230818/`
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/usr/share/udev`
-- **rewrote $OUT to $PREFIX (staging)**: `cp write_cd_rules write_net_rules $OUT/usr/share/udev/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/lib/udev/rules.d`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/lib/udev/rules.d/network`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/usr/share/doc/udev-20230818`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp *.rules $OUT/lib/udev/rules.d/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp *.txt $OUT/usr/share/doc/udev-20230818/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp init-net-rules.sh rule_generator.functions $OUT/usr/share/doc/udev-20230818/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/usr/share/udev`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp write_cd_rules write_net_rules $OUT/usr/share/udev/`
 - **left as a shell body (installing files is the whole recipe)**: `generic.lua`
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/lib/udev/rules.d`
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/lib/udev/rules.d/network`
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/usr/share/doc/udev-20230818`
-- **rewrote $OUT to $PREFIX (staging)**: `cp *.rules $OUT/lib/udev/rules.d/`
-- **rewrote $OUT to $PREFIX (staging)**: `cp *.txt $OUT/usr/share/doc/udev-20230818/`
-- **rewrote $OUT to $PREFIX (staging)**: `cp init-net-rules.sh rule_generator.functions $OUT/usr/share/doc/udev-20230818/`
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/usr/share/udev`
-- **rewrote $OUT to $PREFIX (staging)**: `cp write_cd_rules write_net_rules $OUT/usr/share/udev/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/lib/udev/rules.d`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/lib/udev/rules.d/network`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/usr/share/doc/udev-20230818`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp *.rules $OUT/lib/udev/rules.d/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp *.txt $OUT/usr/share/doc/udev-20230818/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp init-net-rules.sh rule_generator.functions $OUT/usr/share/doc/udev-20230818/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/usr/share/udev`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp write_cd_rules write_net_rules $OUT/usr/share/udev/`
 - **ported**: `generic.toml`
 
 ## udev-lfs/source.lua
@@ -2643,7 +2643,7 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 ## vim/generic.lua
 
 - **added a dependency v1 used implicitly**: `ncurses`
-- **rewrote $OUT to $OUTPKG (install prefix)**: `./configure --prefix="$OUT" \`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `./configure --prefix="$OUT" \`
 - **FLAGGED $PREFIX meaning dependencies**: `--with-tlibdir="$PREFIX/lib"`
 
 ## vim/generic.toml
@@ -2671,9 +2671,9 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## wheel/generic.lua
 
-- **rewrote $OUT to $PREFIX (staging)**: `mkdir -p $OUT/lib/python3.14/site-packages`
-- **rewrote $OUT to $PREFIX (staging)**: `cp -r src/wheel $OUT/lib/python3.14/site-packages/`
-- **rewrote $OUT to $PREFIX (staging)**: `cp LICENSE.txt $OUT/lib/python3.14/site-packages/wheel/LICENSE.txt`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `mkdir -p $OUT/lib/python3.14/site-packages`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp -r src/wheel $OUT/lib/python3.14/site-packages/`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `cp LICENSE.txt $OUT/lib/python3.14/site-packages/wheel/LICENSE.txt`
 - **dropped (the tool copies @source trees in)**: `cp -r $NESTDIR/wheel@source/* .`
 - **driven by the python build system**: `modules=['src/wheel'], licenses=['LICENSE.txt']`
 - **ported**: `generic.toml`
@@ -2790,19 +2790,18 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## zstd/generic.lua
 
-- **rewrote $OUT to $PREFIX (staging)**: `make -C lib PREFIX="$OUT" LIBDIR="$OUT/lib" HAVE_LZMA=0 HAVE_ZLIB=0 ZLIB_PREFIX="$PREFIX"`
 - **FLAGGED $PREFIX meaning dependencies**: `make -C lib PREFIX="$OUT" LIBDIR="$OUT/lib" HAVE_LZMA=0 HAVE_ZLIB=0 ZLIB_PREFIX="$PREFIX"`
-- **rewrote $OUT to $PREFIX (staging)**: `make -C lib PREFIX="$OUT" LIBDIR="$OUT/lib" HAVE_LZMA=0 HAVE_ZLIB=0 ZLIB_PREFIX="$PREFIX" install`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `make -C lib PREFIX="$OUT" LIBDIR="$OUT/lib" HAVE_LZMA=0 HAVE_ZLIB=0 ZLIB_PREFIX="$PREFIX"`
 - **FLAGGED $PREFIX meaning dependencies**: `make -C lib PREFIX="$OUT" LIBDIR="$OUT/lib" HAVE_LZMA=0 HAVE_ZLIB=0 ZLIB_PREFIX="$PREFIX" install`
-- **rewrote $OUT to $PREFIX (staging)**: `make -C programs PREFIX="$OUT" HAVE_LZMA=0 HAVE_ZLIB=0 ZLIB_PREFIX="$PREFIX"`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `make -C lib PREFIX="$OUT" LIBDIR="$OUT/lib" HAVE_LZMA=0 HAVE_ZLIB=0 ZLIB_PREFIX="$PREFIX" install`
 - **FLAGGED $PREFIX meaning dependencies**: `make -C programs PREFIX="$OUT" HAVE_LZMA=0 HAVE_ZLIB=0 ZLIB_PREFIX="$PREFIX"`
-- **rewrote $OUT to $PREFIX (staging)**: `make -C programs PREFIX="$OUT" HAVE_LZMA=0 HAVE_ZLIB=0 ZLIB_PREFIX="$PREFIX" install`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `make -C programs PREFIX="$OUT" HAVE_LZMA=0 HAVE_ZLIB=0 ZLIB_PREFIX="$PREFIX"`
 - **FLAGGED $PREFIX meaning dependencies**: `make -C programs PREFIX="$OUT" HAVE_LZMA=0 HAVE_ZLIB=0 ZLIB_PREFIX="$PREFIX" install`
+- **rewrote $OUT (a prefix to $OUTPKG, the rest to $PREFIX)**: `make -C programs PREFIX="$OUT" HAVE_LZMA=0 HAVE_ZLIB=0 ZLIB_PREFIX="$PREFIX" install`
 
 ## zstd/generic.toml
 
 - **fixed by hand (an install prefix: the final path, DESTDIR redirects the write)**: `PREFIX="\$\{RETROLUNAR_PORT_PREFIX\}"`
-- **fixed by hand (an install prefix: the final path, DESTDIR redirects the write)**: `LIBDIR="\$\{RETROLUNAR_PORT_PREFIX\}/lib"`
 
 ## zstd/generic.lua
 

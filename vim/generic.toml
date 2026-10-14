@@ -21,7 +21,7 @@ buildsystem = "autoconf"
 # x86_64-w64-mingw32-gcc. $HOST_TRIPLET expands to exactly that same
 # literal on the aarch64-android systems, so the one family that
 # worked is unaffected.
-configure_args = ["--prefix=$PREFIX", "--host=$HOST_TRIPLET", "--with-features=normal", "--enable-multibyte", "--with-tlibdir=$ncurses_PREFIX/lib"]
+configure_args = ["--prefix=$OUTPKG", "--host=$HOST_TRIPLET", "--with-features=normal", "--enable-multibyte", "--with-tlibdir=$ncurses_PREFIX/lib"]
 pre = """
 cp -r $NESTDIR/vim@source/. .
 cd src

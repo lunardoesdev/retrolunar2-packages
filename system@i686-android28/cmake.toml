@@ -3,7 +3,7 @@
 #   source_dir  where CMakeLists.txt lives, when not the top of the work dir
 [buildsystem.cmake]
 CMAKE_TOOLCHAIN_FILE = "$SYSDIR/i686-linux-android28-toolchain.cmake"
-CMAKE_FLAGS = "-DCMAKE_TOOLCHAIN_FILE=$CMAKE_TOOLCHAIN_FILE -DCMAKE_INSTALL_PREFIX=$PREFIX -DCMAKE_TRY_COMPILE_TARGET_TYPE=STATIC_LIBRARY -DTHREADS_PREFER_PTHREAD_FLAG=ON -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_MAKE_PROGRAM=$CMAKE_MAKE_PROGRAM"
+CMAKE_FLAGS = "-DCMAKE_TOOLCHAIN_FILE=$CMAKE_TOOLCHAIN_FILE -DCMAKE_INSTALL_PREFIX=$OUTPKG -DCMAKE_TRY_COMPILE_TARGET_TYPE=STATIC_LIBRARY -DTHREADS_PREFER_PTHREAD_FLAG=ON -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_MAKE_PROGRAM=$CMAKE_MAKE_PROGRAM"
 # cmake's compiler check links a test program and then runs it. A
 # cross target binary cannot run here, and running one would be
 # emulation, which we never do: link a static library instead.

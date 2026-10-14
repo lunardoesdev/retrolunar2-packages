@@ -8,7 +8,7 @@
 # to regenerate them with autotools - not installed in these systems, because
 # building from a release tarball should not need them.
 [buildsystem.autoconf]
-AUTOCONF_CONFIGURE_FLAGS = "--host=$HOST_TRIPLET --build=$BUILD_TRIPLET --prefix=$PREFIX"
+AUTOCONF_CONFIGURE_FLAGS = "--host=$HOST_TRIPLET --build=$BUILD_TRIPLET --prefix=$OUTPKG"
 script = """
 LDFLAGS=\"$LDFLAGS -Wl,-rpath,'\\$\\$ORIGIN'\"
 cd \"${BS_source_dir:-.}\"

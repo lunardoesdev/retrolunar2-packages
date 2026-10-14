@@ -5,4 +5,4 @@ buildsystem = "autoconf"
 # guard is needed. Native targets need no tuple: libvpx detects the
 # host. Android targets are served by android.lua, which the Android
 # systems reach through their recipe_fallbacks.
-configure_args = ["--prefix=$PREFIX", "--disable-examples", "--disable-docs", "--disable-unit-tests", "--disable-tools", "--enable-pic", "--enable-static", "--disable-shared"]
+configure_args = ["--prefix=$OUTPKG", "--disable-examples", "--disable-docs", "--disable-unit-tests", "--disable-tools", "--enable-pic", "--enable-static", "--disable-shared"]

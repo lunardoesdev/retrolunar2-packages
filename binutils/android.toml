@@ -5,6 +5,6 @@ make = false
 install = false
 configure_args = ["--enable-ld=default", "--enable-plugins", "--enable-shared", "--disable-werror", "--enable-64-bit-bfd", "--enable-new-dtags", "--with-system-zlib", "--disable-gprofng", "--enable-default-hash-style=gnu"]
 post = """
-make -j\"$CORES\" tooldir=\"$PREFIX\"
-make -j\"$CORES\" tooldir=\"$PREFIX\" install
+make -j\"$CORES\" tooldir=\"$OUTPKG\"
+make -j\"$CORES\" tooldir=\"$OUTPKG\" install
 """

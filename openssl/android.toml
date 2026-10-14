@@ -25,7 +25,7 @@ case \"$HOST_ARCH\" in
     x86_64) ssl_target=android-x86_64 ;;
     *) echo \"openssl: unknown HOST_ARCH $HOST_ARCH\" >&2; exit 1 ;;
 esac
-./Configure \"$ssl_target\" -D__ANDROID_API__=\"$ANDROID_API\" --prefix=\"$PREFIX\" --libdir=lib no-shared no-tests no-docs no-engine no-dso no-dynamic-engine
+./Configure \"$ssl_target\" -D__ANDROID_API__=\"$ANDROID_API\" --prefix=\"$OUTPKG\" --libdir=lib no-shared no-tests no-docs no-engine no-dso no-dynamic-engine
 make -j\"$CORES\"
 make install_sw
 """

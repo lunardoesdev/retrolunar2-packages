@@ -14,7 +14,7 @@ MESON_CROSS_FILE = ""
 # ($CC, $CXX, $AR and friends are all exported above), and no policy
 # floor is needed because this is not cmake. The job count comes from
 # the recipes' own `meson compile --jobs "$CORES"`, not from here.
-MESON_FLAGS = "--prefix=$PREFIX"
+MESON_FLAGS = "--prefix=$OUTPKG"
 script = """
 LDFLAGS=\"$LDFLAGS -Wl,-rpath,\\$ORIGIN\"
 meson setup build ${MESON_CROSS_FILE:+--cross-file \"$MESON_CROSS_FILE\"} $MESON_FLAGS $BS_args

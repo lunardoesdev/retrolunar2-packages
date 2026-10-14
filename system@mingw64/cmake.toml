@@ -3,7 +3,7 @@
 #   source_dir  where CMakeLists.txt lives, when not the top of the work dir
 [buildsystem.cmake]
 CMAKE_TOOLCHAIN_FILE = "$SYSDIR/x86_64-w64-mingw32-toolchain.cmake"
-CMAKE_FLAGS = "-DCMAKE_INSTALL_PREFIX=$PREFIX -DCMAKE_REQUIRED_LIBRARIES=crypt32\\;ole32\\;oleaut32\\;uuid\\;gdi32 -DCMAKE_TRY_COMPILE_TARGET_TYPE=STATIC_LIBRARY -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_MAKE_PROGRAM=$CMAKE_MAKE_PROGRAM "
+CMAKE_FLAGS = "-DCMAKE_INSTALL_PREFIX=$OUTPKG -DCMAKE_REQUIRED_LIBRARIES=crypt32\\;ole32\\;oleaut32\\;uuid\\;gdi32 -DCMAKE_TRY_COMPILE_TARGET_TYPE=STATIC_LIBRARY -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_MAKE_PROGRAM=$CMAKE_MAKE_PROGRAM "
 # The Windows import libraries go here, at the END of the link line,
 # not in $LDFLAGS. See the comment on $LDFLAGS above for the
 # measurement: cmake seeds CMAKE_EXE_LINKER_FLAGS from $LDFLAGS, which

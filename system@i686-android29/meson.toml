@@ -3,7 +3,7 @@
 #   source_dir  where meson.build lives, when not the top of the work dir
 [buildsystem.meson]
 MESON_CROSS_FILE = "$SYSDIR/crossfile-i686-android29.ini"
-MESON_FLAGS = "--prefix=$PREFIX --cross-file $MESON_CROSS_FILE"
+MESON_FLAGS = "--prefix=$OUTPKG --cross-file $MESON_CROSS_FILE"
 script = """
 LDFLAGS=\"$LDFLAGS -Wl,-rpath,\\$ORIGIN\"
 meson setup build ${MESON_CROSS_FILE:+--cross-file \"$MESON_CROSS_FILE\"} $MESON_FLAGS $BS_args

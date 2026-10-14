@@ -8,6 +8,6 @@ post = """
 # LDFLAGS) are the ones the system already exports. IGRAPHICS and
 # the man pages stay off by default; only the archive and the header
 # are wanted.
-make -j\"$CORES\" CC=\"$CC\" CFLAGS=\"$CFLAGS\" LDFLAGS=\"$LDFLAGS\" PREFIX=\"$PREFIX\"
-make install-lib install-include PREFIX=\"$PREFIX\"
+make -j\"$CORES\" CC=\"$CC\" CFLAGS=\"$CFLAGS\" LDFLAGS=\"$LDFLAGS\" PREFIX=\"$OUTPKG\"
+make install-lib install-include PREFIX=\"$OUTPKG\"
 """
