@@ -1,0 +1,32 @@
+# tesseract tags its releases as <major>.<minor>.<patch> and publishes NO
+# dist tarball of its own: the GitHub release object for 5.5.3 carries a
+# single asset, the Windows installer (tesseract-ocr-w64-setup-5.5.3.exe),
+# and the archive of the tag is a plain git archive - it ships autogen.sh,
+# configure.ac, Makefile.am and m4/ but no generated ./configure, no
+# aclocal.m4, no Makefile.in and no pkg.m4. So this package has to generate
+# its configure, which generic.toml does with upstream's own autogen.sh; that
+# is the same shape as zimg's source node, and the autotools it needs are
+# declared as @native dependencies of the build recipe.
+#
+# The tag archive has one leading directory (tesseract-5.5.3/), so it unpacks
+# with --strip-components=1 like the other GitHub-archive recipes here.
+#
+# Two submodules .gitmodules names - test/ and
+# unittest/third_party/googletest - are left empty by the archive. Both belong
+# to `make check`, which this package never runs, and neither is a build input
+# of the library, so neither is fetched here; nothing else in the tree is
+# either (the langdata_lstm and tessdata trees the test programs would want
+# are the same story - see generic.toml).
+version = "5.5.3"
+
+build = """
+mkdir -p dl
+if [ ! -f dl/tesseract.tar.gz ]; then
+  curl -fSL -C - -o dl/tesseract.tar.gz \"https://github.com/tesseract-ocr/tesseract/archive/refs/tags/5.5.3.tar.gz\"
+fi
+rm -rf src
+mkdir -p src
+tar -xzf dl/tesseract.tar.gz -C src --strip-components=1
+mkdir -p $PREFIX
+cp -r src/* $PREFIX/
+"""

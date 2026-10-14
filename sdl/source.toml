@@ -1,0 +1,24 @@
+# SDL2's 2.x line tags its releases release-<major>.<minor>.<patch>, and the
+# official dist tarball is the release *asset* named SDL2-<version>.tar.gz
+# rather than the tag archive: the asset carries one leading directory
+# (SDL2-2.32.10/), so it unpacks with --strip-components=1 like the other
+# GitHub recipes here.
+#
+# 2.32.10 is the newest release of the 2.x line (the tags above it are
+# release-3.x, which is SDL3: a different soname, a different header
+# directory and a different cmake target name, so it is a different package).
+# 2.32.x is also where the tree's v1 sdl2 recipe stopped, so the pinned source
+# and the version `retrolunar deps` prints match the tree's other SDL entry.
+version = "2.32.10"
+
+build = """
+mkdir -p dl
+if [ ! -f dl/sdl2.tar.gz ]; then
+  curl -fSL -C - -o dl/sdl2.tar.gz \"https://github.com/libsdl-org/SDL/releases/download/release-2.32.10/SDL2-2.32.10.tar.gz\"
+fi
+rm -rf src
+mkdir -p src
+tar -xzf dl/sdl2.tar.gz -C src --strip-components=1
+mkdir -p $PREFIX
+cp -r src/* $PREFIX/
+"""

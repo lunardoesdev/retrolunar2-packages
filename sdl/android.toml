@@ -1,0 +1,105 @@
+deps = ["sdl@source"]
+buildsystem = "cmake"
+# SDL2 for an Android target. The library, its headers, sdl2.pc, the cmake
+# package config and libSDL2main.a (the JNI main shim, src/main/android) --
+# no test or example program, and nothing the build starts.
+#
+# Why this is android.toml and not generic.toml: everything this tree wants
+# from SDL on Android lives behind one cmake variable, `if(ANDROID)`
+# (CMakeLists.txt:1268-1396) -- video/android (EGL/GLES through
+# SDL_androidopengles.c), audio/android plus audio/openslES plus
+# audio/aaudio, filesystem, joystick, power, locale and sensor backends, and
+# the Android sources of libSDL2main.a. That variable is defined by the NDK's
+# own build/cmake/android.toolchain.cmake, which this tree does not use:
+# system@aarch64-android33/aarch64-linux-android33-toolchain.cmake sets
+# CMAKE_SYSTEM_NAME Linux on purpose (see kvazaar/generic.toml for why), so
+# cmake would take the `elseif(UNIX AND NOT APPLE ...)` branch
+# (CMakeLists.txt:1471) and ship a Linux-flavoured SDL with no Android video
+# and no Android audio driver at all. The recipe therefore states ANDROID=ON
+# itself, and with it ANDROID_NDK=$NDK: the Android branch compiles
+# $ANDROID_NDK/sources/android/cpufeatures/cpu-features.c and adds its
+# directory as an include path (CMakeLists.txt:1270-1271 and :3420-3421), and
+# with $NDK unset those resolve to /sources/... and the configure fails. Both
+# the file and the directory are present in NDK r29.
+#
+# ANDROID=ON also switches off every host library by construction: UNIX_SYS is
+# false when ANDROID is set (CMakeLists.txt:166-170), so every option whose
+# default is ${UNIX_SYS} is already off, and the whole Unix platform branch
+# that holds the X11/Wayland/KMSDRM/ALSA/udev/dbus/ibus probes is never
+# entered. CheckPTHREAD takes its Android arm and links no pthread
+# (sdlchecks.cmake:941-945), which is right for Bionic.
+#
+# Static: BUILD_SHARED_LIBS=OFF is what flips SDL's own two defaults
+# (CMakeLists.txt:369-388) and SDL_SHARED=OFF / SDL_STATIC=ON spell the same
+# thing in SDL's own vocabulary; a target prefix has no loader path we
+# control, so the archive is what gets installed (lib/libSDL2.a, plus
+# lib/libSDL2main.a).
+#
+# Host programs off: SDL_TEST=OFF drops the SDL2_test library
+# (CMakeLists.txt:3558) and, being SDL_TESTS' dependency, drops the test/
+# directory with it (dep_option, CMakeLists.txt:510); SDL_INSTALL_TESTS=OFF
+# keeps the test cases out of the install tree. Both are stated rather than
+# left to the defaults because test/ is a set of target executables this host
+# must neither build nor run. Note that there is no SDL_EXAMPLES option in
+# 2.32.10 (nothing in CMakeLists.txt or cmake/ matches it, and cmake ignores
+# an unknown cache variable silently) -- the programs are the test suite.
+#
+# Vulkan=OFF is the one switch in the backend group below that changes this
+# build rather than restating it: dep_option(SDL_VULKAN ... ON "ANDROID OR
+# APPLE OR LINUX OR WINDOWS") makes it default ON once ANDROID is true
+# (CMakeLists.txt:487), and its check would pass here -- NDK r29 ships
+# vulkan/vulkan.h and libvulkan.so in the sysroot. Off, the archive carries no
+# Vulkan surface code and a consumer links no libvulkan.so; nothing in this
+# tree asks for SDL's Vulkan path, and its render targets are GLES2 (enabled
+# by the Android video block itself, CMakeLists.txt:1377-1388).
+#
+# The backend list below names what this prefix cannot link. Under ANDROID
+# they are all off already -- their defaults are ${UNIX_SYS}, and dbus/ibus
+# are dep_options on it -- and they are written out so the intent lives in the
+# recipe instead of being inherited from a default that upstream could change.
+# fcitx has no option of its own: HAVE_FCITX is set from DBUS_FOUND
+# (CMakeLists.txt:1611-1613), so -DSDL_DBUS=OFF is what keeps fcitx out.
+# libdecor is SDL_WAYLAND_LIBDECOR, off with Wayland. There is no SDL_CAMERA,
+# SDL_GPU, SDL_LOCALES or SDL_FCITX option in this version, and the locale
+# subsystem's option is the singular SDL_LOCALE (the SDL_SUBSYSTEMS list,
+# CMakeLists.txt:392-404).
+#
+# What stays on is what the NDK does provide: audio (Android/OpenSL ES/AAudio,
+# CMakeLists.txt:1295-1307), video with EGL/GLES2, joystick, haptic, power,
+# sensor, locale, filesystem, hidapi -- in-tree, since Android forces
+# SDL_HIDAPI_LIBUSB off (CMakeLists.txt:201-205, :515-521) and the release
+# carries src/hidapi/hidapi/hidapi.h -- and render. SDL_SYSTEM_ICONV keeps its
+# default (ON: Android is not in the WINDOWS/MACOS/IOS/VISIONOS/WATCHOS list
+# that turns it off, CMakeLists.txt:247-251) because API 33's Bionic ships
+# iconv.h and iconv_open in libc, so no libiconv is involved; SDL_LIBC and
+# SDL_ATOMIC keep theirs too.
+#
+# Nothing here starts a target binary. SDL2's cmake does call find_package(Git)
+# and a `git describe` in the source directory (CMakeLists.txt:3112-3122) --
+# a revision probe, not a build tool: its result is discarded whenever the
+# tarball's own REVISION.txt is readable (:3125-3126), which is the case here,
+# so it changes nothing and is not a dependency.
+args = [
+  "-DBUILD_SHARED_LIBS=OFF",
+  "-DSDL_SHARED=OFF",
+  "-DSDL_STATIC=ON",
+  "-DSDL_TEST=OFF",
+  "-DSDL_TESTS=OFF",
+  "-DSDL_INSTALL_TESTS=OFF",
+  "-DANDROID=ON",
+  "-DANDROID_NDK=$NDK",
+  "-DSDL_VULKAN=OFF",
+  "-DSDL_X11=OFF",
+  "-DSDL_WAYLAND=OFF",
+  "-DSDL_WAYLAND_LIBDECOR=OFF",
+  "-DSDL_KMSDRM=OFF",
+  "-DSDL_DBUS=OFF",
+  "-DSDL_IBUS=OFF",
+  "-DSDL_ALSA=OFF",
+  "-DSDL_PULSEAUDIO=OFF",
+  "-DSDL_PIPEWIRE=OFF",
+  "-DSDL_JACK=OFF",
+  "-DSDL_SNDIO=OFF",
+  "-DSDL_OSS=OFF",
+  "-DSDL_LIBUDEV=OFF",
+]

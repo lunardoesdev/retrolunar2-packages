@@ -1,0 +1,70 @@
+deps = ["zlib", "libpng", "libjpeg-turbo", "giflib", "libtiff", "libwebp", "openjpeg", "leptonica@source"]
+buildsystem = "autoconf"
+# The image-processing library tesseract needs: lib/Libleptonica.a, the
+# leptonica/*.h header set under include/ and lib/pkgconfig/lept.pc (the
+# module name is "lept", which is what a consumer's pkg-config check asks
+# for and what tesseract's own check looks up).
+#
+# The image formats are the eight configure can carry, and each one is either
+# declared above or refused on purpose:
+#
+#   zlib       PKG_CHECK_MODULES([ZLIB], [zlib])                (configure.ac:43)
+#   libpng     PKG_CHECK_MODULES([LIBPNG], [libpng])            (configure.ac:62)
+#   jpeg       PKG_CHECK_MODULES([JPEG], [libjpeg])             (configure.ac:81)
+#   giflib     AC_CHECK_LIB([gif], [DGifOpenFileHandle]) plus a
+#              version preprocessor test and AC_CHECK_HEADER     (configure.ac:100-121)
+#   libtiff    PKG_CHECK_MODULES([LIBTIFF], [libtiff-4])        (configure.ac:134)
+#   libwebp    PKG_CHECK_MODULES([LIBWEBP], [libwebp])          (configure.ac:153)
+#   libwebpmux PKG_CHECK_MODULES([LIBWEBPMUX], [libwebpmux >= 0.5.0])
+#   openjpeg   PKG_CHECK_MODULES([LIBJP2K], [libopenjp2 >= 2.0.0])
+#
+# The seven that are declared are the tree's copies of those libraries
+# (zlib, libpng, libjpeg-turbo, giflib, libtiff, libwebp, openjpeg), and each
+# is asked for by name rather than left to configure's "check" default so a
+# missing one is a hard error at configure time ("zlib support requested but
+# ... not found") instead of a library that silently reads fewer formats.
+# libwebpmux is the one that is refused: this tree's libwebp recipe builds
+# with -DWEBP_BUILD_LIBWEBPMUX=OFF, so there is no libwebpmux to use and
+# leptonica compiles webpanimiostub.c instead of webpanimio.c (the animation
+# reader). Nothing else was invented: no format library is declared that the
+# tree does not have.
+#
+# --enable-static --disable-shared --with-pic: a cross target prefix has no
+# loader path we control, so the archive is the product, and it is meant to be
+# linked into a shared library later.
+#
+# --disable-programs is the switch for the target programs. configure.ac:32-33
+# declares it and gates ENABLE_PROGRAMS, and prog/Makefile.am:125-127 puts
+# bin_PROGRAMS ($(INSTALL_PROGS): convertformat, convertfilestops, fileinfo,
+# imagetops, xtractprotos, ...) and noinst_PROGRAMS (the twenty-odd *_reg
+# regression programs) behind that conditional, so `make` and `make install`
+# reach src/ only. Makefile.am:8 (SUBDIRS = src prog) still enters prog/, but
+# with the conditional false there is nothing there to build.
+#
+# The fuzzing and test targets are not built either, and no switch is needed
+# to say so, because upstream keeps them off the default target:
+#
+#   fuzzers   Makefile.am:63-68 - `fuzzers: $(FUZZERS)` is its own phony
+#             target, and $(FUZZERS): all is only a prerequisite of it, so
+#             neither the fuzzers nor their -fsanitize=fuzzer link happen
+#             during `make`. There is no configure option for them at all.
+#   tests     prog/Makefile.am:130-131 - check_PROGRAMS and TESTS are
+#             $(AUTO_REG_PROGS), which only `make check` builds; the driver
+#             never runs it. The programs are the same regression binaries
+#             that --disable-programs keeps out of `all`.
+#   doc       Nothing here builds documentation: doc/ is not in SUBDIRS and
+#             the Doxyfile is only used by the `doc` target, which is not in
+#             `all` and needs doxygen, which this host does not have.
+#
+# src/Makefile.am:91-92 is the one place a target binary could be run, and it
+# is not on the path: the `allheaders` target builds prog/xtractprotos (a
+# target program) and executes it to regenerate src/allheaders.h, but it is a
+# standalone target, not a prerequisite of anything in `all`, and only
+# `make allheaders` reaches it. src/allheaders.h and src/alltypes.h are
+# shipped in the release tarball and listed as pkginclude_HEADERS
+# (src/Makefile.am:68), so the installed header set is complete without it.
+#
+# Nothing here differs for Android, so there is no android.toml: the driver
+# passes --host=aarch64-linux-android, the system's CFLAGS carry -DANDROID,
+# and configure's library checks are compile/link tests, never runs.
+configure_args = ["--enable-static", "--disable-shared", "--with-pic", "--disable-programs", "--with-zlib", "--with-libpng", "--with-jpeg", "--with-giflib", "--with-libtiff", "--with-libwebp", "--without-libwebpmux", "--with-libopenjpeg"]
