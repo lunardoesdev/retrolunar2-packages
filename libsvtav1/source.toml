@@ -1,0 +1,16 @@
+# SVT-AV1 tags releases as v<major>.<minor>.<patch>; the GitHub archive of
+# the tag carries one leading directory (SVT-AV1-4.2.0/), so it unpacks
+# with --strip-components=1 like the other GitHub-archive recipes here.
+version = "4.2.0"
+
+build = """
+mkdir -p dl
+if [ ! -f dl/svt-av1.tar.gz ]; then
+  curl -fSL -C - -o dl/svt-av1.tar.gz \"https://github.com/AOMediaCodec/SVT-AV1/archive/refs/tags/v4.2.0.tar.gz\"
+fi
+rm -rf src
+mkdir -p src
+tar -xzf dl/svt-av1.tar.gz -C src --strip-components=1
+mkdir -p $PREFIX
+cp -r src/* $PREFIX/
+"""

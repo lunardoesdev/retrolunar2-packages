@@ -1,0 +1,28 @@
+deps = ["libsvtav1@source"]
+buildsystem = "cmake"
+# The SVT-AV1 encoder library: libSvtAv1Enc.a, its headers and
+# SvtAv1Enc.pc.
+#
+# BUILD_SHARED_LIBS=OFF - upstream defaults to a shared object
+# (CMakeLists.txt:228) and a target prefix has no loader path we control, so
+# ask for the archive. The installed file keeps the target's own name,
+# libSvtAv1Enc.a (Source/Lib/CMakeLists.txt:29 add_library(SvtAv1Enc)).
+#
+# BUILD_APPS=OFF is the switch that matters: CMakeLists.txt:268 defaults it
+# ON and :671 then add_subdirectory(Source/App), which is SvtAv1EncApp - a
+# target binary this host must not build or run and nothing in the tree
+# consumes. Off, only Source/Lib is built.
+#
+# BUILD_TESTING=OFF: the option is declared with no default
+# (CMakeLists.txt:231), but the guarded block at :748 does include(CTest)
+# and add_subdirectory(test) plus googletest, building the unit/E2E test
+# binaries. It is off unless asked for; stated here so the intent lives in
+# the recipe instead of being inherited from a default.
+#
+# The ARM detection needs no help: CMakeLists.txt:43-50 runs a
+# check_c_source_compiles on __aarch64__, which the NDK clang defines, and
+# only then reaches the NEON / ARM_CRC32 / DOTPROD / I8MM / SVE sources; the
+# system passes -DCMAKE_TRY_COMPILE_TARGET_TYPE=STATIC_LIBRARY so those
+# checks compile without a link-and-run. The x86 path, and its nasm probe,
+# is skipped on aarch64.
+args = ["-DBUILD_SHARED_LIBS=OFF", "-DBUILD_APPS=OFF", "-DBUILD_TESTING=OFF"]
