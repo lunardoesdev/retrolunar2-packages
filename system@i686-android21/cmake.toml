@@ -19,7 +19,7 @@ CMAKE_FLAGS = "-DCMAKE_TOOLCHAIN_FILE=$CMAKE_TOOLCHAIN_FILE -DCMAKE_INSTALL_PREF
 # emulator. Pin the host make.
 CMAKE_MAKE_PROGRAM = "$(command -v make || true)"
 script = """
-LDFLAGS=\"$LDFLAGS -Wl,-rpath,\\$ORIGIN\"
+LDFLAGS=\"$LDFLAGS -Wl,-rpath,\\$ORIGIN -Wl,-rpath,\\$ORIGIN/../lib -Wl,-rpath,\\$ORIGIN/../lib64\"
 cmake -S \"${BS_source_dir:-.}\" -B build ${CMAKE_GENERATOR:+-G \"$CMAKE_GENERATOR\"} ${CMAKE_TOOLCHAIN_FILE:+-DCMAKE_TOOLCHAIN_FILE=\"$CMAKE_TOOLCHAIN_FILE\"} $CMAKE_FLAGS $BS_args
 cmake --build build --parallel \"$CORES\"
 cmake --install build

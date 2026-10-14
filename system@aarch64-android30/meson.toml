@@ -5,7 +5,7 @@
 MESON_CROSS_FILE = "$SYSDIR/crossfile-aarch64-android30.ini"
 MESON_FLAGS = "--prefix=$OUTPKG --cross-file $MESON_CROSS_FILE"
 script = """
-LDFLAGS=\"$LDFLAGS -Wl,-rpath,\\$ORIGIN\"
+LDFLAGS=\"$LDFLAGS -Wl,-rpath,\\$ORIGIN -Wl,-rpath,\\$ORIGIN/../lib -Wl,-rpath,\\$ORIGIN/../lib64\"
 meson setup build ${MESON_CROSS_FILE:+--cross-file \"$MESON_CROSS_FILE\"} $MESON_FLAGS $BS_args
 ninja -C build -j \"$CORES\"
 ninja -C build -j \"$CORES\" install

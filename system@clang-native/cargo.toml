@@ -9,7 +9,7 @@
 [buildsystem.cargo]
 CARGO_BUILD_TARGET = "x86_64-unknown-linux-gnu"
 script = """
-RUSTFLAGS=\"${RUSTFLAGS:-} -C link-arg=-Wl,-rpath,\\$ORIGIN\"
+RUSTFLAGS=\"${RUSTFLAGS:-} -C link-arg=-Wl,-rpath,\\$ORIGIN -C link-arg=-Wl,-rpath,\\$ORIGIN/../lib -C link-arg=-Wl,-rpath,\\$ORIGIN/../lib64\"
 export RUSTFLAGS
 ${BS_env:+env $BS_env }cargo build --release --target \"$CARGO_BUILD_TARGET\" -j \"$CORES\" ${BS_no_default_features:+--no-default-features} ${BS_features:+--features \"$BS_features\"}
 if [ \"$BS_install\" != \"false\" ]; then

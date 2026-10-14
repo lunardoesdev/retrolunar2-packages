@@ -10,7 +10,7 @@
 [buildsystem.autoconf]
 AUTOCONF_CONFIGURE_FLAGS = "--host=$HOST_TRIPLET --build=$BUILD_TRIPLET --prefix=$OUTPKG"
 script = """
-LDFLAGS=\"$LDFLAGS -Wl,-rpath,'\\$\\$ORIGIN'\"
+LDFLAGS=\"$LDFLAGS -Wl,-rpath,'\\$\\$ORIGIN' -Wl,-rpath,'\\$\\$ORIGIN/../lib' -Wl,-rpath,'\\$\\$ORIGIN/../lib64'\"
 cd \"${BS_source_dir:-.}\"
 ./configure $AUTOCONF_CONFIGURE_FLAGS $BS_configure_args
 for _f in aclocal.m4 configure config.h.in; do

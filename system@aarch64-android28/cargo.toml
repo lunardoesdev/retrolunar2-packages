@@ -12,7 +12,7 @@ CARGO_BUILD_TARGET = "aarch64-linux-android"
 PKG_CONFIG_ALLOW_CROSS = "1"
 CXXFLAGS_aarch64_linux_android = "$CXXFLAGS"
 script = """
-RUSTFLAGS=\"${RUSTFLAGS:-} -C link-arg=-Wl,-rpath,\\$ORIGIN\"
+RUSTFLAGS=\"${RUSTFLAGS:-} -C link-arg=-Wl,-rpath,\\$ORIGIN -C link-arg=-Wl,-rpath,\\$ORIGIN/../lib -C link-arg=-Wl,-rpath,\\$ORIGIN/../lib64\"
 export RUSTFLAGS
 ${BS_env:+env $BS_env }cargo build --release --target \"$CARGO_BUILD_TARGET\" -j \"$CORES\" ${BS_no_default_features:+--no-default-features} ${BS_features:+--features \"$BS_features\"}
 if [ \"$BS_install\" != \"false\" ]; then

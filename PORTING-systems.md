@@ -47,27 +47,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@aarch64-android21/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android21/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android21/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android21/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android21/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android21/python.toml
@@ -130,27 +130,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@aarch64-android23/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android23/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android23/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android23/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android23/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android23/python.toml
@@ -215,27 +215,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@aarch64-android24/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android24/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android24/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android24/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android24/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android24/python.toml
@@ -298,27 +298,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@aarch64-android25/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android25/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android25/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android25/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android25/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android25/python.toml
@@ -381,27 +381,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@aarch64-android26/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android26/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android26/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android26/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android26/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android26/python.toml
@@ -464,27 +464,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@aarch64-android27/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android27/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android27/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android27/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android27/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android27/python.toml
@@ -547,27 +547,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@aarch64-android28/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android28/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android28/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android28/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android28/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android28/python.toml
@@ -630,27 +630,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@aarch64-android29/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android29/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android29/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android29/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android29/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android29/python.toml
@@ -713,27 +713,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@aarch64-android30/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android30/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android30/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android30/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android30/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android30/python.toml
@@ -796,27 +796,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@aarch64-android31/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android31/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android31/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android31/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android31/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android31/python.toml
@@ -879,27 +879,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@aarch64-android32/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android32/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android32/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android32/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android32/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android32/python.toml
@@ -962,27 +962,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@aarch64-android33/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android33/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android33/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android33/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android33/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android33/python.toml
@@ -1045,27 +1045,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@aarch64-android34/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android34/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android34/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android34/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android34/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android34/python.toml
@@ -1128,27 +1128,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@aarch64-android35/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android35/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android35/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android35/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android35/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@aarch64-android35/python.toml
@@ -1212,27 +1212,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@armv7a-android21/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android21/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android21/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android21/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android21/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android21/python.toml
@@ -1296,27 +1296,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@armv7a-android23/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android23/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android23/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android23/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android23/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android23/python.toml
@@ -1380,27 +1380,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@armv7a-android24/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android24/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android24/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android24/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android24/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android24/python.toml
@@ -1464,27 +1464,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@armv7a-android25/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android25/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android25/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android25/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android25/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android25/python.toml
@@ -1548,27 +1548,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@armv7a-android26/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android26/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android26/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android26/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android26/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android26/python.toml
@@ -1632,27 +1632,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@armv7a-android27/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android27/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android27/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android27/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android27/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android27/python.toml
@@ -1716,27 +1716,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@armv7a-android28/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android28/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android28/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android28/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android28/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android28/python.toml
@@ -1800,27 +1800,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@armv7a-android29/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android29/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android29/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android29/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android29/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android29/python.toml
@@ -1884,27 +1884,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@armv7a-android30/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android30/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android30/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android30/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android30/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android30/python.toml
@@ -1968,27 +1968,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@armv7a-android31/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android31/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android31/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android31/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android31/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android31/python.toml
@@ -2052,27 +2052,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@armv7a-android32/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android32/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android32/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android32/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android32/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android32/python.toml
@@ -2136,27 +2136,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@armv7a-android33/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android33/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android33/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android33/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android33/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android33/python.toml
@@ -2220,27 +2220,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@armv7a-android34/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android34/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android34/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android34/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android34/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android34/python.toml
@@ -2304,27 +2304,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@armv7a-android35/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android35/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android35/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android35/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android35/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@armv7a-android35/python.toml
@@ -2370,27 +2370,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@clang-native/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@clang-native/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@clang-native/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@clang-native/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@clang-native/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@clang-native/python.toml
@@ -2446,27 +2446,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@i686-android21/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android21/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android21/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android21/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android21/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android21/python.toml
@@ -2530,27 +2530,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@i686-android23/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android23/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android23/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android23/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android23/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android23/python.toml
@@ -2614,27 +2614,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@i686-android24/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android24/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android24/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android24/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android24/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android24/python.toml
@@ -2698,27 +2698,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@i686-android25/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android25/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android25/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android25/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android25/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android25/python.toml
@@ -2782,27 +2782,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@i686-android26/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android26/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android26/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android26/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android26/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android26/python.toml
@@ -2866,27 +2866,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@i686-android27/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android27/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android27/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android27/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android27/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android27/python.toml
@@ -2950,27 +2950,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@i686-android28/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android28/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android28/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android28/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android28/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android28/python.toml
@@ -3034,27 +3034,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@i686-android29/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android29/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android29/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android29/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android29/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android29/python.toml
@@ -3118,27 +3118,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@i686-android30/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android30/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android30/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android30/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android30/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android30/python.toml
@@ -3202,27 +3202,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@i686-android31/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android31/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android31/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android31/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android31/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android31/python.toml
@@ -3286,27 +3286,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@i686-android32/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android32/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android32/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android32/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android32/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android32/python.toml
@@ -3370,27 +3370,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@i686-android33/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android33/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android33/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android33/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android33/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android33/python.toml
@@ -3454,27 +3454,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@i686-android34/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android34/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android34/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android34/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android34/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android34/python.toml
@@ -3538,27 +3538,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@i686-android35/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android35/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android35/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android35/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android35/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@i686-android35/python.toml
@@ -3702,27 +3702,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@x86_64-android21/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android21/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android21/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android21/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android21/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android21/python.toml
@@ -3786,27 +3786,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@x86_64-android23/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android23/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android23/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android23/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android23/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android23/python.toml
@@ -3870,27 +3870,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@x86_64-android24/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android24/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android24/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android24/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android24/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android24/python.toml
@@ -3954,27 +3954,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@x86_64-android25/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android25/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android25/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android25/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android25/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android25/python.toml
@@ -4038,27 +4038,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@x86_64-android26/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android26/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android26/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android26/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android26/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android26/python.toml
@@ -4122,27 +4122,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@x86_64-android27/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android27/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android27/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android27/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android27/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android27/python.toml
@@ -4206,27 +4206,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@x86_64-android28/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android28/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android28/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android28/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android28/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android28/python.toml
@@ -4290,27 +4290,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@x86_64-android29/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android29/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android29/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android29/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android29/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android29/python.toml
@@ -4374,27 +4374,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@x86_64-android30/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android30/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android30/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android30/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android30/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android30/python.toml
@@ -4458,27 +4458,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@x86_64-android31/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android31/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android31/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android31/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android31/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android31/python.toml
@@ -4542,27 +4542,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@x86_64-android32/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android32/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android32/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android32/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android32/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android32/python.toml
@@ -4626,27 +4626,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@x86_64-android33/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android33/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android33/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android33/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android33/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android33/python.toml
@@ -4710,27 +4710,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@x86_64-android34/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android34/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android34/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android34/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android34/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android34/python.toml
@@ -4794,27 +4794,27 @@ Every line the Lua→TOML port dropped, rewrote or flagged, per file.
 
 ## system@x86_64-android35/autoconf.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the autoconf driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android35/cargo.toml
 
-- **rustc links with $ORIGIN**: `cargo does not read $LDFLAGS`
+- **rustc links with $ORIGIN and its lib**: `cargo does not read $LDFLAGS`
 - **carries the cargo driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android35/cmake.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the cmake driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android35/make.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the make driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android35/meson.toml
 
-- **links with $ORIGIN**: `so an exported bundle of it is a copy`
+- **links with $ORIGIN and its lib**: `so an exported bundle of it is a copy`
 - **carries the meson driver**: `script + defaults, overridable by this system`
 
 ## system@x86_64-android35/python.toml
