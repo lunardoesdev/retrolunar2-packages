@@ -13,3 +13,19 @@ buildsystem = "autoconf"
 # lib/liblzma.a; topackage.md:87 still records the shared object and
 # needs updating by the builder.
 configure_args = ["--disable-nls", "--disable-shared", "--disable-unxz", "--disable-lzmadec", "--disable-lzmainfo", "--disable-lzlinks", "--disable-scripts", "--disable-doc"]
+# The driver's fields are asserted rather than left to their defaults: the
+# emitted script reads BS_make as ${BS_make:-} in every node's block, so a field
+# a recipe does not define is whatever the node before it left behind.
+# install_args carries DESTDIR on the command line, and that is not
+# belt-and-braces: automake's Makefiles assign DESTDIR themselves, and a Makefile
+# variable beats the environment. The exported DESTDIR therefore never reached
+# this install - make install wrote straight into the published path (OUTPKG),
+# nothing was staged, and the publish step then reported
+#   sh: line 50: <stage>/.../store/<hash>/../.relax-list: No such file or directory
+# A command-line assignment outranks the Makefile, which is what puts the install
+# back under the stage. help2man's and openssl's recipes carry the same line for
+# the same reason. This went unnoticed until the entry was rebuilt for real: a
+# fresh entry is skipped, so the defect only shows on a rebuild.
+make = true
+install = true
+install_args = "DESTDIR=$DESTDIR"
