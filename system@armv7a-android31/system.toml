@@ -27,8 +27,8 @@ SYSROOT=\"$TOOLCHAIN/sysroot\"
 # (__ANDROID_API__, OpenSSL's target configs, tooling).
 ANDROID_API=31
 # Wrappers already encode the API level (31).
-CC=\"$TOOLBIN/armv7a-linux-androideabi21-clang\"
-CXX=\"$TOOLBIN/armv7a-linux-androideabi21-clang++\"
+CC=\"$TOOLBIN/armv7a-linux-androideabi31-clang\"
+CXX=\"$TOOLBIN/armv7a-linux-androideabi31-clang++\"
 AR=\"$TOOLBIN/llvm-ar\"
 RANLIB=\"$TOOLBIN/llvm-ranlib\"
 LD=\"$TOOLBIN/ld.lld\"
